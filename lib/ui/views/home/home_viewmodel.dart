@@ -10,6 +10,7 @@ class HomeViewModel extends FormViewModel {
 
   Future<void> notifyMe() async {
     await runBusyFuture(httpService.addEmail(emailValue!));
+    clearForm();
   }
 
   bool get enableNotifyButton => hasEmail && isFormValid;

@@ -23,6 +23,7 @@ final Map<String, String? Function(String?)?> _HomeViewTextValidations = {
 mixin $HomeView on StatelessWidget {
   TextEditingController get emailController =>
       _getFormTextEditingController(EmailValueKey);
+
   FocusNode get emailFocusNode => _getFormFocusNode(EmailValueKey);
 
   TextEditingController _getFormTextEditingController(String key,
@@ -110,7 +111,21 @@ mixin $HomeView on StatelessWidget {
 extension ValueProperties on FormViewModel {
   bool get isFormValid =>
       this.fieldsValidationMessages.values.every((element) => element == null);
+
   String? get emailValue => this.formValueMap[EmailValueKey] as String?;
+
+  set emailValue(String? value) {
+    this.setData(
+      this.formValueMap
+        ..addAll({
+          EmailValueKey: value,
+        }),
+    );
+
+    if (_HomeViewTextEditingControllers.containsKey(EmailValueKey)) {
+      _HomeViewTextEditingControllers[EmailValueKey]?.text = value ?? '';
+    }
+  }
 
   bool get hasEmail =>
       this.formValueMap.containsKey(EmailValueKey) &&
@@ -121,6 +136,10 @@ extension ValueProperties on FormViewModel {
 
   String? get emailValidationMessage =>
       this.fieldsValidationMessages[EmailValueKey];
+
+  void clearForm() {
+    emailValue = '';
+  }
 }
 
 extension Methods on FormViewModel {
