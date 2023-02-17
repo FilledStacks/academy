@@ -92,6 +92,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                           children: [
                             Container(
                               child: TextField(
+                                controller: emailController,
                                 decoration: InputDecoration.collapsed(
                                   hintText: 'Enter your Email',
                                   hintStyle: GoogleFonts.openSans(
@@ -111,7 +112,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                             ),
                             horizontalSpaceSmall,
                             GestureDetector(
-                              onTap: viewModel.isFormValid
+                              onTap: viewModel.enableNotifyButton
                                   ? viewModel.notifyMe
                                   : () {},
                               child: Container(
@@ -121,22 +122,33 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                                 ),
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: viewModel.isFormValid
+                                  color: viewModel.enableNotifyButton
                                       ? Colors.white
                                       : Colors.grey[800],
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                child: Text(
-                                  'Notify Me',
-                                  style: GoogleFonts.openSans(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
+                                child: viewModel.isBusy
+                                    ? const CircularProgressIndicator(
+                                        color: Colors.black,
+                                      )
+                                    : Text(
+                                        'Notify Me',
+                                        style: GoogleFonts.openSans(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 20),
+                                      ),
                               ),
                             ).showCursorOnHover.scaleOnHover.moveOnHover(y: -4)
                           ],
                         ),
+                        if (viewModel.showValidationError)
+                          Text(
+                            viewModel.emailValidationMessage!,
+                            style: const TextStyle(
+                              color: Colors.red,
+                            ),
+                          ),
                         const Spacer(flex: 3)
                       ],
                     ),
