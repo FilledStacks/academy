@@ -4,6 +4,7 @@ import 'package:filledstacked_academy/ui/common/app_constants.dart';
 import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
 import 'package:filledstacked_academy/ui/views/home/home_view.form.dart';
 import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
+import 'package:filledstacked_academy/ui/views/home/widgets/gradient_title.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/input_field.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/notify_button.dart';
 import 'package:flutter/material.dart';
@@ -44,28 +45,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                           ),
                         ),
                         const Spacer(flex: 2),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            GradientText(
-                              'MASTER\nFLUTTER',
-                              style: GoogleFonts.openSans(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 80,
-                                height: 0.95,
-                              ),
-                              colors: kgTitle,
-                            ).scaleOnHover.moveOnHover(y: -5),
-                            Text(
-                              'ON THE WEB',
-                              style: GoogleFonts.openSans(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 80,
-                                height: 0.95,
-                              ),
-                            )
-                          ],
-                        ),
+                        const HomeTitle(),
                         Row(
                           children: [
                             Text(

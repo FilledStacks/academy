@@ -2,6 +2,7 @@ import 'package:filledstacked_academy/extensions/hover_extensions.dart';
 import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
 import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
+import 'package:filledstacked_academy/ui/views/home/widgets/gradient_title.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/input_field.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/notify_button.dart';
 import 'package:flutter/material.dart';
@@ -32,27 +33,7 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
               ),
             ),
             verticalSpaceLarge,
-            Column(
-              children: [
-                GradientText(
-                  'MASTER\nFLUTTER',
-                  style: GoogleFonts.openSans(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 60,
-                    height: 0.95,
-                  ),
-                  colors: kgTitle,
-                ).scaleOnHover.moveOnHover(y: -5, x: -20),
-                Text(
-                  'ON THE WEB',
-                  style: GoogleFonts.openSans(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 60,
-                    height: 0.95,
-                  ),
-                )
-              ],
-            ),
+            const HomeTitle(),
             verticalSpaceTiny,
             Column(
               children: [
