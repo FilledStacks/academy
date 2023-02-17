@@ -2,6 +2,8 @@ import 'package:filledstacked_academy/extensions/hover_extensions.dart';
 import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
 import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
+import 'package:filledstacked_academy/ui/views/home/widgets/input_field.dart';
+import 'package:filledstacked_academy/ui/views/home/widgets/notify_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -72,55 +74,9 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
               ],
             ),
             verticalSpaceLarge,
-            Container(
-              child: TextField(
-                controller: emailController,
-                decoration: InputDecoration.collapsed(
-                  hintText: 'Enter your Email',
-                  hintStyle: GoogleFonts.openSans(
-                    color: kcLightGrey,
-                  ),
-                  filled: true,
-                  fillColor: kcMediumGrey,
-                ),
-              ),
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 24,
-              ),
-              decoration: BoxDecoration(
-                color: kcMediumGrey,
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
+            InputField(controller: emailController),
             verticalSpaceMedium,
-            GestureDetector(
-              onTap: viewModel.enableNotifyButton ? viewModel.notifyMe : () {},
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 16,
-                ),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: viewModel.enableNotifyButton
-                      ? Colors.white
-                      : Colors.grey[800],
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: viewModel.isBusy
-                    ? const CircularProgressIndicator(
-                        color: Colors.black,
-                      )
-                    : Text(
-                        'Notify Me',
-                        style: GoogleFonts.openSans(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20),
-                      ),
-              ),
-            ).showCursorOnHover.scaleOnHover.moveOnHover(y: -4, x: -20),
+            const NotifyButton(),
             verticalSpaceMedium,
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
