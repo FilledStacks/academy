@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveApp(builder: (context) {
       return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'FilledStacks Academy',
         theme: Theme.of(context).copyWith(
           primaryColor: kcBackgroundColor,
           focusColor: kcPrimaryColor,

@@ -16,7 +16,7 @@ import 'home_viewmodel.dart';
   )
 ])
 class HomeView extends StackedView<HomeViewModel> with $HomeView {
-  HomeView({Key? key}) : super(key: key);
+  HomeView({super.key});
 
   @override
   Widget builder(
