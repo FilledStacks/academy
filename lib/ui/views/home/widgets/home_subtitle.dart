@@ -25,7 +25,7 @@ class HomeSubtitle extends StatelessWidget {
           fontSize: 20,
         ),
         colors: kgTitle,
-      ).scaleOnHover.moveOnHover(y: 5),
+      ).scaleOnHover().moveOnHover(y: 5),
     ];
 
     return ScreenTypeLayout.builder(

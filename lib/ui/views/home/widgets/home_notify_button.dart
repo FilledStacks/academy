@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
-class NotifyButton extends ViewModelWidget<HomeViewModel> {
-  const NotifyButton({Key? key}) : super(key: key);
+class HomeNotifyButton extends ViewModelWidget<HomeViewModel> {
+  const HomeNotifyButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
@@ -33,6 +33,6 @@ class NotifyButton extends ViewModelWidget<HomeViewModel> {
                     fontSize: 20),
               ),
       ),
-    ).showCursorOnHover.scaleOnHover.moveOnHover(y: -4);
+    ).showCursorOnHover.scaleOnHover().moveOnHover(y: -4);
   }
 }

@@ -21,7 +21,7 @@ class HomeImage extends StatelessWidget {
         height: double.infinity,
         fit: BoxFit.cover,
       ),
-    ).scaleOnHover.moveOnHover(
+    ).scaleOnHover().moveOnHover(
           y: getValueForScreenType(
               context: context, mobile: 10, tablet: -40, desktop: -40),
           x: getValueForScreenType(

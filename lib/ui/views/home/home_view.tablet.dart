@@ -9,7 +9,7 @@ class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: kcBackgroundColor,
       body: Center(child: Text('Tablet Layout')),
     );

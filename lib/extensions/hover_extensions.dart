@@ -22,9 +22,11 @@ extension HoverExtensions on Widget {
     );
   }
 
-  Widget get scaleOnHover {
+  /// Scales the widget by [scale] on hover
+  Widget scaleOnHover({double scale = 1.1}) {
     return ScaleOnHover(
       child: this,
+      scale: scale,
     );
   }
 }

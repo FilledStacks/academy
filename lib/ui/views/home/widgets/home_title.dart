@@ -1,4 +1,3 @@
-
 import 'package:filledstacked_academy/extensions/hover_extensions.dart';
 import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +31,7 @@ class HomeTitle extends StatelessWidget {
             height: 0.95,
           ),
           colors: kgTitle,
-        ).scaleOnHover.moveOnHover(
+        ).scaleOnHover().moveOnHover(
               y: -5,
               x: getValueForScreenType<double>(
                 context: context,

@@ -6,7 +6,7 @@ import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/home_image.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/home_subtitle.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/home_title.dart';
-import 'package:filledstacked_academy/ui/views/home/widgets/notify_button.dart';
+import 'package:filledstacked_academy/ui/views/home/widgets/home_notify_button.dart';
 import 'package:filledstacked_academy/ui/widgets/common/academy_icon.dart';
 import 'package:filledstacked_academy/ui/widgets/common/input_field.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +51,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                           children: [
                             InputField(controller: emailController),
                             horizontalSpaceSmall,
-                            const NotifyButton()
+                            const HomeNotifyButton()
                           ],
                         ),
                         if (viewModel.showValidationError)
