@@ -14,11 +14,16 @@ class HomeImage extends StatelessWidget {
         'assets/master-web-hero-image.png',
         width: getValueForScreenType<double>(
           context: context,
-          mobile: 650,
+          mobile: double.infinity,
           tablet: kdDesktopMaxContentWidth * 0.4,
           desktop: kdDesktopMaxContentWidth * 0.4,
         ),
-        height: double.infinity,
+        height: getValueForScreenType<double>(
+          context: context,
+          mobile: 650,
+          tablet: double.infinity,
+          desktop: double.infinity,
+        ),
         fit: BoxFit.cover,
       ),
     ).scaleOnHover().moveOnHover(

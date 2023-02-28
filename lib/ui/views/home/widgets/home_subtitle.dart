@@ -29,9 +29,9 @@ class HomeSubtitle extends StatelessWidget {
     ];
 
     return ScreenTypeLayout.builder(
-      mobile: (_) => Row(children: children),
-      tablet: (_) => Column(children: children),
-      desktop: (_) => Column(children: children),
+      mobile: (_) => Column(children: children),
+      tablet: (_) => Row(children: children),
+      desktop: (_) => Row(children: children),
     );
   }
 }
