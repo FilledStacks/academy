@@ -1,8 +1,8 @@
+import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:filledstacked_academy/services/http_service.dart';
+
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -11,14 +11,12 @@ import 'test_helpers.mocks.dart';
   MockSpec<NavigationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<BottomSheetService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<HttpService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
   getAndRegisterNavigationService();
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
-  getAndRegisterHttpService();
 // @stacked-mock-register
 }
 
@@ -72,12 +70,6 @@ MockDialogService getAndRegisterDialogService() {
   return service;
 }
 
-MockHttpService getAndRegisterHttpService() {
-  _removeRegistrationIfExists<HttpService>();
-  final service = MockHttpService();
-  locator.registerSingleton<HttpService>(service);
-  return service;
-}
 // @stacked-mock-create
 
 void _removeRegistrationIfExists<T extends Object>() {
