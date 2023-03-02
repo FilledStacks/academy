@@ -1,13 +1,10 @@
-import 'package:filledstacked_academy/app/app.locator.dart';
-import 'package:filledstacked_academy/ui/common/app_colors.dart';
-import 'package:filledstacked_academy/ui/setup/setup_bottom_sheet_ui.dart';
-import 'package:filledstacked_academy/ui/setup/setup_dialog_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:responsive_builder/responsive_builder.dart';
+import 'package:filledstacked_academy/app/app.bottomsheets.dart';
+import 'package:filledstacked_academy/app/app.dialogs.dart';
+import 'package:filledstacked_academy/app/app.locator.dart';
+import 'package:filledstacked_academy/app/app.router.dart';
+import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:stacked_services/stacked_services.dart';
-
-import 'app/app.router.dart';
 
 void main() {
   setupLocator();
@@ -22,25 +19,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveApp(builder: (context) {
-      return MaterialApp(
-        title: 'FilledStacks Academy',
-        theme: Theme.of(context).copyWith(
-          primaryColor: kcBackgroundColor,
-          focusColor: kcPrimaryColor,
-          textTheme: GoogleFonts.openSansTextTheme(
-            Theme.of(context).textTheme,
-          ).apply(
-            bodyColor: Colors.white,
-          ),
-        ),
-        initialRoute: Routes.startupView,
-        onGenerateRoute: StackedRouter().onGenerateRoute,
-        navigatorKey: StackedService.navigatorKey,
-        navigatorObservers: [
-          StackedService.routeObserver,
-        ],
-      );
-    });
+    return MaterialApp(
+      title: 'Stacked Application',
+      theme: Theme.of(context).copyWith(
+        primaryColor: kcBackgroundColor,
+        focusColor: kcPrimaryColor,
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: Colors.black,
+            ),
+      ),
+      initialRoute: Routes.startupView,
+      onGenerateRoute: StackedRouter().onGenerateRoute,
+      navigatorKey: StackedService.navigatorKey,
+      navigatorObservers: [
+        StackedService.routeObserver,
+      ],
+    );
   }
 }

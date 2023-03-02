@@ -5,13 +5,12 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:filledstacked_academy/ui/views/home/home_view.dart' as _i3;
+import 'package:filledstacked_academy/ui/views/home/home_view.dart' as _i2;
 import 'package:filledstacked_academy/ui/views/startup/startup_view.dart'
-    as _i2;
-import 'package:flutter/material.dart' as _i4;
+    as _i3;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i5;
+import 'package:stacked_services/stacked_services.dart' as _i4;
 
 class Routes {
   static const startupView = '/startup-view';
@@ -27,28 +26,25 @@ class Routes {
 class StackedRouter extends _i1.RouterBase {
   final _routes = <_i1.RouteDef>[
     _i1.RouteDef(
-      Routes.startupView,
-      page: _i2.StartupView,
+      Routes.homeView,
+      page: _i2.HomeView,
     ),
     _i1.RouteDef(
-      Routes.homeView,
-      page: _i3.HomeView,
+      Routes.startupView,
+      page: _i3.StartupView,
     ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
-    _i2.StartupView: (data) {
+    _i2.HomeView: (data) {
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const _i2.StartupView(),
+        builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
-    _i3.HomeView: (data) {
-      final args = data.getArgs<HomeViewArguments>(
-        orElse: () => const HomeViewArguments(),
-      );
+    _i3.StartupView: (data) {
       return MaterialPageRoute<dynamic>(
-        builder: (context) => _i3.HomeView(key: args.key),
+        builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
@@ -60,13 +56,21 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-class HomeViewArguments {
-  const HomeViewArguments({this.key});
+extension NavigatorStateExtension on _i4.NavigationService {
+  Future<dynamic> navigateToHomeView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.homeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
 
-  final _i4.Key? key;
-}
-
-extension NavigatorStateExtension on _i5.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -81,16 +85,14 @@ extension NavigatorStateExtension on _i5.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToHomeView({
-    _i4.Key? key,
+  Future<dynamic> replaceWithHomeView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  }) async {
-    return navigateTo<dynamic>(Routes.homeView,
-        arguments: HomeViewArguments(key: key),
+  ]) async {
+    return replaceWith<dynamic>(Routes.homeView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -105,22 +107,6 @@ extension NavigatorStateExtension on _i5.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.startupView,
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
-
-  Future<dynamic> replaceWithHomeView({
-    _i4.Key? key,
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  }) async {
-    return replaceWith<dynamic>(Routes.homeView,
-        arguments: HomeViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
