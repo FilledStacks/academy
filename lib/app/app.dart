@@ -1,4 +1,5 @@
-import 'package:filledstacked_academy/services/http_service.dart';
+import 'package:filledstacked_academy/ui/bottom_sheets/notice/notice_sheet.dart';
+import 'package:filledstacked_academy/ui/dialogs/info_alert/info_alert_dialog.dart';
 import 'package:filledstacked_academy/ui/views/home/home_view.dart';
 import 'package:filledstacked_academy/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
@@ -15,9 +16,15 @@ import 'package:stacked_services/stacked_services.dart';
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: BottomSheetService),
-    LazySingleton(classType: HttpService),
     // @stacked-service
   ],
-  logger: StackedLogger(),
+  bottomsheets: [
+    StackedBottomsheet(classType: NoticeSheet),
+    // @stacked-bottom-sheet
+  ],
+  dialogs: [
+    StackedDialog(classType: InfoAlertDialog),
+    // @stacked-dialog
+  ],
 )
 class App {}

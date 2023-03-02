@@ -6,7 +6,6 @@
 import 'dart:async' as _i4;
 import 'dart:ui' as _i5;
 
-import 'package:filledstacked_academy/services/http_service.dart' as _i6;
 import 'package:flutter/material.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i2;
@@ -622,19 +621,4 @@ class MockDialogService extends _i1.Mock implements _i2.DialogService {
         ),
         returnValueForMissingStub: null,
       );
-}
-
-/// A class which mocks [HttpService].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockHttpService extends _i1.Mock implements _i6.HttpService {
-  @override
-  _i4.Future<void> addEmail(String? email) => (super.noSuchMethod(
-        Invocation.method(
-          #addEmail,
-          [email],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
 }
