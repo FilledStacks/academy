@@ -8,11 +8,11 @@ import 'package:stacked_services/stacked_services.dart';
 @StackedApp(
   routes: [
     MaterialRoute(page: StartupView),
-    MaterialRoute(page: HomeView),
+    MaterialRoute(page: HomeView, initial: true),
     // @stacked-route
   ],
   dependencies: [
-    LazySingleton(classType: NavigationService),
+    LazySingleton(classType: RouterService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: HttpService),

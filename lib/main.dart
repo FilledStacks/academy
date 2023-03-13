@@ -5,12 +5,11 @@ import 'package:filledstacked_academy/ui/setup/setup_dialog_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 import 'app/app.router.dart';
 
 void main() {
-  setupLocator();
+  setupLocator(stackedRouter: stackedRouter);
   setupDialogUi();
   setupBottomSheetUi();
 
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
     return ResponsiveApp(
       preferDesktop: true,
       builder: (context) {
-        return MaterialApp(
+        return MaterialApp.router(
           title: 'FilledStacks Academy',
           theme: Theme.of(context).copyWith(
             primaryColor: kcBackgroundColor,
@@ -36,12 +35,8 @@ class MyApp extends StatelessWidget {
               bodyColor: Colors.white,
             ),
           ),
-          initialRoute: Routes.startupView,
-          onGenerateRoute: StackedRouter().onGenerateRoute,
-          navigatorKey: StackedService.navigatorKey,
-          navigatorObservers: [
-            StackedService.routeObserver,
-          ],
+          routerDelegate: stackedRouter.delegate(),
+          routeInformationParser: stackedRouter.defaultRouteParser(),
         );
       },
     );

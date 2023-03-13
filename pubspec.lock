@@ -251,6 +251,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  freezed_annotation:
+    dependency: transitive
+    description:
+      name: freezed_annotation
+      sha256: aeac15850ef1b38ee368d4c53ba9a847e900bb2c53a4db3f6881cbb3cb684338
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -636,34 +644,34 @@ packages:
     dependency: "direct main"
     description:
       name: stacked
-      sha256: "3a254eb8c98f1d060bc54ca8b2dd2b3908af5c35ea2df7ff9cbac1f7b8450387"
+      sha256: "1ebc0998c0de136bb80a761aa93f7578e596a66e57856260004cf5bd8335c6f9"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.0+3"
-  stacked_core:
-    dependency: transitive
-    description:
-      name: stacked_core
-      sha256: "28889e0b3cb612bf8f13d85050df43fb386f9483bd0fba6756637d9bc7af23dd"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.4"
+    version: "3.2.0"
   stacked_generator:
     dependency: "direct dev"
     description:
       name: stacked_generator
-      sha256: "8c9e7a0086fc4059b70df6253a3990d1ec5d33c78d54f315059ef3b64126f748"
+      sha256: "9967bb3231d0b95ed4594fba6b86d913102b29bbae3d4e3190e70c902c6f61e2"
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.1+1"
+    version: "1.0.0"
   stacked_services:
     dependency: "direct main"
     description:
       name: stacked_services
-      sha256: "6bf0bc2eb3fdb75fa90251d108f4cf975a0ba1e7b3a4fecf72f5d242dbdf4104"
+      sha256: f14486f7a7186222948e5993d7c843b5597b2074241ccb2960003acd5bd122be
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.9"
+    version: "1.0.0"
+  stacked_shared:
+    dependency: transitive
+    description:
+      name: stacked_shared
+      sha256: cdf6758e0048086d550051ce6072ddec31de131c8f7b518dec3ad437c6638c0a
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.0"
   stream_channel:
     dependency: transitive
     description:
