@@ -22,25 +22,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveApp(builder: (context) {
-      return MaterialApp(
-        title: 'FilledStacks Academy',
-        theme: Theme.of(context).copyWith(
-          primaryColor: kcBackgroundColor,
-          focusColor: kcPrimaryColor,
-          textTheme: GoogleFonts.openSansTextTheme(
-            Theme.of(context).textTheme,
-          ).apply(
-            bodyColor: Colors.white,
+    return ResponsiveApp(
+      preferDesktop: true,
+      builder: (context) {
+        return MaterialApp(
+          title: 'FilledStacks Academy',
+          theme: Theme.of(context).copyWith(
+            primaryColor: kcBackgroundColor,
+            focusColor: kcPrimaryColor,
+            textTheme: GoogleFonts.openSansTextTheme(
+              Theme.of(context).textTheme,
+            ).apply(
+              bodyColor: Colors.white,
+            ),
           ),
-        ),
-        initialRoute: Routes.startupView,
-        onGenerateRoute: StackedRouter().onGenerateRoute,
-        navigatorKey: StackedService.navigatorKey,
-        navigatorObservers: [
-          StackedService.routeObserver,
-        ],
-      );
-    });
+          initialRoute: Routes.startupView,
+          onGenerateRoute: StackedRouter().onGenerateRoute,
+          navigatorKey: StackedService.navigatorKey,
+          navigatorObservers: [
+            StackedService.routeObserver,
+          ],
+        );
+      },
+    );
   }
 }

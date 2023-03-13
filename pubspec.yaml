@@ -40,7 +40,7 @@ dependencies:
   google_fonts: ^4.0.3
   flutter_svg: ^1.1.6
   simple_gradient_text: ^1.2.4
-  responsive_builder: ^0.6.0
+  responsive_builder: ^0.6.4
   dio: ^5.0.0
   email_validator: ^2.1.17
 

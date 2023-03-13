@@ -26,7 +26,6 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
   ) {
     return ScreenTypeLayout.builder(
       mobile: (_) => HomeViewMobile(emailController: emailController),
-      tablet: (_) => HomeViewDesktop(emailController: emailController),
       desktop: (_) => HomeViewDesktop(emailController: emailController),
     );
   }

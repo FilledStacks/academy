@@ -575,10 +575,10 @@ packages:
     dependency: "direct main"
     description:
       name: responsive_builder
-      sha256: "824fa4a5822096a3c70804652b85e856d04099cb4f637e99fbee468db08e7177"
+      sha256: e23ef8ce1191f878dd50d28f1496d659fc923718dbfd407b121bb167f95ba090
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.0"
+    version: "0.6.4"
   shelf:
     dependency: transitive
     description:
