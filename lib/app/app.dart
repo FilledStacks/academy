@@ -1,4 +1,5 @@
 import 'package:filledstacked_academy/services/http_service.dart';
+import 'package:filledstacked_academy/ui/views/course_details/course_details_view.dart';
 import 'package:filledstacked_academy/ui/views/home/home_view.dart';
 import 'package:filledstacked_academy/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
@@ -8,8 +9,9 @@ import 'package:stacked_services/stacked_services.dart';
 @StackedApp(
   routes: [
     MaterialRoute(page: StartupView),
-    MaterialRoute(page: HomeView, initial: true),
-    // @stacked-route
+    MaterialRoute(page: HomeView),
+    MaterialRoute(page: CourseDetailsView, initial: true),
+// @stacked-route
   ],
   dependencies: [
     LazySingleton(classType: RouterService),
