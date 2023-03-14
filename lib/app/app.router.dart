@@ -6,21 +6,26 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:filledstacked_academy/ui/views/home/home_view.dart' as _i3;
+import 'package:filledstacked_academy/ui/views/profile/profile_view.dart'
+    as _i4;
 import 'package:filledstacked_academy/ui/views/startup/startup_view.dart'
     as _i2;
-import 'package:flutter/material.dart' as _i4;
+import 'package:flutter/material.dart' as _i5;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i5;
+import 'package:stacked_services/stacked_services.dart' as _i6;
 
 class Routes {
   static const startupView = '/startup-view';
 
   static const homeView = '/home-view';
 
+  static const profileView = '/profile-view';
+
   static const all = <String>{
     startupView,
     homeView,
+    profileView,
   };
 }
 
@@ -33,6 +38,10 @@ class StackedRouter extends _i1.RouterBase {
     _i1.RouteDef(
       Routes.homeView,
       page: _i3.HomeView,
+    ),
+    _i1.RouteDef(
+      Routes.profileView,
+      page: _i4.ProfileView,
     ),
   ];
 
@@ -52,6 +61,12 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
+    _i4.ProfileView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const _i4.ProfileView(),
+        settings: data,
+      );
+    },
   };
 
   @override
@@ -63,10 +78,10 @@ class StackedRouter extends _i1.RouterBase {
 class HomeViewArguments {
   const HomeViewArguments({this.key});
 
-  final _i4.Key? key;
+  final _i5.Key? key;
 }
 
-extension NavigatorStateExtension on _i5.NavigationService {
+extension NavigatorStateExtension on _i6.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -82,7 +97,7 @@ extension NavigatorStateExtension on _i5.NavigationService {
   }
 
   Future<dynamic> navigateToHomeView({
-    _i4.Key? key,
+    _i5.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -91,6 +106,20 @@ extension NavigatorStateExtension on _i5.NavigationService {
   }) async {
     return navigateTo<dynamic>(Routes.homeView,
         arguments: HomeViewArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToProfileView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.profileView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -112,7 +141,7 @@ extension NavigatorStateExtension on _i5.NavigationService {
   }
 
   Future<dynamic> replaceWithHomeView({
-    _i4.Key? key,
+    _i5.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -121,6 +150,20 @@ extension NavigatorStateExtension on _i5.NavigationService {
   }) async {
     return replaceWith<dynamic>(Routes.homeView,
         arguments: HomeViewArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithProfileView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.profileView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

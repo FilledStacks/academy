@@ -54,6 +54,11 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                             const HomeNotifyButton()
                           ],
                         ),
+                        MaterialButton(
+                          child: const Text('Login'),
+                          textColor: Colors.orangeAccent,
+                          onPressed: viewModel.login,
+                        ),
                         if (viewModel.showValidationError)
                           Text(
                             viewModel.emailValidationMessage!,
