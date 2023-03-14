@@ -46,9 +46,19 @@ class StackedRouterWeb extends _i5.RootStackRouter {
       );
     },
     CourseDetailsViewRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<CourseDetailsViewArgs>(
+          orElse: () => CourseDetailsViewArgs(
+                id: pathParams.getString('id'),
+                chapterId: pathParams.optString('chapterId'),
+              ));
       return _i5.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i4.CourseDetailsView(),
+        child: _i4.CourseDetailsView(
+          key: args.key,
+          id: args.id,
+          chapterId: args.chapterId,
+        ),
         maintainState: false,
       );
     },
@@ -62,11 +72,11 @@ class StackedRouterWeb extends _i5.RootStackRouter {
         ),
         _i5.RouteConfig(
           HomeViewRoute.name,
-          path: '/home-view',
+          path: '/',
         ),
         _i5.RouteConfig(
           CourseDetailsViewRoute.name,
-          path: '/',
+          path: 'course/:id/:chapterId',
         ),
       ];
 }
@@ -89,7 +99,7 @@ class HomeViewRoute extends _i5.PageRouteInfo<HomeViewArgs> {
   HomeViewRoute({_i6.Key? key})
       : super(
           HomeViewRoute.name,
-          path: '/home-view',
+          path: '/',
           args: HomeViewArgs(key: key),
         );
 
@@ -109,12 +119,43 @@ class HomeViewArgs {
 
 /// generated route for
 /// [_i4.CourseDetailsView]
-class CourseDetailsViewRoute extends _i5.PageRouteInfo<void> {
-  const CourseDetailsViewRoute()
-      : super(
+class CourseDetailsViewRoute extends _i5.PageRouteInfo<CourseDetailsViewArgs> {
+  CourseDetailsViewRoute({
+    _i6.Key? key,
+    required String id,
+    String? chapterId,
+  }) : super(
           CourseDetailsViewRoute.name,
-          path: '/',
+          path: 'course/:id/:chapterId',
+          args: CourseDetailsViewArgs(
+            key: key,
+            id: id,
+            chapterId: chapterId,
+          ),
+          rawPathParams: {
+            'id': id,
+            'chapterId': chapterId,
+          },
         );
 
   static const String name = 'CourseDetailsView';
+}
+
+class CourseDetailsViewArgs {
+  const CourseDetailsViewArgs({
+    this.key,
+    required this.id,
+    this.chapterId,
+  });
+
+  final _i6.Key? key;
+
+  final String id;
+
+  final String? chapterId;
+
+  @override
+  String toString() {
+    return 'CourseDetailsViewArgs{key: $key, id: $id, chapterId: $chapterId}';
+  }
 }

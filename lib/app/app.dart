@@ -9,8 +9,12 @@ import 'package:stacked_services/stacked_services.dart';
 @StackedApp(
   routes: [
     MaterialRoute(page: StartupView),
-    MaterialRoute(page: HomeView),
-    MaterialRoute(page: CourseDetailsView, initial: true),
+    MaterialRoute(page: HomeView, initial: true),
+    MaterialRoute(
+      page: CourseDetailsView,
+      path: 'course/:id/:chapterId',
+    ),
+
 // @stacked-route
   ],
   dependencies: [

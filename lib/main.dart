@@ -5,10 +5,12 @@ import 'package:filledstacked_academy/ui/setup/setup_dialog_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'app/app.router.dart';
 
 void main() {
+  setPathUrlStrategy();
   setupLocator(stackedRouter: stackedRouter);
   setupDialogUi();
   setupBottomSheetUi();
