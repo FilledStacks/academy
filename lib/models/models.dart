@@ -16,13 +16,19 @@ class Course with _$Course {
 
 @freezed
 class Module with _$Module {
+  Module._();
+
   factory Module({
     required String id,
     required String title,
+    String? leadingEmoji,
     required List<Chapter> chapters,
   }) = _Module;
 
   factory Module.fromJson(Map<String, dynamic> json) => _$ModuleFromJson(json);
+
+  bool isSelected({required String chapterId}) =>
+      chapters.any((element) => element.id == chapterId);
 }
 
 @freezed
@@ -48,4 +54,6 @@ class Chapter with _$Chapter {
     String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
     return "${twoDigits(duration.inHours)}:$twoDigitMinutes";
   }
+
+  bool isSelected({required String id}) => this.id == id;
 }

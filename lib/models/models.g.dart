@@ -23,6 +23,7 @@ Map<String, dynamic> _$$_CourseToJson(_$_Course instance) => <String, dynamic>{
 _$_Module _$$_ModuleFromJson(Map<String, dynamic> json) => _$_Module(
       id: json['id'] as String,
       title: json['title'] as String,
+      leadingEmoji: json['leadingEmoji'] as String?,
       chapters: (json['chapters'] as List<dynamic>)
           .map((e) => Chapter.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -31,6 +32,7 @@ _$_Module _$$_ModuleFromJson(Map<String, dynamic> json) => _$_Module(
 Map<String, dynamic> _$$_ModuleToJson(_$_Module instance) => <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'leadingEmoji': instance.leadingEmoji,
       'chapters': instance.chapters,
     };
 

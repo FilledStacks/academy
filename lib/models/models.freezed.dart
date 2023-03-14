@@ -197,6 +197,7 @@ Module _$ModuleFromJson(Map<String, dynamic> json) {
 mixin _$Module {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  String? get leadingEmoji => throw _privateConstructorUsedError;
   List<Chapter> get chapters => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -209,7 +210,8 @@ abstract class $ModuleCopyWith<$Res> {
   factory $ModuleCopyWith(Module value, $Res Function(Module) then) =
       _$ModuleCopyWithImpl<$Res, Module>;
   @useResult
-  $Res call({String id, String title, List<Chapter> chapters});
+  $Res call(
+      {String id, String title, String? leadingEmoji, List<Chapter> chapters});
 }
 
 /// @nodoc
@@ -227,6 +229,7 @@ class _$ModuleCopyWithImpl<$Res, $Val extends Module>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? leadingEmoji = freezed,
     Object? chapters = null,
   }) {
     return _then(_value.copyWith(
@@ -238,6 +241,10 @@ class _$ModuleCopyWithImpl<$Res, $Val extends Module>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      leadingEmoji: freezed == leadingEmoji
+          ? _value.leadingEmoji
+          : leadingEmoji // ignore: cast_nullable_to_non_nullable
+              as String?,
       chapters: null == chapters
           ? _value.chapters
           : chapters // ignore: cast_nullable_to_non_nullable
@@ -252,7 +259,8 @@ abstract class _$$_ModuleCopyWith<$Res> implements $ModuleCopyWith<$Res> {
       __$$_ModuleCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String title, List<Chapter> chapters});
+  $Res call(
+      {String id, String title, String? leadingEmoji, List<Chapter> chapters});
 }
 
 /// @nodoc
@@ -267,6 +275,7 @@ class __$$_ModuleCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? leadingEmoji = freezed,
     Object? chapters = null,
   }) {
     return _then(_$_Module(
@@ -278,6 +287,10 @@ class __$$_ModuleCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      leadingEmoji: freezed == leadingEmoji
+          ? _value.leadingEmoji
+          : leadingEmoji // ignore: cast_nullable_to_non_nullable
+              as String?,
       chapters: null == chapters
           ? _value._chapters
           : chapters // ignore: cast_nullable_to_non_nullable
@@ -288,12 +301,14 @@ class __$$_ModuleCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Module implements _Module {
+class _$_Module extends _Module {
   _$_Module(
       {required this.id,
       required this.title,
+      this.leadingEmoji,
       required final List<Chapter> chapters})
-      : _chapters = chapters;
+      : _chapters = chapters,
+        super._();
 
   factory _$_Module.fromJson(Map<String, dynamic> json) =>
       _$$_ModuleFromJson(json);
@@ -302,6 +317,8 @@ class _$_Module implements _Module {
   final String id;
   @override
   final String title;
+  @override
+  final String? leadingEmoji;
   final List<Chapter> _chapters;
   @override
   List<Chapter> get chapters {
@@ -312,7 +329,7 @@ class _$_Module implements _Module {
 
   @override
   String toString() {
-    return 'Module(id: $id, title: $title, chapters: $chapters)';
+    return 'Module(id: $id, title: $title, leadingEmoji: $leadingEmoji, chapters: $chapters)';
   }
 
   @override
@@ -322,13 +339,15 @@ class _$_Module implements _Module {
             other is _$_Module &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.leadingEmoji, leadingEmoji) ||
+                other.leadingEmoji == leadingEmoji) &&
             const DeepCollectionEquality().equals(other._chapters, _chapters));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, const DeepCollectionEquality().hash(_chapters));
+  int get hashCode => Object.hash(runtimeType, id, title, leadingEmoji,
+      const DeepCollectionEquality().hash(_chapters));
 
   @JsonKey(ignore: true)
   @override
@@ -344,11 +363,13 @@ class _$_Module implements _Module {
   }
 }
 
-abstract class _Module implements Module {
+abstract class _Module extends Module {
   factory _Module(
       {required final String id,
       required final String title,
+      final String? leadingEmoji,
       required final List<Chapter> chapters}) = _$_Module;
+  _Module._() : super._();
 
   factory _Module.fromJson(Map<String, dynamic> json) = _$_Module.fromJson;
 
@@ -356,6 +377,8 @@ abstract class _Module implements Module {
   String get id;
   @override
   String get title;
+  @override
+  String? get leadingEmoji;
   @override
   List<Chapter> get chapters;
   @override

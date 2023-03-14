@@ -138,5 +138,12 @@ class CourseDetailsViewModel extends BaseViewModel {
       key: UniqueKey(),
       chapterId: id,
     ));
+    notifyListeners();
+  }
+
+  bool isChapterSelected(Chapter sidebarItem) {
+    final pathParams =
+        _routerService.topRoute.pathParams.optString('chapterId');
+    return pathParams == null ? false : sidebarItem.isSelected(id: pathParams);
   }
 }
