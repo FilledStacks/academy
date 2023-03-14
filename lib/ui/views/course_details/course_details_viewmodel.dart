@@ -141,9 +141,8 @@ class CourseDetailsViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  bool isChapterSelected(Chapter sidebarItem) {
-    final pathParams =
-        _routerService.topRoute.pathParams.optString('chapterId');
-    return pathParams == null ? false : sidebarItem.isSelected(id: pathParams);
+  bool isSidebarItemSelected(SideBarItem sideBarItem) {
+    final id = _routerService.topRoute.pathParams.optString('chapterId');
+    return id == null ? false : sideBarItem.isSelected(id);
   }
 }

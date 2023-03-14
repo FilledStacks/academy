@@ -43,12 +43,20 @@ class CourseDetailsViewDesktop extends ViewModelWidget<CourseDetailsViewModel> {
                   var sidebarItem = viewModel.sidebarItems[index];
 
                   if (sidebarItem is Module) {
+                    final moduleSelected =
+                        viewModel.isSidebarItemSelected(sidebarItem);
                     return Container(
                       height: 50,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: kcMediumGrey,
-                      ),
+                          borderRadius: BorderRadius.circular(5),
+                          color: moduleSelected ? Colors.white : kcMediumGrey,
+                          boxShadow: [
+                            if (moduleSelected)
+                              BoxShadow(
+                                color: Colors.white.withOpacity(0.5),
+                                blurRadius: 20,
+                              )
+                          ]),
                       alignment: Alignment.center,
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -56,10 +64,18 @@ class CourseDetailsViewDesktop extends ViewModelWidget<CourseDetailsViewModel> {
                           // TODO (Improvement): Get random Emoji in the place of 🚀
                           Text(
                             sidebarItem.leadingEmoji ?? '🚀',
-                            style: ktsBodyRegular,
+                            style: ktsBodyRegular.copyWith(
+                              color:
+                                  moduleSelected ? Colors.black : Colors.white,
+                            ),
                           ),
-                          horizontalSpaceSmall,
-                          Text(sidebarItem.title, style: ktsBodyRegular),
+                          horizontalSpaceTiny,
+                          Text(sidebarItem.title,
+                              style: ktsBodyRegular.copyWith(
+                                color: moduleSelected
+                                    ? Colors.black
+                                    : Colors.white,
+                              )),
                         ],
                       ),
                     );
@@ -80,7 +96,7 @@ class CourseDetailsViewDesktop extends ViewModelWidget<CourseDetailsViewModel> {
                             border: Border.all(
                               color: Colors.white,
                             ),
-                            color: viewModel.isChapterSelected(sidebarItem)
+                            color: viewModel.isSidebarItemSelected(sidebarItem)
                                 ? Colors.white
                                 : Colors.transparent,
                           ),

@@ -29,7 +29,7 @@ void main() {
               description: 'Read this before',
               durationInSeconds: 910,
             ),
-            (Chapter chapter) => chapter.isSelected(id: 'readme'),
+            (Chapter chapter) => chapter.isSelected('readme'),
             true,
           ],
           [
@@ -40,7 +40,7 @@ void main() {
               description: 'Read this before',
               durationInSeconds: 910,
             ),
-            (Chapter chapter) => chapter.isSelected(id: 'not_readme'),
+            (Chapter chapter) => chapter.isSelected('not_readme'),
             false,
           ],
         ],
@@ -69,7 +69,7 @@ void main() {
             ],
           );
 
-          final result = module.isSelected(chapterId: 'readme');
+          final result = module.isSelected('readme');
           expect(result, true);
         });
 
@@ -93,7 +93,7 @@ void main() {
             ],
           );
 
-          final result = module.isSelected(chapterId: 'not_readme');
+          final result = module.isSelected('not_readme');
           expect(result, false);
         });
       });

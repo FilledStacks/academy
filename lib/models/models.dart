@@ -3,6 +3,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'models.freezed.dart';
 part 'models.g.dart';
 
+abstract class SideBarItem {
+  bool isSelected(String id);
+}
+
 @freezed
 class Course with _$Course {
   factory Course({
@@ -15,7 +19,7 @@ class Course with _$Course {
 }
 
 @freezed
-class Module with _$Module {
+class Module with _$Module implements SideBarItem {
   Module._();
 
   factory Module({
@@ -27,12 +31,12 @@ class Module with _$Module {
 
   factory Module.fromJson(Map<String, dynamic> json) => _$ModuleFromJson(json);
 
-  bool isSelected({required String chapterId}) =>
-      chapters.any((element) => element.id == chapterId);
+  @override
+  bool isSelected(String id) => chapters.any((element) => element.id == id);
 }
 
 @freezed
-class Chapter with _$Chapter {
+class Chapter with _$Chapter implements SideBarItem {
   Chapter._();
 
   factory Chapter({
@@ -55,5 +59,6 @@ class Chapter with _$Chapter {
     return "${twoDigits(duration.inHours)}:$twoDigitMinutes";
   }
 
-  bool isSelected({required String id}) => this.id == id;
+  @override
+  bool isSelected(String id) => this.id == id;
 }
