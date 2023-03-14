@@ -43,6 +43,7 @@ dependencies:
   responsive_builder: ^0.6.4
   dio: ^5.0.0
   email_validator: ^2.1.17
+  stacked_firebase_auth: ^0.2.18
 
 dev_dependencies:
   flutter_test:
