@@ -120,7 +120,14 @@ class CourseDetailsViewDesktop extends ViewModelWidget<CourseDetailsViewModel> {
                       },
                     ),
             ),
-            const Expanded(child: NestedRouter())
+            Expanded(
+                child: Stack(
+              children: [
+                const NestedRouter(),
+                if (viewModel.busyFetchingCourese)
+                  const Center(child: CircularProgressIndicator())
+              ],
+            ))
           ],
         ));
   }

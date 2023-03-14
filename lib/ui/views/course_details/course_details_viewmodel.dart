@@ -14,11 +14,25 @@ class CourseDetailsViewModel extends FutureViewModel<Course> {
   final _courseService = locator<CourseService>();
 
   final String courseId;
+  Course? fetchedCourse;
 
   CourseDetailsViewModel({required this.courseId});
 
+  bool get busyFetchingCourese => fetchedCourse == null;
+
   @override
-  Future<Course> futureToRun() => _courseService.getCourseForId(courseId);
+  Future<Course> futureToRun() async {
+    fetchedCourse = await _courseService.getCourseForId(courseId);
+    rebuildUi();
+
+    _routerService.navigateTo(CourseChapterViewRoute(
+      key: UniqueKey(),
+      chapterId: fetchedCourse!.modules.first.chapters.first.id,
+      chapter: fetchedCourse!.modules.first.chapters.first,
+    ));
+
+    return fetchedCourse!;
+  }
 
   List<dynamic> get sidebarItems {
     final tempItems = <dynamic>[];

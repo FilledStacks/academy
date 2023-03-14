@@ -9,6 +9,8 @@ abstract class SideBarItem {
 
 @freezed
 class Course with _$Course {
+  Course._();
+
   factory Course({
     required String id,
     required String title,
@@ -16,6 +18,11 @@ class Course with _$Course {
   }) = _Course;
 
   factory Course.fromJson(Map<String, dynamic> json) => _$CourseFromJson(json);
+
+  Chapter chapterForId(String chapterId) => modules
+      .map<List<Chapter>>((e) => e.chapters)
+      .reduce((value, element) => value..addAll(element))
+      .firstWhere((element) => element.id == chapterId);
 }
 
 @freezed

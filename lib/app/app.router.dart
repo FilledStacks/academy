@@ -70,7 +70,6 @@ class StackedRouterWeb extends _i6.RootStackRouter {
         routeData: routeData,
         child: _i5.CourseChapterView(
           key: args.key,
-          courseId: pathParams.getString('courseId'),
           chapterId: args.chapterId,
           chapter: args.chapter,
         ),
@@ -91,7 +90,7 @@ class StackedRouterWeb extends _i6.RootStackRouter {
         ),
         _i6.RouteConfig(
           CourseDetailsViewRoute.name,
-          path: 'course/:courseId',
+          path: '/course/:courseId',
           children: [
             _i6.RouteConfig(
               '#redirect',
@@ -155,7 +154,7 @@ class CourseDetailsViewRoute extends _i6.PageRouteInfo<CourseDetailsViewArgs> {
     List<_i6.PageRouteInfo>? children,
   }) : super(
           CourseDetailsViewRoute.name,
-          path: 'course/:courseId',
+          path: '/course/:courseId',
           args: CourseDetailsViewArgs(
             key: key,
             courseId: courseId,

@@ -113,12 +113,13 @@ class __$$_CourseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Course implements _Course {
+class _$_Course extends _Course {
   _$_Course(
       {required this.id,
       required this.title,
       required final List<Module> modules})
-      : _modules = modules;
+      : _modules = modules,
+        super._();
 
   factory _$_Course.fromJson(Map<String, dynamic> json) =>
       _$$_CourseFromJson(json);
@@ -169,11 +170,12 @@ class _$_Course implements _Course {
   }
 }
 
-abstract class _Course implements Course {
+abstract class _Course extends Course {
   factory _Course(
       {required final String id,
       required final String title,
       required final List<Module> modules}) = _$_Course;
+  _Course._() : super._();
 
   factory _Course.fromJson(Map<String, dynamic> json) = _$_Course.fromJson;
 

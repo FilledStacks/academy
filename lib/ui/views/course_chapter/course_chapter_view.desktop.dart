@@ -46,14 +46,14 @@ class CourseChapterViewDesktop extends ViewModelWidget<CourseChapterViewModel> {
                     Text('💻', style: ktsTitle2),
                     horizontalSpaceSmall,
                     GradientText(
-                      'STACKED BASICS',
+                      viewModel.chapter?.title ?? 'Loading ...',
                       colors: kgTitle,
                       style: ktsTitle2,
                     ),
                   ],
                 ),
                 Text(
-                  'Get to know Stacked, what it provides, how to use the CLI and how it works.',
+                  viewModel.chapter?.description ?? '...',
                   style: ktsBodyRegular.copyWith(color: kcLightGrey),
                 ),
               ],

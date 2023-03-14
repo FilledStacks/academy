@@ -14,7 +14,7 @@ import 'package:stacked_services/stacked_services.dart';
     MaterialRoute(page: HomeView, initial: true),
     MaterialRoute(
       page: CourseDetailsView,
-      path: 'course/:courseId',
+      path: '/course/:courseId',
       children: [
         RedirectRoute(path: '', redirectTo: 'readme'),
         MaterialRoute(page: CourseChapterView, path: ':chapterId'),
