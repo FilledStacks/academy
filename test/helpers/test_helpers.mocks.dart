@@ -6,6 +6,7 @@
 import 'dart:async' as _i4;
 import 'dart:ui' as _i8;
 
+import 'package:filledstacked_academy/services/course_service.dart' as _i12;
 import 'package:filledstacked_academy/services/http_service.dart' as _i11;
 import 'package:flutter/material.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
@@ -548,3 +549,8 @@ class MockHttpService extends _i1.Mock implements _i11.HttpService {
         returnValueForMissingStub: _i4.Future<void>.value(),
       ) as _i4.Future<void>);
 }
+
+/// A class which mocks [CourseService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockCourseService extends _i1.Mock implements _i12.CourseService {}

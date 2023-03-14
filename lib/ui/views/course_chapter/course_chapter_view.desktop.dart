@@ -18,12 +18,23 @@ class CourseChapterViewDesktop extends ViewModelWidget<CourseChapterViewModel> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              color: Colors.red,
               height: screenHeight(context) * 0.7,
               alignment: Alignment.center,
-              child: Text(
-                viewModel.chapterId,
-                style: ktsTitle,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image.asset(
+                    'assets/master-web-hero-image.png',
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                  Center(
+                    child: Text(
+                      viewModel.chapterId,
+                      style: ktsTitle,
+                    ),
+                  ),
+                ],
               ),
             ),
             verticalSpaceLarge,
@@ -43,16 +54,6 @@ class CourseChapterViewDesktop extends ViewModelWidget<CourseChapterViewModel> {
               'Get to know Stacked, what it provides, how to use the CLI and how it works.',
               style: ktsBodyRegular.copyWith(color: kcLightGrey),
             ),
-            Container(
-              color: Colors.red,
-              height: screenHeight(context) * 0.7,
-            ),
-            verticalSpaceLarge,
-            Container(
-              color: Colors.red,
-              height: screenHeight(context) * 0.7,
-            ),
-            verticalSpaceLarge,
           ],
         ));
   }

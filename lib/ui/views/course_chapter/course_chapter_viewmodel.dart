@@ -1,7 +1,16 @@
+import 'package:filledstacked_academy/app/app.locator.dart';
+import 'package:filledstacked_academy/models/models.dart';
+import 'package:filledstacked_academy/services/course_service.dart';
 import 'package:stacked/stacked.dart';
 
 class CourseChapterViewModel extends BaseViewModel {
-  final String chapterId;
+  final _courseService = locator<CourseService>();
 
-  CourseChapterViewModel({required this.chapterId});
+  final String chapterId;
+  final Chapter? chapter;
+
+  CourseChapterViewModel({
+    required this.chapterId,
+    this.chapter,
+  });
 }
