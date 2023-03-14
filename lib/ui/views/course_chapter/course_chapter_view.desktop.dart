@@ -12,49 +12,51 @@ class CourseChapterViewDesktop extends ViewModelWidget<CourseChapterViewModel> {
 
   @override
   Widget build(BuildContext context, CourseChapterViewModel viewModel) {
-    return SingleChildScrollView(
-        padding: const EdgeInsets.all(45),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: screenHeight(context) * 0.7,
-              alignment: Alignment.center,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Image.asset(
-                    'assets/master-web-hero-image.png',
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-                  Center(
-                    child: Text(
-                      viewModel.chapterId,
-                      style: ktsTitle,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            verticalSpaceLarge,
-            Row(
-              mainAxisSize: MainAxisSize.min,
+    return viewModel.loadingChapter
+        ? const Center(child: CircularProgressIndicator())
+        : SingleChildScrollView(
+            padding: const EdgeInsets.all(45),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('💻', style: ktsTitle2),
-                horizontalSpaceSmall,
-                GradientText(
-                  'STACKED BASICS',
-                  colors: kgTitle,
-                  style: ktsTitle2,
+                Container(
+                  height: screenHeight(context) * 0.7,
+                  alignment: Alignment.center,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.asset(
+                        'assets/master-web-hero-image.png',
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                      Center(
+                        child: Text(
+                          viewModel.chapterId,
+                          style: ktsTitle,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                verticalSpaceLarge,
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('💻', style: ktsTitle2),
+                    horizontalSpaceSmall,
+                    GradientText(
+                      'STACKED BASICS',
+                      colors: kgTitle,
+                      style: ktsTitle2,
+                    ),
+                  ],
+                ),
+                Text(
+                  'Get to know Stacked, what it provides, how to use the CLI and how it works.',
+                  style: ktsBodyRegular.copyWith(color: kcLightGrey),
                 ),
               ],
-            ),
-            Text(
-              'Get to know Stacked, what it provides, how to use the CLI and how it works.',
-              style: ktsBodyRegular.copyWith(color: kcLightGrey),
-            ),
-          ],
-        ));
+            ));
   }
 }

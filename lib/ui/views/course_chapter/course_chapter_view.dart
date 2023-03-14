@@ -1,3 +1,4 @@
+import 'package:filledstacked_academy/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
@@ -10,9 +11,13 @@ import 'course_chapter_viewmodel.dart';
 
 class CourseChapterView extends StackedView<CourseChapterViewModel> {
   final String chapterId;
+  final String courseId;
+  final Chapter? chapter;
   const CourseChapterView({
     super.key,
+    @pathParam required this.courseId,
     @PathParam('chapterId') required this.chapterId,
+    this.chapter,
   });
 
   @override
@@ -32,5 +37,5 @@ class CourseChapterView extends StackedView<CourseChapterViewModel> {
   CourseChapterViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      CourseChapterViewModel(chapterId: chapterId);
+      CourseChapterViewModel(chapterId: chapterId, chapter: chapter);
 }

@@ -8,12 +8,10 @@ import 'course_details_view.mobile.dart';
 import 'course_details_viewmodel.dart';
 
 class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
-  final String id;
-  final String? chapterId;
+  final String courseId;
   const CourseDetailsView({
     super.key,
-    @PathParam('id') required this.id,
-    this.chapterId,
+    @pathParam required this.courseId,
   });
 
   @override
@@ -32,10 +30,5 @@ class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
   CourseDetailsViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      CourseDetailsViewModel();
-
-  @override
-  void onViewModelReady(CourseDetailsViewModel viewModel) {
-    // viewModel.showChapter(id: chapterId ?? 'readme', initial: true);
-  }
+      CourseDetailsViewModel(courseId: courseId);
 }

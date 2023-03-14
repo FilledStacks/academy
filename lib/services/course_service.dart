@@ -113,7 +113,8 @@ class CourseService {
         ])
       ];
 
-  Course getCourseForId(String id) {
+  Future<Course> getCourseForId(String id) async {
+    await Future.delayed(const Duration(seconds: 2));
     return courses.firstWhere((element) => element.id == id);
   }
 }

@@ -8,17 +8,22 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../../models/models.dart';
 
-class CourseDetailsViewModel extends BaseViewModel {
+class CourseDetailsViewModel extends FutureViewModel<Course> {
   final log = getLogger('CourseDetailsViewModel');
   final _routerService = locator<RouterService>();
   final _courseService = locator<CourseService>();
 
-  Course get course => _courseService.courses.first;
+  final String courseId;
+
+  CourseDetailsViewModel({required this.courseId});
+
+  @override
+  Future<Course> futureToRun() => _courseService.getCourseForId(courseId);
 
   List<dynamic> get sidebarItems {
     final tempItems = <dynamic>[];
 
-    for (var module in course.modules) {
+    for (var module in data!.modules) {
       tempItems.add(module);
       tempItems.addAll(module.chapters);
     }
@@ -26,11 +31,13 @@ class CourseDetailsViewModel extends BaseViewModel {
     return tempItems;
   }
 
-  Future<void> showChapter({required String id, bool initial = false}) async {
+  Future<void> showChapter(Chapter chapter) async {
     _routerService.replaceWith(CourseChapterViewRoute(
       key: UniqueKey(),
-      chapterId: id,
+      chapterId: chapter.id,
+      chapter: chapter,
     ));
+
     notifyListeners();
   }
 

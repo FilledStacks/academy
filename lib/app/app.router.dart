@@ -17,6 +17,7 @@ import 'package:flutter/material.dart' as _i7;
 import 'package:stacked/stacked.dart' as _i6;
 import 'package:stacked_services/stacked_services.dart' as _i1;
 
+import '../models/models.dart' as _i8;
 import '../ui/views/course_chapter/course_chapter_view.dart' as _i5;
 import '../ui/views/course_details/course_details_view.dart' as _i4;
 import '../ui/views/home/home_view.dart' as _i3;
@@ -49,13 +50,13 @@ class StackedRouterWeb extends _i6.RootStackRouter {
     CourseDetailsViewRoute.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
       final args = routeData.argsAs<CourseDetailsViewArgs>(
-          orElse: () => CourseDetailsViewArgs(id: pathParams.getString('id')));
+          orElse: () => CourseDetailsViewArgs(
+              courseId: pathParams.getString('courseId')));
       return _i6.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i4.CourseDetailsView(
           key: args.key,
-          id: args.id,
-          chapterId: args.chapterId,
+          courseId: args.courseId,
         ),
         maintainState: false,
       );
@@ -69,7 +70,9 @@ class StackedRouterWeb extends _i6.RootStackRouter {
         routeData: routeData,
         child: _i5.CourseChapterView(
           key: args.key,
+          courseId: pathParams.getString('courseId'),
           chapterId: args.chapterId,
+          chapter: args.chapter,
         ),
         maintainState: false,
       );
@@ -88,7 +91,7 @@ class StackedRouterWeb extends _i6.RootStackRouter {
         ),
         _i6.RouteConfig(
           CourseDetailsViewRoute.name,
-          path: 'course/:id',
+          path: 'course/:courseId',
           children: [
             _i6.RouteConfig(
               '#redirect',
@@ -148,18 +151,16 @@ class HomeViewArgs {
 class CourseDetailsViewRoute extends _i6.PageRouteInfo<CourseDetailsViewArgs> {
   CourseDetailsViewRoute({
     _i7.Key? key,
-    required String id,
-    String? chapterId,
+    required String courseId,
     List<_i6.PageRouteInfo>? children,
   }) : super(
           CourseDetailsViewRoute.name,
-          path: 'course/:id',
+          path: 'course/:courseId',
           args: CourseDetailsViewArgs(
             key: key,
-            id: id,
-            chapterId: chapterId,
+            courseId: courseId,
           ),
-          rawPathParams: {'id': id},
+          rawPathParams: {'courseId': courseId},
           initialChildren: children,
         );
 
@@ -169,19 +170,16 @@ class CourseDetailsViewRoute extends _i6.PageRouteInfo<CourseDetailsViewArgs> {
 class CourseDetailsViewArgs {
   const CourseDetailsViewArgs({
     this.key,
-    required this.id,
-    this.chapterId,
+    required this.courseId,
   });
 
   final _i7.Key? key;
 
-  final String id;
-
-  final String? chapterId;
+  final String courseId;
 
   @override
   String toString() {
-    return 'CourseDetailsViewArgs{key: $key, id: $id, chapterId: $chapterId}';
+    return 'CourseDetailsViewArgs{key: $key, courseId: $courseId}';
   }
 }
 
@@ -191,12 +189,14 @@ class CourseChapterViewRoute extends _i6.PageRouteInfo<CourseChapterViewArgs> {
   CourseChapterViewRoute({
     _i7.Key? key,
     required String chapterId,
+    _i8.Chapter? chapter,
   }) : super(
           CourseChapterViewRoute.name,
           path: ':chapterId',
           args: CourseChapterViewArgs(
             key: key,
             chapterId: chapterId,
+            chapter: chapter,
           ),
           rawPathParams: {'chapterId': chapterId},
         );
@@ -208,14 +208,17 @@ class CourseChapterViewArgs {
   const CourseChapterViewArgs({
     this.key,
     required this.chapterId,
+    this.chapter,
   });
 
   final _i7.Key? key;
 
   final String chapterId;
 
+  final _i8.Chapter? chapter;
+
   @override
   String toString() {
-    return 'CourseChapterViewArgs{key: $key, chapterId: $chapterId}';
+    return 'CourseChapterViewArgs{key: $key, chapterId: $chapterId, chapter: $chapter}';
   }
 }
