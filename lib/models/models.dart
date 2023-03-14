@@ -20,7 +20,7 @@ class Course with _$Course {
   factory Course.fromJson(Map<String, dynamic> json) => _$CourseFromJson(json);
 
   Chapter chapterForId(String chapterId) => modules
-      .map<List<Chapter>>((e) => e.chapters)
+      .map<List<Chapter>>((e) => List.from(e.chapters))
       .reduce((value, element) => value..addAll(element))
       .firstWhere((element) => element.id == chapterId);
 }

@@ -17,7 +17,15 @@ class HomeViewModel extends FormViewModel {
       hasEmail && emailValue!.length > 3 && hasEmailValidationMessage;
 
   Future<void> navigateToCourse() async {
-    await _routerService
-        .navigateTo(CourseDetailsViewRoute(courseId: 'flutter-web'));
+    await _routerService.navigateTo(CourseDetailsViewRoute(
+      courseId: 'flutter-web',
+      children: List.from(
+        [
+          CourseChapterViewRoute(
+            chapterId: 'readme',
+          )
+        ],
+      ),
+    ));
   }
 }

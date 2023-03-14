@@ -25,10 +25,16 @@ class CourseDetailsViewModel extends FutureViewModel<Course> {
     fetchedCourse = await _courseService.getCourseForId(courseId);
     rebuildUi();
 
+    final chapterId = _routerService.topRoute.pathParams.optString('chapterId');
+    print('ChapterID: $chapterId');
+
+    final chapterIdToShow =
+        chapterId ?? fetchedCourse!.modules.first.chapters.first.id;
+
     _routerService.navigateTo(CourseChapterViewRoute(
       key: UniqueKey(),
-      chapterId: fetchedCourse!.modules.first.chapters.first.id,
-      chapter: fetchedCourse!.modules.first.chapters.first,
+      chapterId: chapterIdToShow,
+      chapter: fetchedCourse!.chapterForId(chapterIdToShow),
     ));
 
     return fetchedCourse!;

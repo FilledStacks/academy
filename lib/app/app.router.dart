@@ -93,17 +93,10 @@ class StackedRouterWeb extends _i6.RootStackRouter {
           path: '/course/:courseId',
           children: [
             _i6.RouteConfig(
-              '#redirect',
-              path: '',
-              parent: CourseDetailsViewRoute.name,
-              redirectTo: 'readme',
-              fullMatch: true,
-            ),
-            _i6.RouteConfig(
               CourseChapterViewRoute.name,
               path: ':chapterId',
               parent: CourseDetailsViewRoute.name,
-            ),
+            )
           ],
         ),
       ];
