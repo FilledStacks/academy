@@ -13,7 +13,7 @@ class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
   const CourseDetailsView({
     super.key,
     @PathParam('id') required this.id,
-    @PathParam('chapterId') this.chapterId,
+    this.chapterId,
   });
 
   @override
@@ -33,4 +33,9 @@ class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
     BuildContext context,
   ) =>
       CourseDetailsViewModel();
+
+  @override
+  void onViewModelReady(CourseDetailsViewModel viewModel) {
+    // viewModel.showChapter(id: chapterId ?? 'readme', initial: true);
+  }
 }

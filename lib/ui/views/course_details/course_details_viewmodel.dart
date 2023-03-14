@@ -1,8 +1,16 @@
+import 'package:filledstacked_academy/app/app.locator.dart';
+import 'package:filledstacked_academy/app/app.logger.dart';
+import 'package:filledstacked_academy/app/app.router.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 import '../../../models/models.dart';
 
 class CourseDetailsViewModel extends BaseViewModel {
+  final log = getLogger('CourseDetailsViewModel');
+  final _routerService = locator<RouterService>();
+
   Course get course =>
       Course(id: 'flutter-web', title: 'Master Flutter on The Web', modules: [
         Module(
@@ -123,5 +131,12 @@ class CourseDetailsViewModel extends BaseViewModel {
     }
 
     return tempItems;
+  }
+
+  Future<void> showChapter({required String id, bool initial = false}) async {
+    _routerService.replaceWith(CourseChapterViewRoute(
+      key: UniqueKey(),
+      chapterId: id,
+    ));
   }
 }
