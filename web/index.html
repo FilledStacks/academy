@@ -67,6 +67,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: opacity .4s ease-out;
     }
 
     img {
@@ -135,7 +136,12 @@
     }
   </style>
   <script>
+    function delay(time) {
+      return new Promise(resolve => setTimeout(resolve, time));
+    }
+    
     window.addEventListener('load', function (ev) {
+      var loaderContent = document.querySelector('#loader-content');
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
@@ -143,12 +149,14 @@
         }
       }).then(function (engineInitializer) {
         return engineInitializer.initializeEngine();
-      }).then(function (appRunner) {
-        return appRunner.runApp();
+      }).then(async function (appRunner) {
+        loaderContent.style.opacity = "0";
+        await delay(400);
+        await appRunner.runApp();  
       });
     });
   </script>
-  <div class="main-content"> 
+  <div class="main-content" id="loader-content"> 
     <div class="loader">
       <span></span>
       <span></span>
