@@ -1,8 +1,6 @@
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
-import 'package:filledstacked_academy/app/app.router.dart';
 import 'package:filledstacked_academy/services/course_service.dart';
-import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -15,29 +13,14 @@ class CourseDetailsViewModel extends FutureViewModel<Course> {
 
   final String courseId;
   Course? fetchedCourse;
+  Chapter? selectedChapter;
 
   CourseDetailsViewModel({required this.courseId});
 
   bool get busyFetchingCourese => fetchedCourse == null;
 
   @override
-  Future<Course> futureToRun() async {
-    fetchedCourse = await _courseService.getCourseForId(courseId);
-    rebuildUi();
-
-    final chapterId = _routerService.topRoute.pathParams.optString('chapterId');
-
-    final chapterIdToShow =
-        chapterId ?? fetchedCourse!.modules.first.chapters.first.id;
-
-    _routerService.navigateTo(CourseChapterViewRoute(
-      key: UniqueKey(),
-      chapterId: chapterIdToShow,
-      chapter: fetchedCourse!.chapterForId(chapterIdToShow),
-    ));
-
-    return fetchedCourse!;
-  }
+  Future<Course> futureToRun() => _courseService.getCourseForId(courseId);
 
   List<dynamic> get sidebarItems {
     if (isBusy) {
@@ -54,13 +37,8 @@ class CourseDetailsViewModel extends FutureViewModel<Course> {
     return tempItems;
   }
 
-  Future<void> showChapter(Chapter chapter) async {
-    _routerService.replaceWith(CourseChapterViewRoute(
-      key: UniqueKey(),
-      chapterId: chapter.id,
-      chapter: chapter,
-    ));
-
+  void showChapter(Chapter chapter) {
+    selectedChapter = chapter;
     notifyListeners();
   }
 

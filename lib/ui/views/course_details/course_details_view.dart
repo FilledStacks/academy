@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked/stacked_annotations.dart';
 
 import 'course_details_view.desktop.dart';
 import 'course_details_view.mobile.dart';
@@ -11,7 +10,7 @@ class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
   final String courseId;
   const CourseDetailsView({
     super.key,
-    @pathParam required this.courseId,
+    required this.courseId,
   });
 
   @override
