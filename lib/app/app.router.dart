@@ -36,6 +36,7 @@ class StackedRouterWeb extends _i5.RootStackRouter {
       return _i5.CustomPage<dynamic>(
         routeData: routeData,
         child: _i2.HomeView(key: args.key),
+        transitionsBuilder: _i5.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
       );
