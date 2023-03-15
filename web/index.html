@@ -48,17 +48,18 @@
 
 <body>
   <style>
+    
     body {
       background-color: #0A0A0A;
       height: 100vh;
       width: 100vw;
-      position: fixed; 
-      inset: 0px; 
-      overflow: hidden; 
-      padding: 0px; 
-      margin: 0px; 
-      user-select: none; 
-      touch-action: none; 
+      position: fixed;
+      inset: 0px;
+      overflow: hidden;
+      padding: 0px;
+      margin: 0px;
+      user-select: none;
+      touch-action: none;
     }
 
     .main-content {
@@ -139,7 +140,7 @@
     function delay(time) {
       return new Promise(resolve => setTimeout(resolve, time));
     }
-    
+
     window.addEventListener('load', function (ev) {
       var loaderContent = document.querySelector('#loader-content');
       // Download main.dart.js
@@ -152,11 +153,11 @@
       }).then(async function (appRunner) {
         loaderContent.style.opacity = "0";
         await delay(400);
-        await appRunner.runApp();  
+        await appRunner.runApp();
       });
     });
   </script>
-  <div class="main-content" id="loader-content"> 
+  <div class="main-content" id="loader-content">
     <div class="loader">
       <span></span>
       <span></span>

@@ -4,13 +4,14 @@ import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
 import 'package:filledstacked_academy/ui/views/home/home_view.form.dart';
 import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/home_image.dart';
+import 'package:filledstacked_academy/ui/views/home/widgets/home_notify_button.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/home_subtitle.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/home_title.dart';
-import 'package:filledstacked_academy/ui/views/home/widgets/home_notify_button.dart';
 import 'package:filledstacked_academy/ui/widgets/common/academy_icon.dart';
 import 'package:filledstacked_academy/ui/widgets/common/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
@@ -44,7 +45,19 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                         verticalSpaceMedium,
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 100),
-                          child: SvgPicture.asset('assets/sign-up-arrow.svg'),
+                          child: SvgPicture.asset(
+                            'assets/sign-up-arrow.svg',
+                            height: 130,
+                            placeholderBuilder: (context) => Shimmer.fromColors(
+                              baseColor: kcDarkGreyColor,
+                              highlightColor: kcDarkGreyShimmerEndColor,
+                              child: Container(
+                                width: double.infinity,
+                                height: double.infinity,
+                                color: kcMediumGrey,
+                              ),
+                            ),
+                          ),
                         ),
                         verticalSpaceSmall,
                         Row(
