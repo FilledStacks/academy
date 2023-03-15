@@ -2,6 +2,7 @@ import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/setup/setup_bottom_sheet_ui.dart';
 import 'package:filledstacked_academy/ui/setup/setup_dialog_ui.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +12,18 @@ import 'package:url_strategy/url_strategy.dart';
 import 'app/app.router.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyCuy_EwDiCVsUIPWqCcQDKsA2WlGvNAyCc",
+      authDomain: "filledstacks-academy.firebaseapp.com",
+      projectId: "filledstacks-academy",
+      storageBucket: "filledstacks-academy.appspot.com",
+      messagingSenderId: "403422740160",
+      appId: "1:403422740160:web:dedda8708f7c9c4249f725",
+    ),
+  );
+
   setPathUrlStrategy();
   await setupLocator(stackedRouter: stackedRouter);
   setupDialogUi();
