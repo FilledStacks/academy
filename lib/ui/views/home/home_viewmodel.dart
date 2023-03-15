@@ -19,13 +19,6 @@ class HomeViewModel extends FormViewModel {
   Future<void> navigateToCourse() async {
     await _routerService.navigateTo(CourseDetailsViewRoute(
       courseId: 'flutter-web',
-      children: List.from(
-        [
-          CourseChapterViewRoute(
-            chapterId: 'readme',
-          )
-        ],
-      ),
     ));
   }
 }
