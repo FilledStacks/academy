@@ -26,7 +26,6 @@ class CourseDetailsViewModel extends FutureViewModel<Course> {
     rebuildUi();
 
     final chapterId = _routerService.topRoute.pathParams.optString('chapterId');
-    print('ChapterID: $chapterId');
 
     final chapterIdToShow =
         chapterId ?? fetchedCourse!.modules.first.chapters.first.id;
@@ -41,6 +40,10 @@ class CourseDetailsViewModel extends FutureViewModel<Course> {
   }
 
   List<dynamic> get sidebarItems {
+    if (isBusy) {
+      return [];
+    }
+
     final tempItems = <dynamic>[];
 
     for (var module in data!.modules) {
