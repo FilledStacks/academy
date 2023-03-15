@@ -14,6 +14,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 
+import 'widgets/home_sign_in_button.dart';
+
 class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
   final TextEditingController emailController;
   const HomeViewDesktop({Key? key, required this.emailController})
@@ -67,6 +69,8 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                             const HomeNotifyButton()
                           ],
                         ),
+                        verticalSpaceSmall,
+                        const HomeSignInButton(),
                         if (viewModel.showValidationError)
                           Text(
                             viewModel.emailValidationMessage!,
