@@ -5,6 +5,7 @@ import 'package:filledstacked_academy/ui/views/course_details/course_details_vie
 import 'package:filledstacked_academy/services/user_service.dart';
 import 'package:filledstacked_academy/ui/views/home/home_view.dart';
 import 'package:stacked/stacked.dart';
+import 'package:filledstacked_academy/ui/views/profile/profile_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -24,7 +25,8 @@ import 'package:stacked_services/stacked_services.dart';
         CustomRoute(page: CourseChapterView, path: ':chapterId'),
       ],
     ),
-// @stacked-route
+    MaterialRoute(page: ProfileView),
+    // @stacked-route
   ],
   dependencies: [
     LazySingleton(classType: RouterService),
