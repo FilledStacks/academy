@@ -42,7 +42,5 @@ class HomeViewModel extends FormViewModel {
       // TODO: show sign in error
       return;
     }
-
-    _navigationService.navigateToProfileView();
   }
 }
