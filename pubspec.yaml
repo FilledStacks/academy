@@ -49,10 +49,7 @@ dependencies:
   cached_network_image: ^3.2.3
   shimmer: ^2.0.0
   flutter_animate: ^4.1.0
-
-  # data models
-  freezed_annotation: ^2.2.0
-  json_annotation: ^4.8.0
+  stacked_firebase_auth: ^2.19.0
 
 dev_dependencies:
   flutter_test:
@@ -113,3 +110,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
