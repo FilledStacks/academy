@@ -13,7 +13,7 @@ class HomeSignInButton extends ViewModelWidget<HomeViewModel> {
       onTap: viewModel.signInWithGoogle,
       child: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: 20,
+          horizontal: 80,
           vertical: 16,
         ),
         alignment: Alignment.center,
