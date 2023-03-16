@@ -43,11 +43,11 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                         const HomeTitle(),
                         const HomeSubtitle(),
                         verticalSpaceMedium,
-                        Padding(
+                        Container(
+                          height: 130,
                           padding: const EdgeInsets.symmetric(horizontal: 100),
                           child: SvgPicture.asset(
                             'assets/sign-up-arrow.svg',
-                            height: 130,
                             placeholderBuilder: (context) => Shimmer.fromColors(
                               baseColor: kcDarkGreyColor,
                               highlightColor: kcDarkGreyShimmerEndColor,
