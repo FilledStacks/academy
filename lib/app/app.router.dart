@@ -43,7 +43,6 @@ class StackedRouterWeb extends _i4.RootStackRouter {
         routeData: routeData,
         child: _i3.CourseDetailsView(
           key: args.key,
-          courseId: args.courseId,
         ),
         maintainState: false,
       );

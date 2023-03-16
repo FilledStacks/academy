@@ -42,7 +42,6 @@ class CourseDetailsViewModel extends FutureViewModel<Course> {
   }
 
   bool isSidebarItemSelected(SideBarItem sideBarItem) {
-    final id = _routerService.topRoute.pathParams.optString('chapterId');
-    return id == null ? false : sideBarItem.isSelected(id);
+    return sideBarItem.isSelected(selectedChapter?.id ?? '');
   }
 }
