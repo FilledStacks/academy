@@ -31,81 +31,68 @@ class CourseService {
             ],
           ),
           Module(
-            id: 'app',
-            title: 'App',
+            id: 'intro-to-flutter',
+            title: 'Intro to Flutter Web',
             chapters: [
               Chapter(
-                id: 'what-are-we-building',
-                title: 'What we will build',
-                description: 'Everything you need to know to build',
+                id: 'html-vs-canvas',
+                title: 'Html Vs Canvas',
+                description:
+                    'Understand the difference between a normal website framework and Flutter web. We look at html vs canvas rendering',
                 durationInSeconds: 3578,
               ),
               Chapter(
-                id: 'landing',
-                title: 'The Landing Page',
+                id: 'seo-vs-web-app',
+                title: 'SEO vs WEb App',
                 description:
-                    'Lets build the landing page of the application. The view the user will see first',
+                    'What is the difference between as SEO built website or a Web Application and why does it matter?',
                 durationInSeconds: 322,
-              ),
-              Chapter(
-                id: 'intro-services',
-                title: 'Intro to Stacked Services',
-                description:
-                    'An introduction to the Services provided by Stacked that give you the basic functionality for an application',
-                durationInSeconds: 1234,
               ),
             ],
           ),
           Module(
-            id: 'prerequisites',
-            title: 'Prerequisites',
+            id: 'building-ui',
+            title: 'Building Flutter Web UI',
             chapters: [
               Chapter(
-                id: 'readme',
-                title: 'README',
+                id: 'building-landing',
+                title: 'Building a Landing Page',
                 description:
-                    'Everything you need to know before starting this course.',
+                    'A follow along tutorial building the landing page for our web app',
                 durationInSeconds: 4324,
               ),
               Chapter(
-                id: 'basics',
-                title: 'Stacked Basics',
+                id: 'basics-of-responsive',
+                title: 'Basics of Responsiveness in Flutter',
                 description:
-                    'Get to know Stacked, what it provides, how to use the CLI and how it works',
+                    'Understand the basics of the responsive UI setup we use in Flutter.',
                 durationInSeconds: 3433,
-              ),
-              Chapter(
-                id: 'intro-services',
-                title: 'Intro to Stacked Services',
-                description:
-                    'An introduction to the Services provided by Stacked that give you the basic functionality for an application',
-                durationInSeconds: 2213,
               ),
             ],
           ),
           Module(
-            id: 'prerequisites',
-            title: 'Prerequisites',
+            id: 'responsive-ui-deepdive',
+            title: 'Responsive UI Deepdive',
             chapters: [
               Chapter(
-                id: 'readme',
-                title: 'README',
+                id: 'the-responsive-builder-pattern',
+                title: 'The Responsive Builder Pattern',
                 description:
-                    'Everything you need to know before starting this course.',
+                    'How the Responsive Builder pattern works, what its intended to achieve ad how we should use it',
                 durationInSeconds: 1122,
               ),
               Chapter(
-                id: 'basics',
-                title: 'Stacked Basics',
+                id: 'build-detailed-responsive-ui',
+                title: 'Building a Complex Responsive UI',
                 description:
-                    'Get to know Stacked, what it provides, how to use the CLI and how it works',
+                    'A step-by-step guide of building an overly complex responsive UI',
                 durationInSeconds: 334,
               ),
               Chapter(
-                id: 'intro-services',
-                title: 'Intro to Stacked Services',
+                id: 'alternative-responsive-ui',
+                title: 'Alternative ways of doing responsive UI',
                 description:
-                    'An introduction to the Services provided by Stacked that give you the basic functionality for an application',
+                    'A look at the different packages on Flutter that provide different types of responsive building patterns for different use cases',
                 durationInSeconds: 887,
               ),
             ],
