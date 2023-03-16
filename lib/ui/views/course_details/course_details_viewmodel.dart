@@ -11,16 +11,15 @@ class CourseDetailsViewModel extends FutureViewModel<Course> {
   final _routerService = locator<RouterService>();
   final _courseService = locator<CourseService>();
 
-  final String courseId;
   Course? fetchedCourse;
   Chapter? selectedChapter;
 
-  CourseDetailsViewModel({required this.courseId});
+  CourseDetailsViewModel();
 
   bool get busyFetchingCourese => fetchedCourse == null;
 
   @override
-  Future<Course> futureToRun() => _courseService.getCourseForId(courseId);
+  Future<Course> futureToRun() => _courseService.getCourseForId('flutter-web');
 
   List<dynamic> get sidebarItems {
     if (isBusy) {

@@ -7,10 +7,8 @@ import 'course_details_view.mobile.dart';
 import 'course_details_viewmodel.dart';
 
 class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
-  final String courseId;
   const CourseDetailsView({
     super.key,
-    required this.courseId,
   });
 
   @override
@@ -29,5 +27,5 @@ class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
   CourseDetailsViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      CourseDetailsViewModel(courseId: courseId);
+      CourseDetailsViewModel();
 }
