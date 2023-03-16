@@ -90,7 +90,7 @@ class CourseService {
               ),
               Chapter(
                 id: 'alternative-responsive-ui',
-                title: 'Alternative ways of doing responsive UI',
+                title: 'Alternative responsive Design',
                 description:
                     'A look at the different packages on Flutter that provide different types of responsive building patterns for different use cases',
                 durationInSeconds: 887,
