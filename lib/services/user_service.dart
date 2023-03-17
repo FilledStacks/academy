@@ -4,15 +4,17 @@ import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/enums/sign_in_result.dart';
 import 'package:filledstacked_academy/models/user/user.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth show User;
 import 'package:stacked/stacked.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 
 class UserService with ListenableServiceMixin {
-  final log = getLogger('UserService');
+  final _log = getLogger('UserService');
   final _authenticationService = locator<FirebaseAuthenticationService>();
 
   UserService() {
     listenToReactiveValues([_currentUser]);
+    _authenticationService.firebaseAuth.authStateChanges().listen(_restoreUser);
   }
 
   User? _currentUser;
@@ -20,12 +22,27 @@ class UserService with ListenableServiceMixin {
 
   bool get hasUser => _currentUser != null;
 
+  /// Restore User from Firebase Auth on authStateChanges
+  void _restoreUser(firebase_auth.User? user) {
+    if (user == null) {
+      _log.i('User is currently signed out!');
+      return;
+    }
+
+    _currentUser = _extractUserFromFirebaseUser(user);
+    _log.d('User is signed in, currentUser:$currentUser');
+    notifyListeners();
+  }
+
+  /// Authenticates a User through Firebase using Google Provider.
   Future<SignInResult> signInWithGoogle() async {
-    log.i('Google sign in initialized');
+    _log.i('Google sign in initialized');
     final result = await _authenticationService.signInWithGoogle();
     return handleSocialSignInResult(result);
   }
 
+  /// Assigns extracted User from Firebase User to [_currentUser] and returns
+  /// [SignInResult].
   Future<SignInResult> handleSocialSignInResult(
     FirebaseAuthenticationResult result,
   ) async {
@@ -35,29 +52,24 @@ class UserService with ListenableServiceMixin {
     );
 
     try {
-      if (result.additionalUserInfo?.isNewUser ?? false) {
-        _currentUser = await _extractUserFromFirebaseResult(result);
-        log.v('Current signed up user: $_currentUser');
+      _currentUser = _extractUserFromFirebaseUser(result.user!);
 
+      if (result.additionalUserInfo?.isNewUser ?? false) {
+        _log.v('Current signed up user: $_currentUser');
         return SignInResult.createdAccount;
       }
 
-      /// TODO: assign the user recovered from API or DB because was already
-      /// signed up and stored. Otherwise, can be unified with above code.
-      _currentUser = await _extractUserFromFirebaseResult(result);
-      log.v('Current signed in user: $_currentUser');
-
+      _log.v('Current signed in user: $_currentUser');
       return SignInResult.login;
     } catch (e) {
-      log.d('no profile found for user');
+      _log.d('No profile found for user');
       return SignInResult.failure;
     }
   }
 
-  Future<User> _extractUserFromFirebaseResult(
-    FirebaseAuthenticationResult result,
-  ) async {
-    final user = result.user!;
+  User _extractUserFromFirebaseUser(
+    firebase_auth.User user,
+  ) {
     final hasEmail = user.email != null;
     final hasDisplayName = user.displayName != null;
 
@@ -80,8 +92,9 @@ class UserService with ListenableServiceMixin {
     );
   }
 
+  /// Signs out User from Firebase and clear [_currentUser]
   Future<void> logout() async {
-    log.i('');
+    _log.i('');
 
     await _authenticationService.logout();
     _currentUser = null;
