@@ -4,7 +4,6 @@ import 'package:filledstacked_academy/app/app.router.dart';
 import 'package:filledstacked_academy/enums/bottom_sheet_type.dart';
 import 'package:filledstacked_academy/enums/sign_in_result.dart';
 import 'package:filledstacked_academy/models/user/user.dart';
-import 'package:filledstacked_academy/services/http_service.dart';
 import 'package:filledstacked_academy/services/user_service.dart';
 import 'package:filledstacked_academy/ui/views/home/home_view.form.dart';
 import 'package:stacked/stacked.dart';
@@ -13,10 +12,8 @@ import 'package:stacked_services/stacked_services.dart';
 class HomeViewModel extends FormViewModel {
   final _log = getLogger('HomeViewModel');
   final _routerService = locator<RouterService>();
-  final _httpService = locator<HttpService>();
   final _userService = locator<UserService>();
   final _sheetService = locator<BottomSheetService>();
-  final _dialogService = locator<DialogService>();
 
   @override
   List<ListenableServiceMixin> get listenableServices => [_userService];

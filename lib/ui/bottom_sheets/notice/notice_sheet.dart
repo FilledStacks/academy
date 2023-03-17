@@ -1,6 +1,5 @@
 import 'package:filledstacked_academy/extensions/hover_extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_services/stacked_services.dart';
