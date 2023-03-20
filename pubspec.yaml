@@ -49,6 +49,7 @@ dependencies:
   cached_network_image: ^3.2.3
   shimmer: ^2.0.0
   flutter_animate: ^4.1.0
+  stacked_firebase_auth: ^2.19.0
 
 dev_dependencies:
   flutter_test:
@@ -65,7 +66,7 @@ dev_dependencies:
   stacked_generator: ^1.0.0
   mockito: ^5.1.0
   freezed: ^2.3.2
-  json_serializable: ^6.6.1
+  json_serializable:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

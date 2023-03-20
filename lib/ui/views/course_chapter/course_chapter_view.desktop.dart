@@ -1,4 +1,9 @@
+import 'package:filledstacked_academy/extensions/hover_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:stacked/stacked.dart';
 
@@ -6,6 +11,8 @@ import '../../common/app_colors.dart';
 import '../../common/shared_styles.dart';
 import '../../common/ui_helpers.dart';
 import 'course_chapter_viewmodel.dart';
+
+part '_widgets.dart';
 
 class CourseChapterViewDesktop extends ViewModelWidget<CourseChapterViewModel> {
   const CourseChapterViewDesktop({super.key});
@@ -29,12 +36,17 @@ class CourseChapterViewDesktop extends ViewModelWidget<CourseChapterViewModel> {
                         'assets/master-web-hero-image.png',
                         width: double.infinity,
                         fit: BoxFit.cover,
+                        color: viewModel.hasUser
+                            ? null
+                            : Colors.white.withOpacity(0.2),
+                        colorBlendMode: viewModel.hasUser
+                            ? BlendMode.srcIn
+                            : BlendMode.modulate,
                       ),
                       Center(
-                        child: Text(
-                          viewModel.chapterId,
-                          style: ktsTitle,
-                        ),
+                        child: viewModel.hasUser
+                            ? Text(viewModel.chapterId, style: ktsTitle)
+                            : _CourseChapterUserNotLogged(),
                       ),
                     ],
                   ),

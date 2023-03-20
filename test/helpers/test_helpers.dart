@@ -1,10 +1,10 @@
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/services/http_service.dart';
+import 'package:filledstacked_academy/services/course_service.dart';
+import 'package:filledstacked_academy/services/user_service.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:stacked_services/stacked_services.dart';
-
-import 'package:filledstacked_academy/services/course_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -15,6 +15,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<HttpService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<CourseService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<UserService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -23,6 +24,7 @@ void registerServices() {
   getAndRegisterDialogService();
   getAndRegisterHttpService();
   getAndRegisterCourseService();
+  getAndRegisterUserService();
 // @stacked-mock-register
 }
 
@@ -87,6 +89,13 @@ MockCourseService getAndRegisterCourseService() {
   _removeRegistrationIfExists<CourseService>();
   final service = MockCourseService();
   locator.registerSingleton<CourseService>(service);
+  return service;
+}
+
+MockUserService getAndRegisterUserService() {
+  _removeRegistrationIfExists<UserService>();
+  final service = MockUserService();
+  locator.registerSingleton<UserService>(service);
   return service;
 }
 // @stacked-mock-create

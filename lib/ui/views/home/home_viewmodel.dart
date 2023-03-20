@@ -1,13 +1,22 @@
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/app/app.router.dart';
+import 'package:filledstacked_academy/enums/bottom_sheet_type.dart';
+import 'package:filledstacked_academy/enums/sign_in_result.dart';
+import 'package:filledstacked_academy/models/user/user.dart';
+import 'package:filledstacked_academy/services/user_service.dart';
 import 'package:filledstacked_academy/ui/views/home/home_view.form.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends FormViewModel {
-  final log = getLogger('HomeViewModel');
+  final _log = getLogger('HomeViewModel');
   final _routerService = locator<RouterService>();
+  final _userService = locator<UserService>();
+  final _sheetService = locator<BottomSheetService>();
+
+  @override
+  List<ListenableServiceMixin> get listenableServices => [_userService];
 
   Future<void> notifyMe() async {}
 
@@ -15,6 +24,10 @@ class HomeViewModel extends FormViewModel {
 
   bool get showValidationError =>
       hasEmail && emailValue!.length > 3 && hasEmailValidationMessage;
+
+  bool get hasUser => _userService.hasUser;
+
+  User get currentUser => _userService.currentUser;
 
   Future<void> navigateToCourse() async {
     await _routerService.navigateTo(CourseDetailsViewRoute(
@@ -27,5 +40,21 @@ class HomeViewModel extends FormViewModel {
         ],
       ),
     ));
+  }
+
+  Future<void> signInWithGoogle() async {
+    _log.i('');
+
+    final result = await runBusyFuture(_userService.signInWithGoogle());
+
+    if (result == SignInResult.failure) {
+      await _sheetService.showCustomSheet(
+        variant: BottomSheetType.notice,
+        title: 'Sign in failed',
+        description: 'Please, try again later or contact support',
+      );
+
+      return;
+    }
   }
 }
