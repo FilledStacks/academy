@@ -8,6 +8,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:filledstacked_academy/ui/views/course_landing/course_landing_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -24,7 +25,10 @@ import 'package:stacked_services/stacked_services.dart';
         CustomRoute(page: CourseChapterView, path: ':chapterId'),
       ],
     ),
-    // @stacked-route
+    CustomRoute(
+      page: CourseLandingView,
+    ),
+// @stacked-route
   ],
   dependencies: [
     LazySingleton(classType: RouterService),
