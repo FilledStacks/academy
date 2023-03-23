@@ -18,15 +18,13 @@ import 'package:filledstacked_academy/ui/views/course_landing/course_landing_vie
       initial: true,
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
+    CustomRoute(page: CourseLandingView, path: '/courses/:courseId'),
     CustomRoute(
       page: CourseDetailsView,
-      path: '/course/:courseId',
+      path: '/courses/:courseId',
       children: [
         CustomRoute(page: CourseChapterView, path: ':chapterId'),
       ],
-    ),
-    CustomRoute(
-      page: CourseLandingView,
     ),
 // @stacked-route
   ],

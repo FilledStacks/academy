@@ -19,8 +19,8 @@ import 'package:stacked_services/stacked_services.dart' as _i1;
 
 import '../models/models.dart' as _i8;
 import '../ui/views/course_chapter/course_chapter_view.dart' as _i5;
-import '../ui/views/course_details/course_details_view.dart' as _i3;
-import '../ui/views/course_landing/course_landing_view.dart' as _i4;
+import '../ui/views/course_details/course_details_view.dart' as _i4;
+import '../ui/views/course_landing/course_landing_view.dart' as _i3;
 import '../ui/views/home/home_view.dart' as _i2;
 
 final stackedRouter = StackedRouterWeb(_i1.StackedService.navigatorKey);
@@ -42,14 +42,14 @@ class StackedRouterWeb extends _i6.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    CourseDetailsViewRoute.name: (routeData) {
+    CourseLandingViewRoute.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<CourseDetailsViewArgs>(
-          orElse: () => CourseDetailsViewArgs(
+      final args = routeData.argsAs<CourseLandingViewArgs>(
+          orElse: () => CourseLandingViewArgs(
               courseId: pathParams.getString('courseId')));
       return _i6.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i3.CourseDetailsView(
+        child: _i3.CourseLandingView(
           key: args.key,
           courseId: args.courseId,
         ),
@@ -57,10 +57,17 @@ class StackedRouterWeb extends _i6.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    CourseLandingViewRoute.name: (routeData) {
+    CourseDetailsViewRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<CourseDetailsViewArgs>(
+          orElse: () => CourseDetailsViewArgs(
+              courseId: pathParams.getString('courseId')));
       return _i6.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i4.CourseLandingView(),
+        child: _i4.CourseDetailsView(
+          key: args.key,
+          courseId: args.courseId,
+        ),
         opaque: true,
         barrierDismissible: false,
       );
@@ -90,8 +97,12 @@ class StackedRouterWeb extends _i6.RootStackRouter {
           path: '/',
         ),
         _i6.RouteConfig(
+          CourseLandingViewRoute.name,
+          path: '/courses/:courseId',
+        ),
+        _i6.RouteConfig(
           CourseDetailsViewRoute.name,
-          path: '/course/:courseId',
+          path: '/courses/:courseId',
           children: [
             _i6.RouteConfig(
               CourseChapterViewRoute.name,
@@ -99,10 +110,6 @@ class StackedRouterWeb extends _i6.RootStackRouter {
               parent: CourseDetailsViewRoute.name,
             )
           ],
-        ),
-        _i6.RouteConfig(
-          CourseLandingViewRoute.name,
-          path: '/course-landing-view',
         ),
       ];
 }
@@ -132,7 +139,42 @@ class HomeViewArgs {
 }
 
 /// generated route for
-/// [_i3.CourseDetailsView]
+/// [_i3.CourseLandingView]
+class CourseLandingViewRoute extends _i6.PageRouteInfo<CourseLandingViewArgs> {
+  CourseLandingViewRoute({
+    _i7.Key? key,
+    required String courseId,
+  }) : super(
+          CourseLandingViewRoute.name,
+          path: '/courses/:courseId',
+          args: CourseLandingViewArgs(
+            key: key,
+            courseId: courseId,
+          ),
+          rawPathParams: {'courseId': courseId},
+        );
+
+  static const String name = 'CourseLandingView';
+}
+
+class CourseLandingViewArgs {
+  const CourseLandingViewArgs({
+    this.key,
+    required this.courseId,
+  });
+
+  final _i7.Key? key;
+
+  final String courseId;
+
+  @override
+  String toString() {
+    return 'CourseLandingViewArgs{key: $key, courseId: $courseId}';
+  }
+}
+
+/// generated route for
+/// [_i4.CourseDetailsView]
 class CourseDetailsViewRoute extends _i6.PageRouteInfo<CourseDetailsViewArgs> {
   CourseDetailsViewRoute({
     _i7.Key? key,
@@ -140,7 +182,7 @@ class CourseDetailsViewRoute extends _i6.PageRouteInfo<CourseDetailsViewArgs> {
     List<_i6.PageRouteInfo>? children,
   }) : super(
           CourseDetailsViewRoute.name,
-          path: '/course/:courseId',
+          path: '/courses/:courseId',
           args: CourseDetailsViewArgs(
             key: key,
             courseId: courseId,
@@ -166,18 +208,6 @@ class CourseDetailsViewArgs {
   String toString() {
     return 'CourseDetailsViewArgs{key: $key, courseId: $courseId}';
   }
-}
-
-/// generated route for
-/// [_i4.CourseLandingView]
-class CourseLandingViewRoute extends _i6.PageRouteInfo<void> {
-  const CourseLandingViewRoute()
-      : super(
-          CourseLandingViewRoute.name,
-          path: '/course-landing-view',
-        );
-
-  static const String name = 'CourseLandingView';
 }
 
 /// generated route for
