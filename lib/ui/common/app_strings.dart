@@ -4,3 +4,4 @@ const String ksHomeBottomSheetDescription =
 const String ksCourseBenefitsCardTitle = 'Benefits';
 const String ksCourseChapterGridTitle = 'Chapters';
 const String ksAppBarTitle = 'FilledStacks Academy';
+const String ksCourseDetailsTitle = 'About the Course';
