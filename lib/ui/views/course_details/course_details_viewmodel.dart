@@ -10,13 +10,14 @@ import '../../../models/models.dart';
 
 class CourseDetailsViewModel extends FutureViewModel<Course> {
   final log = getLogger('CourseDetailsViewModel');
-  final _routerService = locator<RouterService>();
   final _courseService = locator<CourseService>();
+  final _routerService = locator<RouterService>();
 
   final String courseId;
-  Course? fetchedCourse;
 
   CourseDetailsViewModel({required this.courseId});
+
+  Course? fetchedCourse;
 
   bool get busyFetchingCourese => fetchedCourse == null;
 
