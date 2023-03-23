@@ -1,13 +1,16 @@
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
+import 'package:filledstacked_academy/app/app.router.dart';
 import 'package:filledstacked_academy/models/models.dart';
 import 'package:filledstacked_academy/services/course_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class CourseLandingViewModel extends FutureViewModel {
   final log = getLogger('CourseLandingViewModel');
   final _courseService = locator<CourseService>();
+  final _routerService = locator<RouterService>();
 
   final String courseId;
   CourseLandingViewModel({required this.courseId});
@@ -24,7 +27,12 @@ class CourseLandingViewModel extends FutureViewModel {
   }
 
   Future<void> navigateToChapter(Chapter chapter) async {
-    log.i(chapter);
+    await _routerService.navigateTo(CourseDetailsViewRoute(
+      courseId: courseId,
+      children: List.from([
+        CourseChapterViewRoute(chapterId: chapter.id),
+      ]),
+    ));
   }
 
   @visibleForTesting

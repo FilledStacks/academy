@@ -17,6 +17,7 @@ class CourseLandingViewDesktop extends ViewModelWidget<CourseLandingViewModel> {
   Widget build(BuildContext context, CourseLandingViewModel viewModel) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: kcBackgroundColor,
         centerTitle: false,
         title: Text(

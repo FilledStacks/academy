@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked/stacked_annotations.dart';
 
 import 'course_landing_view.desktop.dart';
 import 'course_landing_view.mobile.dart';
 import 'course_landing_viewmodel.dart';
 
 class CourseLandingView extends StackedView<CourseLandingViewModel> {
-  const CourseLandingView({super.key});
+  final String courseId;
+  const CourseLandingView({
+    super.key,
+    @pathParam required this.courseId,
+  });
 
   @override
   Widget builder(
@@ -25,5 +30,5 @@ class CourseLandingView extends StackedView<CourseLandingViewModel> {
   CourseLandingViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      CourseLandingViewModel(courseId: 'flutter-web');
+      CourseLandingViewModel(courseId: courseId);
 }
