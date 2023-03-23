@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/enums/sign_in_result.dart';
-import 'package:filledstacked_academy/models/user/user.dart';
-import 'package:firebase_auth/firebase_auth.dart' as firebase_auth show User;
+import 'package:filledstacked_academy/models/user/user.dart' as academy;
 import 'package:stacked/stacked.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
+
+typedef AppUser = academy.User;
+typedef FirebaseUser = User;
 
 class UserService with ListenableServiceMixin {
   final _log = getLogger('UserService');
@@ -17,13 +19,13 @@ class UserService with ListenableServiceMixin {
     _authenticationService.firebaseAuth.authStateChanges().listen(_restoreUser);
   }
 
-  User? _currentUser;
-  User get currentUser => _currentUser!;
+  AppUser? _currentUser;
+  AppUser get currentUser => _currentUser!;
 
   bool get hasUser => _currentUser != null;
 
   /// Restore User from Firebase Auth on authStateChanges
-  void _restoreUser(firebase_auth.User? user) {
+  void _restoreUser(FirebaseUser? user) {
     if (user == null) {
       _log.i('User is currently signed out!');
       return;
@@ -67,9 +69,7 @@ class UserService with ListenableServiceMixin {
     }
   }
 
-  User _extractUserFromFirebaseUser(
-    firebase_auth.User user,
-  ) {
+  AppUser _extractUserFromFirebaseUser(FirebaseUser user) {
     final hasEmail = user.email != null;
     final hasDisplayName = user.displayName != null;
 
@@ -82,7 +82,7 @@ class UserService with ListenableServiceMixin {
       lastName = nameParts.getRange(1, nameParts.length).join(' ');
     }
 
-    return User.empty().copyWith(
+    return AppUser.empty().copyWith(
       id: user.uid,
       email: hasEmail ? user.email! : 'NO_EMAIL',
       firstName: firstName,

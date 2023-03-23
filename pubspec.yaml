@@ -37,6 +37,7 @@ dependencies:
   
   stacked: ^3.2.0
   stacked_services: ^1.0.0
+  stacked_firebase_auth: ^2.19.2
   google_fonts: ^4.0.3
   flutter_svg: ^1.1.6
   simple_gradient_text: ^1.2.4
@@ -49,7 +50,6 @@ dependencies:
   cached_network_image: ^3.2.3
   shimmer: ^2.0.0
   flutter_animate: ^4.1.0
-  stacked_firebase_auth: ^2.19.0
 
 dev_dependencies:
   flutter_test:
