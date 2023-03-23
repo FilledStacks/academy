@@ -22,7 +22,9 @@ Course _$CourseFromJson(Map<String, dynamic> json) {
 mixin _$Course {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   List<Module> get modules => throw _privateConstructorUsedError;
+  List<String> get perks => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +36,12 @@ abstract class $CourseCopyWith<$Res> {
   factory $CourseCopyWith(Course value, $Res Function(Course) then) =
       _$CourseCopyWithImpl<$Res, Course>;
   @useResult
-  $Res call({String id, String title, List<Module> modules});
+  $Res call(
+      {String id,
+      String title,
+      String? description,
+      List<Module> modules,
+      List<String> perks});
 }
 
 /// @nodoc
@@ -52,7 +59,9 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? description = freezed,
     Object? modules = null,
+    Object? perks = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -63,10 +72,18 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       modules: null == modules
           ? _value.modules
           : modules // ignore: cast_nullable_to_non_nullable
               as List<Module>,
+      perks: null == perks
+          ? _value.perks
+          : perks // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -77,7 +94,12 @@ abstract class _$$_CourseCopyWith<$Res> implements $CourseCopyWith<$Res> {
       __$$_CourseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String title, List<Module> modules});
+  $Res call(
+      {String id,
+      String title,
+      String? description,
+      List<Module> modules,
+      List<String> perks});
 }
 
 /// @nodoc
@@ -92,7 +114,9 @@ class __$$_CourseCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? description = freezed,
     Object? modules = null,
+    Object? perks = null,
   }) {
     return _then(_$_Course(
       id: null == id
@@ -103,10 +127,18 @@ class __$$_CourseCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       modules: null == modules
           ? _value._modules
           : modules // ignore: cast_nullable_to_non_nullable
               as List<Module>,
+      perks: null == perks
+          ? _value._perks
+          : perks // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -117,8 +149,11 @@ class _$_Course extends _Course {
   _$_Course(
       {required this.id,
       required this.title,
-      required final List<Module> modules})
+      this.description,
+      required final List<Module> modules,
+      final List<String> perks = const []})
       : _modules = modules,
+        _perks = perks,
         super._();
 
   factory _$_Course.fromJson(Map<String, dynamic> json) =>
@@ -128,6 +163,8 @@ class _$_Course extends _Course {
   final String id;
   @override
   final String title;
+  @override
+  final String? description;
   final List<Module> _modules;
   @override
   List<Module> get modules {
@@ -136,9 +173,18 @@ class _$_Course extends _Course {
     return EqualUnmodifiableListView(_modules);
   }
 
+  final List<String> _perks;
+  @override
+  @JsonKey()
+  List<String> get perks {
+    if (_perks is EqualUnmodifiableListView) return _perks;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_perks);
+  }
+
   @override
   String toString() {
-    return 'Course(id: $id, title: $title, modules: $modules)';
+    return 'Course(id: $id, title: $title, description: $description, modules: $modules, perks: $perks)';
   }
 
   @override
@@ -148,13 +194,21 @@ class _$_Course extends _Course {
             other is _$_Course &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
-            const DeepCollectionEquality().equals(other._modules, _modules));
+            (identical(other.description, description) ||
+                other.description == description) &&
+            const DeepCollectionEquality().equals(other._modules, _modules) &&
+            const DeepCollectionEquality().equals(other._perks, _perks));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, title, const DeepCollectionEquality().hash(_modules));
+      runtimeType,
+      id,
+      title,
+      description,
+      const DeepCollectionEquality().hash(_modules),
+      const DeepCollectionEquality().hash(_perks));
 
   @JsonKey(ignore: true)
   @override
@@ -174,7 +228,9 @@ abstract class _Course extends Course {
   factory _Course(
       {required final String id,
       required final String title,
-      required final List<Module> modules}) = _$_Course;
+      final String? description,
+      required final List<Module> modules,
+      final List<String> perks}) = _$_Course;
   _Course._() : super._();
 
   factory _Course.fromJson(Map<String, dynamic> json) = _$_Course.fromJson;
@@ -184,7 +240,11 @@ abstract class _Course extends Course {
   @override
   String get title;
   @override
+  String? get description;
+  @override
   List<Module> get modules;
+  @override
+  List<String> get perks;
   @override
   @JsonKey(ignore: true)
   _$$_CourseCopyWith<_$_Course> get copyWith =>
