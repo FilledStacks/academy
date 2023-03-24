@@ -1,6 +1,9 @@
+import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/models/models.dart';
 
 class CourseService {
+  final log = getLogger('CourseService');
+
   List<Course> get courses => [
         Course(
           id: 'flutter-web',
@@ -127,6 +130,14 @@ By the end of this course you will have built the first version of the Academy w
       ];
 
   Future<Course?> getCourseForId(String id) async {
-    return courses.firstWhere((element) => element.id == id);
+    try {
+      return courses.firstWhere((element) => element.id == id);
+    } on StateError catch (_) {
+      log.w('Course with id equal "$id" not found');
+      return null;
+    } catch (e) {
+      log.e(e.toString());
+      return null;
+    }
   }
 }
