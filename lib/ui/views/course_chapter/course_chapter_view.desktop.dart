@@ -1,4 +1,3 @@
-import 'package:filledstacked_academy/extensions/hover_extensions.dart';
 import 'package:filledstacked_academy/ui/widgets/common/academy_button.dart';
 import 'package:filledstacked_academy/ui/widgets/common/course_price_card.dart';
 import 'package:flutter/material.dart';
