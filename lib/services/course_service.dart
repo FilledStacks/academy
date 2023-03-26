@@ -127,6 +127,8 @@ By the end of this course you will have built the first version of the Academy w
       ];
 
   Future<Course?> getCourseForId(String id) async {
+    // Delay added to avoid execute a sync function as Future
+    await Future.delayed(const Duration(microseconds: 100));
     return courses.firstWhere((element) => element.id == id);
   }
 }
