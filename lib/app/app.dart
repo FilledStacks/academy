@@ -9,6 +9,7 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:filledstacked_academy/ui/views/course_landing/course_landing_view.dart';
+import 'package:filledstacked_academy/ui/views/unknown/unknown_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -26,6 +27,14 @@ import 'package:filledstacked_academy/ui/views/course_landing/course_landing_vie
         CustomRoute(page: CourseChapterView, path: ':chapterId'),
       ],
     ),
+    CustomRoute(
+      page: UnknownView,
+      path: '/404',
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
+
+    /// When none of the above routes match, redirect to UnknownView
+    RedirectRoute(path: '*', redirectTo: '/404'),
 // @stacked-route
   ],
   dependencies: [

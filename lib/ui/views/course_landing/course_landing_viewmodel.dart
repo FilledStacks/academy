@@ -23,6 +23,11 @@ class CourseLandingViewModel extends FutureViewModel {
   @override
   Future<void> futureToRun() async {
     fetchedCourse = await _courseService.getCourseForId(courseId);
+    if (fetchedCourse == null) {
+      await _routerService.replaceWith(const UnknownViewRoute());
+      return;
+    }
+
     _chapters = extractAllChapters(fetchedCourse);
   }
 
