@@ -9,15 +9,21 @@ part of 'models.dart';
 _$_Course _$$_CourseFromJson(Map<String, dynamic> json) => _$_Course(
       id: json['id'] as String,
       title: json['title'] as String,
+      description: json['description'] as String?,
       modules: (json['modules'] as List<dynamic>)
           .map((e) => Module.fromJson(e as Map<String, dynamic>))
           .toList(),
+      perks:
+          (json['perks'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              const [],
     );
 
 Map<String, dynamic> _$$_CourseToJson(_$_Course instance) => <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'description': instance.description,
       'modules': instance.modules,
+      'perks': instance.perks,
     };
 
 _$_Module _$$_ModuleFromJson(Map<String, dynamic> json) => _$_Module(

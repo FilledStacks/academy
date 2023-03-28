@@ -1,4 +1,5 @@
 import 'package:filledstacked_academy/app/app.locator.dart';
+import 'package:filledstacked_academy/models/models.dart';
 import 'package:filledstacked_academy/services/http_service.dart';
 import 'package:filledstacked_academy/services/course_service.dart';
 import 'package:filledstacked_academy/services/user_service.dart';
@@ -85,10 +86,25 @@ MockHttpService getAndRegisterHttpService() {
   return service;
 }
 
-MockCourseService getAndRegisterCourseService() {
+MockCourseService getAndRegisterCourseService({
+  List<Course> courses = const [],
+}) {
   _removeRegistrationIfExists<CourseService>();
   final service = MockCourseService();
   locator.registerSingleton<CourseService>(service);
+
+  when(service.courses).thenReturn(courses);
+
+  when(service.getCourseForId(any)).thenAnswer((realInvocation) async {
+    try {
+      return courses.firstWhere(
+        (course) => course.id == realInvocation.positionalArguments[0],
+      );
+    } on StateError catch (_) {
+      return null;
+    }
+  });
+
   return service;
 }
 

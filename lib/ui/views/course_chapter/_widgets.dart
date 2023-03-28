@@ -28,9 +28,16 @@ class _CourseChapterUserNotLogged
             children: [
               const _CourseChapterArrow(),
               Column(
-                children: const [
-                  _CourseChapterPriceCard(),
-                  _CourseChapterSignInButton(),
+                children: [
+                  const CoursePriceCard(
+                    price: '35',
+                    discountPrice: '20',
+                    discountPeriod: '1 Week only',
+                  ),
+                  AcademyButton(
+                    title: 'Sign in to view',
+                    onTap: viewModel.signInWithGoogle,
+                  ),
                 ],
               )
             ],
@@ -136,105 +143,5 @@ class _CourseChapterArrow extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class _CourseChapterPriceCard extends StatelessWidget {
-  const _CourseChapterPriceCard({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          '\$35',
-          style: GoogleFonts.openSans(
-            fontWeight: FontWeight.w800,
-            fontSize: getValueForScreenType(
-              context: context,
-              mobile: 40,
-              tablet: 60,
-              desktop: 60,
-            ),
-            height: 0.95,
-          ),
-        ),
-        horizontalSpaceSmall,
-        Column(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10.0,
-                vertical: 4.0,
-              ),
-              decoration: BoxDecoration(
-                border: Border.all(color: kcTitleGradientRight),
-                borderRadius: BorderRadius.circular(4.0),
-                color: kcTitleGradientRight,
-              ),
-              child: Text(
-                '\$20 Off',
-                style: GoogleFonts.openSans(
-                  fontWeight: FontWeight.w600,
-                  fontSize: getValueForScreenType(
-                    context: context,
-                    mobile: 12,
-                    tablet: 14,
-                    desktop: 14,
-                  ),
-                  height: 0.95,
-                ),
-              ),
-            ),
-            verticalSpaceTiny,
-            Text(
-              '1 Week only',
-              style: GoogleFonts.openSans(
-                fontWeight: FontWeight.w400,
-                fontSize: getValueForScreenType(
-                  context: context,
-                  mobile: 8,
-                  tablet: 12,
-                  desktop: 12,
-                ),
-                height: 0.95,
-              ),
-            ),
-          ],
-        )
-      ],
-    );
-  }
-}
-
-class _CourseChapterSignInButton
-    extends ViewModelWidget<CourseChapterViewModel> {
-  const _CourseChapterSignInButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, CourseChapterViewModel viewModel) {
-    return GestureDetector(
-      onTap: viewModel.signInWithGoogle,
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 40,
-          vertical: 10,
-        ),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: viewModel.isBusy
-            ? const CircularProgressIndicator(color: Colors.black)
-            : Text('Sign in to view',
-                style: GoogleFonts.openSans(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20,
-                )),
-      ),
-    ).showCursorOnHover;
   }
 }

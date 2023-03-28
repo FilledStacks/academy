@@ -8,21 +8,26 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../../models/models.dart';
 
-class CourseDetailsViewModel extends FutureViewModel<Course> {
+class CourseDetailsViewModel extends FutureViewModel<Course?> {
   final log = getLogger('CourseDetailsViewModel');
-  final _routerService = locator<RouterService>();
   final _courseService = locator<CourseService>();
+  final _routerService = locator<RouterService>();
 
   final String courseId;
-  Course? fetchedCourse;
-
   CourseDetailsViewModel({required this.courseId});
+
+  Course? fetchedCourse;
 
   bool get busyFetchingCourese => fetchedCourse == null;
 
   @override
-  Future<Course> futureToRun() async {
+  Future<Course?> futureToRun() async {
     fetchedCourse = await _courseService.getCourseForId(courseId);
+    if (fetchedCourse == null) {
+      await _routerService.replaceWith(const UnknownViewRoute());
+      return null;
+    }
+
     rebuildUi();
 
     final chapterId = _routerService.topRoute.pathParams.optString('chapterId');

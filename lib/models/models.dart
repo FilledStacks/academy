@@ -14,7 +14,9 @@ class Course with _$Course {
   factory Course({
     required String id,
     required String title,
+    String? description,
     required List<Module> modules,
+    @Default([]) List<String> perks,
   }) = _Course;
 
   factory Course.fromJson(Map<String, dynamic> json) => _$CourseFromJson(json);
@@ -23,6 +25,10 @@ class Course with _$Course {
       .map<List<Chapter>>((e) => List.from(e.chapters))
       .reduce((value, element) => value..addAll(element))
       .firstWhere((element) => element.id == chapterId);
+
+  bool get hasDescription => description != null;
+
+  bool get hasPerks => perks.isEmpty;
 }
 
 @freezed
