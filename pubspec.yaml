@@ -50,6 +50,10 @@ dependencies:
   cached_network_image: ^3.2.3
   shimmer: ^2.0.0
   flutter_animate: ^4.1.0
+  pod_player:
+    git:
+        url: https://github.com/ferrarafer/pod_player.git
+        ref: dev
 
 dev_dependencies:
   flutter_test:
