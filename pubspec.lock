@@ -771,10 +771,11 @@ packages:
   pod_player:
     dependency: "direct main"
     description:
-      name: pod_player
-      sha256: c11fb4481e0a6997eeb31cee098e3fd5a7266a0fb80f2433fe184e6c4428f6a3
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: dev
+      resolved-ref: "37cbdf8d127443945d403aef5d8edf1754d3a131"
+      url: "https://github.com/ferrarafer/pod_player.git"
+    source: git
     version: "0.1.0"
   pointycastle:
     dependency: transitive
