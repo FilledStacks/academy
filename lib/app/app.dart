@@ -36,9 +36,13 @@ import 'guards/auth_guard.dart';
             CustomRoute(page: CourseChapterView, path: ':chapterId'),
           ],
         ),
+        CustomRoute(
+          page: UserProfileView,
+          path: 'profile',
+          guards: [AuthGuard],
+        ),
       ],
     ),
-    CustomRoute(page: UserProfileView, path: '/profile', guards: [AuthGuard]),
     // @stacked-route
 
     CustomRoute(

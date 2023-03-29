@@ -19,12 +19,12 @@ import 'package:stacked_services/stacked_services.dart' as _i1;
 
 import '../models/models.dart' as _i12;
 import '../ui/views/course_chapter/course_chapter_view.dart' as _i8;
-import '../ui/views/course_details/course_details_view.dart' as _i7;
-import '../ui/views/course_landing/course_landing_view.dart' as _i6;
-import '../ui/views/home/home_view.dart' as _i5;
+import '../ui/views/course_details/course_details_view.dart' as _i6;
+import '../ui/views/course_landing/course_landing_view.dart' as _i5;
+import '../ui/views/home/home_view.dart' as _i4;
 import '../ui/views/main_layout/main_layout_view.dart' as _i2;
-import '../ui/views/unknown/unknown_view.dart' as _i4;
-import '../ui/views/user_profile/user_profile_view.dart' as _i3;
+import '../ui/views/unknown/unknown_view.dart' as _i3;
+import '../ui/views/user_profile/user_profile_view.dart' as _i7;
 import 'guards/auth_guard.dart' as _i11;
 
 final stackedRouter = StackedRouterWeb(
@@ -50,18 +50,10 @@ class StackedRouterWeb extends _i9.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    UserProfileViewRoute.name: (routeData) {
-      return _i9.CustomPage<dynamic>(
-        routeData: routeData,
-        child: const _i3.UserProfileView(),
-        opaque: true,
-        barrierDismissible: false,
-      );
-    },
     UnknownViewRoute.name: (routeData) {
       return _i9.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i4.UnknownView(),
+        child: const _i3.UnknownView(),
         transitionsBuilder: _i9.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -72,7 +64,7 @@ class StackedRouterWeb extends _i9.RootStackRouter {
           routeData.argsAs<HomeViewArgs>(orElse: () => const HomeViewArgs());
       return _i9.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i5.HomeView(key: args.key),
+        child: _i4.HomeView(key: args.key),
         transitionsBuilder: _i9.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -85,7 +77,7 @@ class StackedRouterWeb extends _i9.RootStackRouter {
               courseId: pathParams.getString('courseId')));
       return _i9.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i6.CourseLandingView(
+        child: _i5.CourseLandingView(
           key: args.key,
           courseId: args.courseId,
         ),
@@ -100,10 +92,18 @@ class StackedRouterWeb extends _i9.RootStackRouter {
               courseId: pathParams.getString('courseId')));
       return _i9.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i7.CourseDetailsView(
+        child: _i6.CourseDetailsView(
           key: args.key,
           courseId: args.courseId,
         ),
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    UserProfileViewRoute.name: (routeData) {
+      return _i9.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i7.UserProfileView(),
         opaque: true,
         barrierDismissible: false,
       );
@@ -154,12 +154,13 @@ class StackedRouterWeb extends _i9.RootStackRouter {
                 )
               ],
             ),
+            _i9.RouteConfig(
+              UserProfileViewRoute.name,
+              path: 'profile',
+              parent: MainLayoutViewRoute.name,
+              guards: [authGuard],
+            ),
           ],
-        ),
-        _i9.RouteConfig(
-          UserProfileViewRoute.name,
-          path: '/profile',
-          guards: [authGuard],
         ),
         _i9.RouteConfig(
           UnknownViewRoute.name,
@@ -188,19 +189,7 @@ class MainLayoutViewRoute extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.UserProfileView]
-class UserProfileViewRoute extends _i9.PageRouteInfo<void> {
-  const UserProfileViewRoute()
-      : super(
-          UserProfileViewRoute.name,
-          path: '/profile',
-        );
-
-  static const String name = 'UserProfileView';
-}
-
-/// generated route for
-/// [_i4.UnknownView]
+/// [_i3.UnknownView]
 class UnknownViewRoute extends _i9.PageRouteInfo<void> {
   const UnknownViewRoute()
       : super(
@@ -212,7 +201,7 @@ class UnknownViewRoute extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.HomeView]
+/// [_i4.HomeView]
 class HomeViewRoute extends _i9.PageRouteInfo<HomeViewArgs> {
   HomeViewRoute({_i10.Key? key})
       : super(
@@ -236,7 +225,7 @@ class HomeViewArgs {
 }
 
 /// generated route for
-/// [_i6.CourseLandingView]
+/// [_i5.CourseLandingView]
 class CourseLandingViewRoute extends _i9.PageRouteInfo<CourseLandingViewArgs> {
   CourseLandingViewRoute({
     _i10.Key? key,
@@ -271,7 +260,7 @@ class CourseLandingViewArgs {
 }
 
 /// generated route for
-/// [_i7.CourseDetailsView]
+/// [_i6.CourseDetailsView]
 class CourseDetailsViewRoute extends _i9.PageRouteInfo<CourseDetailsViewArgs> {
   CourseDetailsViewRoute({
     _i10.Key? key,
@@ -305,6 +294,18 @@ class CourseDetailsViewArgs {
   String toString() {
     return 'CourseDetailsViewArgs{key: $key, courseId: $courseId}';
   }
+}
+
+/// generated route for
+/// [_i7.UserProfileView]
+class UserProfileViewRoute extends _i9.PageRouteInfo<void> {
+  const UserProfileViewRoute()
+      : super(
+          UserProfileViewRoute.name,
+          path: 'profile',
+        );
+
+  static const String name = 'UserProfileView';
 }
 
 /// generated route for
