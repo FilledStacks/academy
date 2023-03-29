@@ -11,7 +11,7 @@ class CourseLandingView extends StackedView<CourseLandingViewModel> {
   final String courseId;
   const CourseLandingView({
     super.key,
-    @pathParam required this.courseId,
+    @queryParam this.courseId = 'flutter-web',
   });
 
   @override

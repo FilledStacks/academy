@@ -44,10 +44,13 @@ class StackedRouterWeb extends _i7.RootStackRouter {
       );
     },
     CourseLandingViewRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
+      final queryParams = routeData.queryParams;
       final args = routeData.argsAs<CourseLandingViewArgs>(
           orElse: () => CourseLandingViewArgs(
-              courseId: pathParams.getString('courseId')));
+                  courseId: queryParams.getString(
+                'courseId',
+                'flutter-web',
+              )));
       return _i7.CustomPage<dynamic>(
         routeData: routeData,
         child: _i3.CourseLandingView(
@@ -108,11 +111,11 @@ class StackedRouterWeb extends _i7.RootStackRouter {
         ),
         _i7.RouteConfig(
           CourseLandingViewRoute.name,
-          path: '/courses/:courseId',
+          path: '/courses',
         ),
         _i7.RouteConfig(
           CourseDetailsViewRoute.name,
-          path: '/courses/:courseId',
+          path: '/details/:courseId',
           children: [
             _i7.RouteConfig(
               CourseChapterViewRoute.name,
@@ -163,15 +166,15 @@ class HomeViewArgs {
 class CourseLandingViewRoute extends _i7.PageRouteInfo<CourseLandingViewArgs> {
   CourseLandingViewRoute({
     _i8.Key? key,
-    required String courseId,
+    String courseId = 'flutter-web',
   }) : super(
           CourseLandingViewRoute.name,
-          path: '/courses/:courseId',
+          path: '/courses',
           args: CourseLandingViewArgs(
             key: key,
             courseId: courseId,
           ),
-          rawPathParams: {'courseId': courseId},
+          rawQueryParams: {'courseId': courseId},
         );
 
   static const String name = 'CourseLandingView';
@@ -180,7 +183,7 @@ class CourseLandingViewRoute extends _i7.PageRouteInfo<CourseLandingViewArgs> {
 class CourseLandingViewArgs {
   const CourseLandingViewArgs({
     this.key,
-    required this.courseId,
+    this.courseId = 'flutter-web',
   });
 
   final _i8.Key? key;
@@ -202,7 +205,7 @@ class CourseDetailsViewRoute extends _i7.PageRouteInfo<CourseDetailsViewArgs> {
     List<_i7.PageRouteInfo>? children,
   }) : super(
           CourseDetailsViewRoute.name,
-          path: '/courses/:courseId',
+          path: '/details/:courseId',
           args: CourseDetailsViewArgs(
             key: key,
             courseId: courseId,
