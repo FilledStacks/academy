@@ -1,4 +1,5 @@
 import 'package:filledstacked_academy/ui/common/shared_styles.dart';
+import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
 import 'package:filledstacked_academy/ui/widgets/common/vimeo_player/vimeo_player.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,12 @@ class CourseLandingTrailer extends StatelessWidget {
         Positioned(
           left: 30,
           bottom: 30,
-          child: Text('MASTER\nFLUTTER\nON THE WEB', style: ktsTitle),
+          child: Text(
+            'MASTER\nFLUTTER\nON THE WEB',
+            style: ktsTitle.copyWith(
+              fontSize: getResponsiveFontSize(context, fontSize: 40),
+            ),
+          ),
         ),
       ],
     );

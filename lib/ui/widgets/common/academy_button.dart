@@ -1,5 +1,6 @@
 import 'package:filledstacked_academy/extensions/hover_extensions.dart';
 import 'package:filledstacked_academy/ui/common/shared_styles.dart';
+import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
 
 class AcademyButton extends StatelessWidget {
@@ -39,6 +40,7 @@ class AcademyButton extends StatelessWidget {
                     style: ktsBodyLarge.copyWith(
                       color: Colors.black,
                       fontWeight: FontWeight.w600,
+                      fontSize: getResponsiveFontSize(context, fontSize: 18),
                     ),
                   ),
           ),

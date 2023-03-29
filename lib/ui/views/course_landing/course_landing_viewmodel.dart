@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/app/app.router.dart';
@@ -14,6 +16,14 @@ class CourseLandingViewModel extends FutureViewModel {
 
   final String courseId;
   CourseLandingViewModel({required this.courseId});
+
+  static const List<String> _icons = [
+    'book',
+    'family',
+    'mermaid',
+  ];
+
+  final random = Random();
 
   Course? fetchedCourse;
 
@@ -50,5 +60,10 @@ class CourseLandingViewModel extends FutureViewModel {
     }
 
     return chapters;
+  }
+
+  String getRandomIconPath() {
+    final filename = _icons[random.nextInt(3)];
+    return 'assets/chapter_icons/$filename.png';
   }
 }

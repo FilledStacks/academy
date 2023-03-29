@@ -10,7 +10,7 @@ class ChapterCard extends StatelessWidget {
   final String title;
   final String description;
   final void Function()? onTap;
-  final Widget? icon;
+  final String? icon;
   const ChapterCard({
     Key? key,
     required this.position,
@@ -22,8 +22,6 @@ class ChapterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hasIcon = position.isEven;
-
     return GestureDetector(
       onTap: onTap,
       child: Stack(
@@ -47,25 +45,32 @@ class ChapterCard extends StatelessWidget {
                           kcTitleGradientRight
                         ],
                         position.toString().padLeft(2, '0'),
-                        style: ktsTitle.copyWith(fontSize: 24),
+                        style: ktsTitle.copyWith(
+                          fontSize: getResponsiveMediumFontSize(context),
+                        ),
                       ),
                       horizontalSpaceTiny,
                       Text(
                         title,
-                        style: ktsTitle.copyWith(fontSize: 24),
+                        style: ktsTitle.copyWith(
+                          fontSize: getResponsiveMediumFontSize(context),
+                        ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 19),
                   Text(
                     description,
-                    style: ktsBodyLarge.copyWith(color: kcCourseOverview),
+                    style: ktsBodyLarge.copyWith(
+                      color: kcCourseOverview,
+                      fontSize: getResponsiveSmallFontSize(context),
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-          if (hasIcon)
+          if (icon != null)
             Positioned(
               top: 0,
               left: 0,
@@ -76,7 +81,7 @@ class ChapterCard extends StatelessWidget {
                   maxWidth: 34,
                   maxHeight: 34,
                 ),
-                child: Image.asset('assets/chapter_icons/mermaid.png'),
+                child: Image.asset(icon!),
               ),
             ),
         ],

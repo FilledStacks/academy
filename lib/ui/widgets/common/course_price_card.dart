@@ -23,12 +23,7 @@ class CoursePriceCard extends StatelessWidget {
         Text(
           '\$$price',
           style: ktsTitle2.copyWith(
-            fontSize: getValueForScreenType(
-              context: context,
-              mobile: 50,
-              tablet: 72,
-              desktop: 72,
-            ),
+            fontSize: getResponsiveFontSize(context, fontSize: 40),
           ),
         ),
         horizontalSpaceSmall,
@@ -54,12 +49,7 @@ class CoursePriceCard extends StatelessWidget {
                 '\$$discountPrice Off',
                 style: ktsBodyRegular.copyWith(
                   fontWeight: FontWeight.w600,
-                  fontSize: getValueForScreenType(
-                    context: context,
-                    mobile: 12,
-                    tablet: 16,
-                    desktop: 16,
-                  ),
+                  fontSize: getResponsiveFontSize(context, fontSize: 10),
                 ),
               ),
             ),
@@ -68,12 +58,7 @@ class CoursePriceCard extends StatelessWidget {
               discountPeriod,
               style: ktsBodyRegular.copyWith(
                 fontWeight: FontWeight.w400,
-                fontSize: getValueForScreenType(
-                  context: context,
-                  mobile: 8,
-                  tablet: 12,
-                  desktop: 12,
-                ),
+                fontSize: getResponsiveFontSize(context, fontSize: 8),
               ),
             ),
           ],

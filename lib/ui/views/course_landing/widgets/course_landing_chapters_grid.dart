@@ -15,7 +15,12 @@ class CourseLandingChaptersGrid
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(ksCourseChapterGridTitle, style: ktsTitle2),
+        Text(
+          ksCourseChapterGridTitle,
+          style: ktsTitle2.copyWith(
+            fontSize: getResponsiveLargeFontSize(context),
+          ),
+        ),
         verticalSpaceMedium,
         GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -32,6 +37,7 @@ class CourseLandingChaptersGrid
             title: viewModel.chapters[index].title,
             description: viewModel.chapters[index].description,
             onTap: () => viewModel.navigateToChapter(viewModel.chapters[index]),
+            icon: viewModel.getRandomIconPath(),
           ),
         ),
       ],
