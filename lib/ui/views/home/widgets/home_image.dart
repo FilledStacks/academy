@@ -28,8 +28,6 @@ class HomeImage extends ViewModelWidget<HomeViewModel> {
           height: getValueForScreenType<double>(
             context: context,
             mobile: 650,
-            tablet: double.infinity,
-            desktop: double.infinity,
           ),
           placeholder: (context, url) => Shimmer.fromColors(
             baseColor: kcDarkGreyColor,
@@ -42,19 +40,7 @@ class HomeImage extends ViewModelWidget<HomeViewModel> {
           ),
           fit: BoxFit.cover,
         ),
-      )
-          .scaleOnHover()
-          .moveOnHover(
-            y: getValueForScreenType(
-                context: context, mobile: 10, tablet: -40, desktop: -40),
-            x: getValueForScreenType(
-              context: context,
-              mobile: -20,
-              tablet: 0,
-              desktop: 0,
-            ),
-          )
-          .showCursorOnHover,
+      ).showCursorOnHover,
     );
   }
 }

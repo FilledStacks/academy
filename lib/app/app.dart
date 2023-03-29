@@ -1,22 +1,23 @@
 import 'package:filledstacked_academy/services/course_service.dart';
 import 'package:filledstacked_academy/services/http_service.dart';
+import 'package:filledstacked_academy/services/user_service.dart';
 import 'package:filledstacked_academy/ui/views/course_chapter/course_chapter_view.dart';
 import 'package:filledstacked_academy/ui/views/course_details/course_details_view.dart';
-import 'package:filledstacked_academy/services/user_service.dart';
+import 'package:filledstacked_academy/ui/views/course_landing/course_landing_view.dart';
 import 'package:filledstacked_academy/ui/views/home/home_view.dart';
+import 'package:filledstacked_academy/ui/views/main_layout/main_layout_view.dart';
+import 'package:filledstacked_academy/ui/views/unknown/unknown_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:filledstacked_academy/ui/views/course_landing/course_landing_view.dart';
-import 'package:filledstacked_academy/ui/views/unknown/unknown_view.dart';
 // @stacked-import
 
 @StackedApp(
   routes: [
+    CustomRoute(page: MainLayoutView, initial: true),
     CustomRoute(
       page: HomeView,
-      initial: true,
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
     CustomRoute(page: CourseLandingView, path: '/courses/:courseId'),

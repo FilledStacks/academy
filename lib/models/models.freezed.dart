@@ -37,7 +37,13 @@ abstract class $CourseCopyWith<$Res> {
   factory $CourseCopyWith(Course value, $Res Function(Course) then) =
       _$CourseCopyWithImpl<$Res, Course>;
   @useResult
-  $Res call({String id, String readableId, String title, List<Module> modules});
+  $Res call(
+      {String id,
+      String readableId,
+      String title,
+      String? description,
+      List<Module> modules,
+      List<String> perks});
 }
 
 /// @nodoc
@@ -95,7 +101,13 @@ abstract class _$$_CourseCopyWith<$Res> implements $CourseCopyWith<$Res> {
       __$$_CourseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String readableId, String title, List<Module> modules});
+  $Res call(
+      {String id,
+      String readableId,
+      String title,
+      String? description,
+      List<Module> modules,
+      List<String> perks});
 }
 
 /// @nodoc
@@ -188,7 +200,7 @@ class _$_Course extends _Course {
 
   @override
   String toString() {
-    return 'Course(id: $id, readableId: $readableId, title: $title, modules: $modules)';
+    return 'Course(id: $id, readableId: $readableId, title: $title, description: $description, modules: $modules, perks: $perks)';
   }
 
   @override
@@ -208,8 +220,14 @@ class _$_Course extends _Course {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, readableId, title,
-      const DeepCollectionEquality().hash(_modules));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      readableId,
+      title,
+      description,
+      const DeepCollectionEquality().hash(_modules),
+      const DeepCollectionEquality().hash(_perks));
 
   @JsonKey(ignore: true)
   @override

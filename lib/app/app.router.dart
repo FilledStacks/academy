@@ -13,32 +13,41 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i8;
-import 'package:stacked/stacked.dart' as _i7;
+import 'package:flutter/material.dart' as _i9;
+import 'package:stacked/stacked.dart' as _i8;
 import 'package:stacked_services/stacked_services.dart' as _i1;
 
-import '../models/models.dart' as _i9;
-import '../ui/views/course_chapter/course_chapter_view.dart' as _i6;
-import '../ui/views/course_details/course_details_view.dart' as _i4;
-import '../ui/views/course_landing/course_landing_view.dart' as _i3;
-import '../ui/views/home/home_view.dart' as _i2;
-import '../ui/views/unknown/unknown_view.dart' as _i5;
+import '../models/models.dart' as _i10;
+import '../ui/views/course_chapter/course_chapter_view.dart' as _i7;
+import '../ui/views/course_details/course_details_view.dart' as _i5;
+import '../ui/views/course_landing/course_landing_view.dart' as _i4;
+import '../ui/views/home/home_view.dart' as _i3;
+import '../ui/views/main_layout/main_layout_view.dart' as _i2;
+import '../ui/views/unknown/unknown_view.dart' as _i6;
 
 final stackedRouter = StackedRouterWeb(_i1.StackedService.navigatorKey);
 
-class StackedRouterWeb extends _i7.RootStackRouter {
-  StackedRouterWeb([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])
+class StackedRouterWeb extends _i8.RootStackRouter {
+  StackedRouterWeb([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i7.PageFactory> pagesMap = {
+  final Map<String, _i8.PageFactory> pagesMap = {
+    MainLayoutViewRoute.name: (routeData) {
+      return _i8.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i2.MainLayoutView(),
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     HomeViewRoute.name: (routeData) {
       final args =
           routeData.argsAs<HomeViewArgs>(orElse: () => const HomeViewArgs());
-      return _i7.CustomPage<dynamic>(
+      return _i8.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i2.HomeView(key: args.key),
-        transitionsBuilder: _i7.TransitionsBuilders.fadeIn,
+        child: _i3.HomeView(key: args.key),
+        transitionsBuilder: _i8.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
       );
@@ -48,9 +57,9 @@ class StackedRouterWeb extends _i7.RootStackRouter {
       final args = routeData.argsAs<CourseLandingViewArgs>(
           orElse: () => CourseLandingViewArgs(
               courseId: pathParams.getString('courseId')));
-      return _i7.CustomPage<dynamic>(
+      return _i8.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i3.CourseLandingView(
+        child: _i4.CourseLandingView(
           key: args.key,
           courseId: args.courseId,
         ),
@@ -63,9 +72,9 @@ class StackedRouterWeb extends _i7.RootStackRouter {
       final args = routeData.argsAs<CourseDetailsViewArgs>(
           orElse: () => CourseDetailsViewArgs(
               courseId: pathParams.getString('courseId')));
-      return _i7.CustomPage<dynamic>(
+      return _i8.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i4.CourseDetailsView(
+        child: _i5.CourseDetailsView(
           key: args.key,
           courseId: args.courseId,
         ),
@@ -74,10 +83,10 @@ class StackedRouterWeb extends _i7.RootStackRouter {
       );
     },
     UnknownViewRoute.name: (routeData) {
-      return _i7.CustomPage<dynamic>(
+      return _i8.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i5.UnknownView(),
-        transitionsBuilder: _i7.TransitionsBuilders.fadeIn,
+        child: const _i6.UnknownView(),
+        transitionsBuilder: _i8.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
       );
@@ -87,9 +96,9 @@ class StackedRouterWeb extends _i7.RootStackRouter {
       final args = routeData.argsAs<CourseChapterViewArgs>(
           orElse: () => CourseChapterViewArgs(
               chapterId: pathParams.getString('chapterId')));
-      return _i7.CustomPage<dynamic>(
+      return _i8.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i6.CourseChapterView(
+        child: _i7.CourseChapterView(
           key: args.key,
           chapterId: args.chapterId,
           chapter: args.chapter,
@@ -101,31 +110,35 @@ class StackedRouterWeb extends _i7.RootStackRouter {
   };
 
   @override
-  List<_i7.RouteConfig> get routes => [
-        _i7.RouteConfig(
-          HomeViewRoute.name,
+  List<_i8.RouteConfig> get routes => [
+        _i8.RouteConfig(
+          MainLayoutViewRoute.name,
           path: '/',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
+          HomeViewRoute.name,
+          path: '/home-view',
+        ),
+        _i8.RouteConfig(
           CourseLandingViewRoute.name,
           path: '/courses/:courseId',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           CourseDetailsViewRoute.name,
           path: '/courses/:courseId',
           children: [
-            _i7.RouteConfig(
+            _i8.RouteConfig(
               CourseChapterViewRoute.name,
               path: ':chapterId',
               parent: CourseDetailsViewRoute.name,
             )
           ],
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           UnknownViewRoute.name,
           path: '/404',
         ),
-        _i7.RouteConfig(
+        _i8.RouteConfig(
           '*#redirect',
           path: '*',
           redirectTo: '/404',
@@ -135,12 +148,24 @@ class StackedRouterWeb extends _i7.RootStackRouter {
 }
 
 /// generated route for
-/// [_i2.HomeView]
-class HomeViewRoute extends _i7.PageRouteInfo<HomeViewArgs> {
-  HomeViewRoute({_i8.Key? key})
+/// [_i2.MainLayoutView]
+class MainLayoutViewRoute extends _i8.PageRouteInfo<void> {
+  const MainLayoutViewRoute()
+      : super(
+          MainLayoutViewRoute.name,
+          path: '/',
+        );
+
+  static const String name = 'MainLayoutView';
+}
+
+/// generated route for
+/// [_i3.HomeView]
+class HomeViewRoute extends _i8.PageRouteInfo<HomeViewArgs> {
+  HomeViewRoute({_i9.Key? key})
       : super(
           HomeViewRoute.name,
-          path: '/',
+          path: '/home-view',
           args: HomeViewArgs(key: key),
         );
 
@@ -150,7 +175,7 @@ class HomeViewRoute extends _i7.PageRouteInfo<HomeViewArgs> {
 class HomeViewArgs {
   const HomeViewArgs({this.key});
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   @override
   String toString() {
@@ -159,10 +184,10 @@ class HomeViewArgs {
 }
 
 /// generated route for
-/// [_i3.CourseLandingView]
-class CourseLandingViewRoute extends _i7.PageRouteInfo<CourseLandingViewArgs> {
+/// [_i4.CourseLandingView]
+class CourseLandingViewRoute extends _i8.PageRouteInfo<CourseLandingViewArgs> {
   CourseLandingViewRoute({
-    _i8.Key? key,
+    _i9.Key? key,
     required String courseId,
   }) : super(
           CourseLandingViewRoute.name,
@@ -183,7 +208,7 @@ class CourseLandingViewArgs {
     required this.courseId,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   final String courseId;
 
@@ -194,12 +219,12 @@ class CourseLandingViewArgs {
 }
 
 /// generated route for
-/// [_i4.CourseDetailsView]
-class CourseDetailsViewRoute extends _i7.PageRouteInfo<CourseDetailsViewArgs> {
+/// [_i5.CourseDetailsView]
+class CourseDetailsViewRoute extends _i8.PageRouteInfo<CourseDetailsViewArgs> {
   CourseDetailsViewRoute({
-    _i8.Key? key,
+    _i9.Key? key,
     required String courseId,
-    List<_i7.PageRouteInfo>? children,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
           CourseDetailsViewRoute.name,
           path: '/courses/:courseId',
@@ -220,7 +245,7 @@ class CourseDetailsViewArgs {
     required this.courseId,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   final String courseId;
 
@@ -231,8 +256,8 @@ class CourseDetailsViewArgs {
 }
 
 /// generated route for
-/// [_i5.UnknownView]
-class UnknownViewRoute extends _i7.PageRouteInfo<void> {
+/// [_i6.UnknownView]
+class UnknownViewRoute extends _i8.PageRouteInfo<void> {
   const UnknownViewRoute()
       : super(
           UnknownViewRoute.name,
@@ -243,12 +268,12 @@ class UnknownViewRoute extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.CourseChapterView]
-class CourseChapterViewRoute extends _i7.PageRouteInfo<CourseChapterViewArgs> {
+/// [_i7.CourseChapterView]
+class CourseChapterViewRoute extends _i8.PageRouteInfo<CourseChapterViewArgs> {
   CourseChapterViewRoute({
-    _i8.Key? key,
+    _i9.Key? key,
     required String chapterId,
-    _i9.Chapter? chapter,
+    _i10.Chapter? chapter,
   }) : super(
           CourseChapterViewRoute.name,
           path: ':chapterId',
@@ -270,11 +295,11 @@ class CourseChapterViewArgs {
     this.chapter,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   final String chapterId;
 
-  final _i9.Chapter? chapter;
+  final _i10.Chapter? chapter;
 
   @override
   String toString() {
