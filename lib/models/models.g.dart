@@ -8,6 +8,7 @@ part of 'models.dart';
 
 _$_Course _$$_CourseFromJson(Map<String, dynamic> json) => _$_Course(
       id: json['id'] as String,
+      readableId: json['readableId'] as String,
       title: json['title'] as String,
       description: json['description'] as String?,
       modules: (json['modules'] as List<dynamic>)
@@ -20,6 +21,7 @@ _$_Course _$$_CourseFromJson(Map<String, dynamic> json) => _$_Course(
 
 Map<String, dynamic> _$$_CourseToJson(_$_Course instance) => <String, dynamic>{
       'id': instance.id,
+      'readableId': instance.readableId,
       'title': instance.title,
       'description': instance.description,
       'modules': instance.modules,

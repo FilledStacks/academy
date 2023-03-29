@@ -21,6 +21,7 @@ Course _$CourseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Course {
   String get id => throw _privateConstructorUsedError;
+  String get readableId => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   List<Module> get modules => throw _privateConstructorUsedError;
@@ -36,12 +37,7 @@ abstract class $CourseCopyWith<$Res> {
   factory $CourseCopyWith(Course value, $Res Function(Course) then) =
       _$CourseCopyWithImpl<$Res, Course>;
   @useResult
-  $Res call(
-      {String id,
-      String title,
-      String? description,
-      List<Module> modules,
-      List<String> perks});
+  $Res call({String id, String readableId, String title, List<Module> modules});
 }
 
 /// @nodoc
@@ -58,6 +54,7 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
   @override
   $Res call({
     Object? id = null,
+    Object? readableId = null,
     Object? title = null,
     Object? description = freezed,
     Object? modules = null,
@@ -67,6 +64,10 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      readableId: null == readableId
+          ? _value.readableId
+          : readableId // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
           ? _value.title
@@ -94,12 +95,7 @@ abstract class _$$_CourseCopyWith<$Res> implements $CourseCopyWith<$Res> {
       __$$_CourseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String title,
-      String? description,
-      List<Module> modules,
-      List<String> perks});
+  $Res call({String id, String readableId, String title, List<Module> modules});
 }
 
 /// @nodoc
@@ -113,6 +109,7 @@ class __$$_CourseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? readableId = null,
     Object? title = null,
     Object? description = freezed,
     Object? modules = null,
@@ -122,6 +119,10 @@ class __$$_CourseCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      readableId: null == readableId
+          ? _value.readableId
+          : readableId // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
           ? _value.title
@@ -148,6 +149,7 @@ class __$$_CourseCopyWithImpl<$Res>
 class _$_Course extends _Course {
   _$_Course(
       {required this.id,
+      required this.readableId,
       required this.title,
       this.description,
       required final List<Module> modules,
@@ -161,6 +163,8 @@ class _$_Course extends _Course {
 
   @override
   final String id;
+  @override
+  final String readableId;
   @override
   final String title;
   @override
@@ -184,7 +188,7 @@ class _$_Course extends _Course {
 
   @override
   String toString() {
-    return 'Course(id: $id, title: $title, description: $description, modules: $modules, perks: $perks)';
+    return 'Course(id: $id, readableId: $readableId, title: $title, modules: $modules)';
   }
 
   @override
@@ -193,6 +197,8 @@ class _$_Course extends _Course {
         (other.runtimeType == runtimeType &&
             other is _$_Course &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.readableId, readableId) ||
+                other.readableId == readableId) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -202,13 +208,8 @@ class _$_Course extends _Course {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      title,
-      description,
-      const DeepCollectionEquality().hash(_modules),
-      const DeepCollectionEquality().hash(_perks));
+  int get hashCode => Object.hash(runtimeType, id, readableId, title,
+      const DeepCollectionEquality().hash(_modules));
 
   @JsonKey(ignore: true)
   @override
@@ -227,6 +228,7 @@ class _$_Course extends _Course {
 abstract class _Course extends Course {
   factory _Course(
       {required final String id,
+      required final String readableId,
       required final String title,
       final String? description,
       required final List<Module> modules,
@@ -237,6 +239,8 @@ abstract class _Course extends Course {
 
   @override
   String get id;
+  @override
+  String get readableId;
   @override
   String get title;
   @override

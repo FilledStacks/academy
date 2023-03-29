@@ -13,6 +13,7 @@ class Course with _$Course {
 
   factory Course({
     required String id,
+    required String readableId,
     required String title,
     String? description,
     required List<Module> modules,
