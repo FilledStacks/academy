@@ -11,6 +11,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:filledstacked_academy/services/layout_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -52,7 +53,8 @@ import 'package:stacked_services/stacked_services.dart';
     LazySingleton(classType: CourseService),
     LazySingleton(classType: FirebaseAuthenticationService),
     LazySingleton(classType: UserService),
-    // @stacked-service
+    LazySingleton(classType: LayoutService),
+// @stacked-service
   ],
   logger: StackedLogger(),
 )

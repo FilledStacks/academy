@@ -18,25 +18,28 @@ class CourseDetailsViewDesktop extends ViewModelWidget<CourseDetailsViewModel> {
 
   @override
   Widget build(BuildContext context, CourseDetailsViewModel viewModel) {
-    return Row(
-      children: [
-        SizedBox(
-          height: 900,
-          child: _SideSelectionList(
-            busy: viewModel.isBusy,
-            items: viewModel.sidebarItems,
-            isItemSelected: viewModel.isSidebarItemSelected,
+    return Padding(
+      padding: const EdgeInsets.all(40),
+      child: Row(
+        children: [
+          SizedBox(
+            height: 900,
+            child: _SideSelectionList(
+              busy: viewModel.isBusy,
+              items: viewModel.sidebarItems,
+              isItemSelected: viewModel.isSidebarItemSelected,
+            ),
           ),
-        ),
-        Expanded(
-            child: Stack(
-          children: [
-            const NestedRouter(),
-            if (viewModel.busyFetchingCourese)
-              const Center(child: CircularProgressIndicator())
-          ],
-        ))
-      ],
+          Expanded(
+              child: Stack(
+            children: [
+              const NestedRouter(),
+              if (viewModel.busyFetchingCourese)
+                const Center(child: CircularProgressIndicator())
+            ],
+          ))
+        ],
+      ),
     );
   }
 }

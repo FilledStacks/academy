@@ -11,6 +11,7 @@ import 'package:filledstacked_academy/models/models.dart' as _i14;
 import 'package:filledstacked_academy/models/user/user.dart' as _i3;
 import 'package:filledstacked_academy/services/course_service.dart' as _i13;
 import 'package:filledstacked_academy/services/http_service.dart' as _i12;
+import 'package:filledstacked_academy/services/layout_service.dart' as _i18;
 import 'package:filledstacked_academy/services/user_service.dart' as _i15;
 import 'package:flutter/material.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
@@ -680,3 +681,8 @@ class MockUserService extends _i1.Mock implements _i15.UserService {
         returnValueForMissingStub: null,
       );
 }
+
+/// A class which mocks [LayoutService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockLayoutService extends _i1.Mock implements _i18.LayoutService {}

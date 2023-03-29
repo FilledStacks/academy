@@ -6,6 +6,7 @@ import 'package:filledstacked_academy/services/user_service.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:filledstacked_academy/services/layout_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -17,6 +18,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<HttpService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<CourseService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<UserService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<LayoutService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -26,6 +28,7 @@ void registerServices() {
   getAndRegisterHttpService();
   getAndRegisterCourseService();
   getAndRegisterUserService();
+  getAndRegisterLayoutService();
 // @stacked-mock-register
 }
 
@@ -112,6 +115,13 @@ MockUserService getAndRegisterUserService() {
   _removeRegistrationIfExists<UserService>();
   final service = MockUserService();
   locator.registerSingleton<UserService>(service);
+  return service;
+}
+
+MockLayoutService getAndRegisterLayoutService() {
+  _removeRegistrationIfExists<LayoutService>();
+  final service = MockLayoutService();
+  locator.registerSingleton<LayoutService>(service);
   return service;
 }
 // @stacked-mock-create

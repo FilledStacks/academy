@@ -24,17 +24,17 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
             children: [
               SizedBox(
                 height: 90,
-                child: Row(children: const [
-                  AcademyIcon(),
+                child: Row(children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: viewModel.contentWidth == null ? 40 : 0),
+                    child: const AcademyIcon(),
+                  ),
                 ]),
               ),
               ConstrainedBox(
                 constraints: const BoxConstraints.tightFor(height: 900),
-                child: NestedRouter(
-                  navigatorObservers: () => [
-                    RebuildObserver(viewModel),
-                  ],
-                ),
+                child: const NestedRouter(),
               )
             ],
           ),
@@ -48,16 +48,4 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
     BuildContext context,
   ) =>
       MainLayoutViewModel();
-}
-
-class RebuildObserver extends RouteObserver {
-  final MainLayoutViewModel viewModel;
-
-  RebuildObserver(this.viewModel);
-
-  @override
-  void didPush(Route route, Route? previousRoute) {
-    viewModel.rebuildUi();
-    print('REBUILD UI =====> ');
-  }
 }

@@ -2,6 +2,7 @@ import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/app/app.router.dart';
 import 'package:filledstacked_academy/services/course_service.dart';
+import 'package:filledstacked_academy/services/layout_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -12,6 +13,7 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
   final log = getLogger('CourseDetailsViewModel');
   final _courseService = locator<CourseService>();
   final _routerService = locator<RouterService>();
+  final _layouService = locator<LayoutService>();
 
   final String courseId;
   CourseDetailsViewModel({required this.courseId});
@@ -73,4 +75,7 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
     final id = _routerService.topRoute.pathParams.optString('chapterId');
     return id == null ? false : sideBarItem.isSelected(id);
   }
+
+  void enterFullscreen() => _layouService.enterFullScreen();
+  void exitFullscreen() => _layouService.exitFullScreen();
 }

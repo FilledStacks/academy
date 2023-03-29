@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
@@ -31,4 +32,18 @@ class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
     BuildContext context,
   ) =>
       CourseDetailsViewModel(courseId: courseId);
+
+  @override
+  void onViewModelReady(CourseDetailsViewModel viewModel) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      viewModel.enterFullscreen();
+    });
+  }
+
+  @override
+  void onDispose(CourseDetailsViewModel viewModel) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      viewModel.exitFullscreen();
+    });
+  }
 }
