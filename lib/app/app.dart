@@ -15,17 +15,23 @@ import 'package:stacked_services/stacked_services.dart';
 
 @StackedApp(
   routes: [
-    CustomRoute(page: MainLayoutView, initial: true),
     CustomRoute(
-      page: HomeView,
-      transitionsBuilder: TransitionsBuilders.fadeIn,
-    ),
-    CustomRoute(page: CourseLandingView, path: '/courses/:courseId'),
-    CustomRoute(
-      page: CourseDetailsView,
-      path: '/courses/:courseId',
+      page: MainLayoutView,
+      initial: true,
       children: [
-        CustomRoute(page: CourseChapterView, path: ':chapterId'),
+        CustomRoute(
+          path: '',
+          page: HomeView,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+        CustomRoute(page: CourseLandingView, path: 'courses/:courseId'),
+        CustomRoute(
+          page: CourseDetailsView,
+          path: 'details/:courseId',
+          children: [
+            CustomRoute(page: CourseChapterView, path: ':chapterId'),
+          ],
+        ),
       ],
     ),
     CustomRoute(

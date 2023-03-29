@@ -11,31 +11,32 @@ import 'course_details_viewmodel.dart';
 
 part '_widgets.dart';
 
-const double kdSidebarWidth = 450;
+const double kdSidebarWidth = 350;
 
 class CourseDetailsViewDesktop extends ViewModelWidget<CourseDetailsViewModel> {
   const CourseDetailsViewDesktop({super.key});
 
   @override
   Widget build(BuildContext context, CourseDetailsViewModel viewModel) {
-    return Scaffold(
-        backgroundColor: kcBackgroundColor,
-        body: Row(
+    return Row(
+      children: [
+        SizedBox(
+          height: 900,
+          child: _SideSelectionList(
+            busy: viewModel.isBusy,
+            items: viewModel.sidebarItems,
+            isItemSelected: viewModel.isSidebarItemSelected,
+          ),
+        ),
+        Expanded(
+            child: Stack(
           children: [
-            _SideSelectionList(
-              busy: viewModel.isBusy,
-              items: viewModel.sidebarItems,
-              isItemSelected: viewModel.isSidebarItemSelected,
-            ),
-            Expanded(
-                child: Stack(
-              children: [
-                const NestedRouter(),
-                if (viewModel.busyFetchingCourese)
-                  const Center(child: CircularProgressIndicator())
-              ],
-            ))
+            const NestedRouter(),
+            if (viewModel.busyFetchingCourese)
+              const Center(child: CircularProgressIndicator())
           ],
-        ));
+        ))
+      ],
+    );
   }
 }

@@ -19,7 +19,6 @@ class _SideSelectionList extends StatelessWidget {
               child: CircularProgressIndicator(),
             )
           : ListView.separated(
-              padding: const EdgeInsets.all(60),
               itemCount: items.length,
               separatorBuilder: (context, index) {
                 return SizedBox(

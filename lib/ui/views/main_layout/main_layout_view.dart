@@ -1,6 +1,4 @@
 import 'package:filledstacked_academy/ui/common/app_colors.dart';
-import 'package:filledstacked_academy/ui/common/app_constants.dart';
-import 'package:filledstacked_academy/ui/views/course_landing/course_landing_view.dart';
 import 'package:filledstacked_academy/ui/widgets/common/academy_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -21,7 +19,7 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
       body: Center(
         child: SizedBox(
           height: 1400,
-          width: kdDesktopMaxContentWidth,
+          width: viewModel.contentWidth,
           child: ListView(
             children: [
               SizedBox(
@@ -30,19 +28,14 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
                   AcademyIcon(),
                 ]),
               ),
-              const CourseLandingView(
-                courseId: 'flutter-web',
-              ),
-              Container(
-                  height: 150,
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('Copyright © ${DateTime.now().year}'),
-                      const Text('Created and presented by Dane Mackier'),
-                    ],
-                  )),
+              ConstrainedBox(
+                constraints: const BoxConstraints.tightFor(height: 900),
+                child: NestedRouter(
+                  navigatorObservers: () => [
+                    RebuildObserver(viewModel),
+                  ],
+                ),
+              )
             ],
           ),
         ),
@@ -55,4 +48,16 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
     BuildContext context,
   ) =>
       MainLayoutViewModel();
+}
+
+class RebuildObserver extends RouteObserver {
+  final MainLayoutViewModel viewModel;
+
+  RebuildObserver(this.viewModel);
+
+  @override
+  void didPush(Route route, Route? previousRoute) {
+    viewModel.rebuildUi();
+    print('REBUILD UI =====> ');
+  }
 }
