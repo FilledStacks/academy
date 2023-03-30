@@ -1,0 +1,18 @@
+import 'package:filledstacked_academy/app/app.locator.dart';
+import 'package:filledstacked_academy/app/app.logger.dart';
+import 'package:filledstacked_academy/services/user_service.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:stacked/stacked.dart';
+
+class MenuButtonViewModel extends BaseViewModel {
+  final log = getLogger('MenuButtoViewModel');
+  final _userService = locator<UserService>();
+
+  Future<void> logout() async {
+    log.v('');
+    setBusy(true);
+    await _userService.logout();
+    await Future.delayed(2.seconds);
+    setBusy(false);
+  }
+}
