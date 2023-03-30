@@ -11,12 +11,13 @@ typedef AppUser = academy.User;
 typedef FirebaseUser = User;
 
 class UserService with ListenableServiceMixin {
-  final _log = getLogger('UserService');
+  final log = getLogger('UserService');
   final _authenticationService = locator<FirebaseAuthenticationService>();
 
   UserService() {
-    listenToReactiveValues([_currentUser]);
-    _authenticationService.firebaseAuth.authStateChanges().listen(_restoreUser);
+    _setUserFromFirebaseAuth(
+      firebaseUser: _authenticationService.firebaseAuth.currentUser,
+    );
   }
 
   AppUser? _currentUser;
@@ -24,21 +25,23 @@ class UserService with ListenableServiceMixin {
 
   bool get hasUser => _currentUser != null;
 
-  /// Restore User from Firebase Auth on authStateChanges
-  void _restoreUser(FirebaseUser? user) {
-    if (user == null) {
-      _log.i('User is currently signed out!');
-      return;
+  bool get hasFirebaseUser =>
+      _authenticationService.firebaseAuth.currentUser != null;
+
+  /// Sets User from FirebaseAuth
+  void _setUserFromFirebaseAuth({FirebaseUser? firebaseUser}) {
+    if (firebaseUser == null) {
+      _currentUser = null;
+    } else {
+      _currentUser = _extractUserFromFirebaseUser(firebaseUser);
     }
 
-    _currentUser = _extractUserFromFirebaseUser(user);
-    _log.d('User is signed in, currentUser:$currentUser');
     notifyListeners();
   }
 
   /// Authenticates a User through Firebase using Google Provider.
   Future<SignInResult> signInWithGoogle() async {
-    _log.i('Google sign in initialized');
+    log.i('Google sign in initialized');
     final result = await _authenticationService.signInWithGoogle();
     return handleSocialSignInResult(result);
   }
@@ -54,17 +57,17 @@ class UserService with ListenableServiceMixin {
     );
 
     try {
-      _currentUser = _extractUserFromFirebaseUser(result.user!);
+      _setUserFromFirebaseAuth(firebaseUser: result.user);
 
       if (result.additionalUserInfo?.isNewUser ?? false) {
-        _log.v('Current signed up user: $_currentUser');
+        log.v('Current signed up user: $_currentUser');
         return SignInResult.createdAccount;
       }
 
-      _log.v('Current signed in user: $_currentUser');
+      log.v('Current signed in user: $_currentUser');
       return SignInResult.login;
     } catch (e) {
-      _log.d('No profile found for user');
+      log.d('No profile found for user');
       return SignInResult.failure;
     }
   }
@@ -94,9 +97,9 @@ class UserService with ListenableServiceMixin {
 
   /// Signs out User from Firebase and clear [_currentUser]
   Future<void> logout() async {
-    _log.i('');
+    log.i('');
 
     await _authenticationService.logout();
-    _currentUser = null;
+    _setUserFromFirebaseAuth();
   }
 }

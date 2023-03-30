@@ -7,12 +7,15 @@ import 'package:filledstacked_academy/ui/views/course_landing/course_landing_vie
 import 'package:filledstacked_academy/ui/views/home/home_view.dart';
 import 'package:filledstacked_academy/ui/views/main_layout/main_layout_view.dart';
 import 'package:filledstacked_academy/ui/views/unknown/unknown_view.dart';
+import 'package:filledstacked_academy/ui/views/user_profile/user_profile_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:filledstacked_academy/services/layout_service.dart';
 // @stacked-import
+
+import 'guards/auth_guard.dart';
 
 @StackedApp(
   routes: [
@@ -33,8 +36,15 @@ import 'package:filledstacked_academy/services/layout_service.dart';
             CustomRoute(page: CourseChapterView, path: ':chapterId'),
           ],
         ),
+        CustomRoute(
+          page: UserProfileView,
+          path: 'profile',
+          guards: [AuthGuard],
+        ),
       ],
     ),
+    // @stacked-route
+
     CustomRoute(
       page: UnknownView,
       path: '/404',
@@ -43,7 +53,6 @@ import 'package:filledstacked_academy/services/layout_service.dart';
 
     /// When none of the above routes match, redirect to UnknownView
     RedirectRoute(path: '*', redirectTo: '/404'),
-// @stacked-route
   ],
   dependencies: [
     LazySingleton(classType: RouterService),
