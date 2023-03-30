@@ -1,4 +1,5 @@
 import 'package:filledstacked_academy/ui/common/app_colors.dart';
+import 'package:filledstacked_academy/ui/views/main_layout/widgets/menu_button.dart';
 import 'package:filledstacked_academy/ui/widgets/common/academy_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -24,13 +25,17 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
             children: [
               SizedBox(
                 height: 90,
-                child: Row(children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: viewModel.contentWidth == null ? 40 : 0),
-                    child: const AcademyIcon(),
-                  ),
-                ]),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal:
+                                viewModel.contentWidth == null ? 40 : 0),
+                        child: const AcademyIcon(),
+                      ),
+                      const MenuButton(),
+                    ]),
               ),
               ConstrainedBox(
                 constraints: const BoxConstraints.tightFor(height: 900),
