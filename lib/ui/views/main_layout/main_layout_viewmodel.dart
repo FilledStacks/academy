@@ -1,5 +1,6 @@
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
+import 'package:filledstacked_academy/app/app.router.dart';
 import 'package:filledstacked_academy/services/layout_service.dart';
 import 'package:filledstacked_academy/ui/common/app_constants.dart';
 import 'package:stacked/stacked.dart';
@@ -16,5 +17,9 @@ class MainLayoutViewModel extends ReactiveViewModel {
 
   double? get contentWidth {
     return layoutService.fullScreenMode ? null : kdDesktopMaxContentWidth;
+  }
+
+  Future<void> navigateToHome() async {
+    await routerService.clearStackAndShow(HomeViewRoute());
   }
 }
