@@ -1,18 +1,10 @@
-import 'package:flutter/foundation.dart';
-
 import 'native_interaction_other.dart'
     if (dart.library.js) 'native_interaction_web.dart';
 
 class NativeInteractionService implements NativeInteractionsInterface {
   static NativeInteractionsInterface? _instance;
   static NativeInteractionsInterface get instance {
-    if (_instance == null) {
-      if (kIsWeb) {
-        _instance = NativeInteractionImplementation();
-      } else {
-        _instance = NativeInteractionImplementation();
-      }
-    }
+    _instance ??= NativeInteractionImplementation();
 
     return _instance!;
   }
