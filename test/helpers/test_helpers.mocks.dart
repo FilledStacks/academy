@@ -9,6 +9,7 @@ import 'dart:ui' as _i11;
 import 'package:filledstacked_academy/enums/sign_in_result.dart' as _i18;
 import 'package:filledstacked_academy/models/models.dart' as _i16;
 import 'package:filledstacked_academy/models/user/user.dart' as _i3;
+<<<<<<< HEAD
 import 'package:filledstacked_academy/services/analytics_service.dart' as _i21;
 import 'package:filledstacked_academy/services/course_service.dart' as _i15;
 import 'package:filledstacked_academy/services/google_cloud_logger_service.dart'
@@ -20,6 +21,15 @@ import 'package:firebase_analytics/firebase_analytics.dart' as _i4;
 import 'package:flutter/material.dart' as _i8;
 import 'package:googleapis/logging/v2.dart' as _i5;
 import 'package:logger/logger.dart' as _i23;
+=======
+import 'package:filledstacked_academy/services/course_service.dart' as _i13;
+import 'package:filledstacked_academy/services/http_service.dart' as _i12;
+import 'package:filledstacked_academy/services/layout_service.dart' as _i18;
+import 'package:filledstacked_academy/services/native_interaction_mobile.dart'
+    as _i19;
+import 'package:filledstacked_academy/services/user_service.dart' as _i15;
+import 'package:flutter/material.dart' as _i6;
+>>>>>>> 9bbe50e (Refactors javascript -> dart code)
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked/stacked.dart' as _i2;
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart' as _i19;
@@ -783,6 +793,7 @@ class MockLayoutService extends _i1.Mock implements _i20.LayoutService {
       );
 }
 
+<<<<<<< HEAD
 /// A class which mocks [AnalyticsService].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -959,10 +970,24 @@ class MockGoogleCloudLoggerService extends _i1.Mock
   @override
   String get projectId => (super.noSuchMethod(
         Invocation.getter(#projectId),
+=======
+/// A class which mocks [NativeInteractionService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockNativeInteractionService extends _i1.Mock
+    implements _i19.NativeInteractionService {
+  @override
+  String getPlatformFromJS() => (super.noSuchMethod(
+        Invocation.method(
+          #getPlatformFromJS,
+          [],
+        ),
+>>>>>>> 9bbe50e (Refactors javascript -> dart code)
         returnValue: '',
         returnValueForMissingStub: '',
       ) as String);
   @override
+<<<<<<< HEAD
   String get environment => (super.noSuchMethod(
         Invocation.getter(#environment),
         returnValue: '',
@@ -1015,4 +1040,23 @@ class MockGoogleCloudLoggerService extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+=======
+  _i5.Future<String> callJSPromise() => (super.noSuchMethod(
+        Invocation.method(
+          #callJSPromise,
+          [],
+        ),
+        returnValue: _i5.Future<String>.value(''),
+        returnValueForMissingStub: _i5.Future<String>.value(''),
+      ) as _i5.Future<String>);
+  @override
+  _i5.Future<String> callOpenTab() => (super.noSuchMethod(
+        Invocation.method(
+          #callOpenTab,
+          [],
+        ),
+        returnValue: _i5.Future<String>.value(''),
+        returnValueForMissingStub: _i5.Future<String>.value(''),
+      ) as _i5.Future<String>);
+>>>>>>> 9bbe50e (Refactors javascript -> dart code)
 }

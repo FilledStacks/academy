@@ -76,3 +76,15 @@ class Chapter with _$Chapter implements SideBarItem {
   @override
   bool isSelected(String id) => this.id == id;
 }
+
+@freezed
+class BrowserUser with _$BrowserUser {
+  factory BrowserUser({
+    required String name,
+    required String id,
+    required String email,
+  }) = _BrowserUser;
+
+  factory BrowserUser.fromJson(Map<String, dynamic> json) =>
+      _$BrowserUserFromJson(json);
+}

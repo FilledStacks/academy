@@ -1,14 +1,17 @@
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/models/models.dart';
-import 'package:filledstacked_academy/services/http_service.dart';
+import 'package:filledstacked_academy/services/analytics_service.dart';
 import 'package:filledstacked_academy/services/course_service.dart';
+import 'package:filledstacked_academy/services/google_cloud_logger_service.dart';
+import 'package:filledstacked_academy/services/http_service.dart';
+import 'package:filledstacked_academy/services/layout_service.dart';
+import 'package:filledstacked_academy/services/layout_service.dart';
+import 'package:filledstacked_academy/services/native_interaction_service.dart';
 import 'package:filledstacked_academy/services/user_service.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:filledstacked_academy/services/layout_service.dart';
-import 'package:filledstacked_academy/services/analytics_service.dart';
-import 'package:filledstacked_academy/services/google_cloud_logger_service.dart';
+
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -24,6 +27,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<AnalyticsService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<GoogleCloudLoggerService>(
       onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<NativeInteractionService>(onMissingStub: OnMissingStub.returnDefault)
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -36,6 +40,7 @@ void registerServices() {
   getAndRegisterLayoutService();
   getAndRegisterAnalyticsService();
   getAndRegisterGoogleCloudLoggerService();
+  getAndRegisterNativeInteractionService();
 // @stacked-mock-register
 }
 
@@ -143,6 +148,13 @@ MockGoogleCloudLoggerService getAndRegisterGoogleCloudLoggerService() {
   _removeRegistrationIfExists<GoogleCloudLoggerService>();
   final service = MockGoogleCloudLoggerService();
   locator.registerSingleton<GoogleCloudLoggerService>(service);
+  return service;
+}
+
+MockNativeInteractionService getAndRegisterNativeInteractionService() {
+  _removeRegistrationIfExists<NativeInteractionService>();
+  final service = MockNativeInteractionService();
+  locator.registerSingleton<NativeInteractionService>(service);
   return service;
 }
 // @stacked-mock-create

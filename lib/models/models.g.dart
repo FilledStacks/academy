@@ -62,3 +62,17 @@ Map<String, dynamic> _$$_ChapterToJson(_$_Chapter instance) =>
       'videoUrl': instance.videoUrl,
       'writtenContent': instance.writtenContent,
     };
+
+_$_BrowserUser _$$_BrowserUserFromJson(Map<String, dynamic> json) =>
+    _$_BrowserUser(
+      name: json['name'] as String,
+      id: json['id'] as String,
+      email: json['email'] as String,
+    );
+
+Map<String, dynamic> _$$_BrowserUserToJson(_$_BrowserUser instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'id': instance.id,
+      'email': instance.email,
+    };

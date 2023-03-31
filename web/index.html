@@ -48,7 +48,6 @@
 
 <body>
   <style>
-    
     body {
       background-color: #0A0A0A;
       height: 100vh;
@@ -136,7 +135,23 @@
       border-radius: 50%;
     }
   </style>
+  <script src="appFunctions.js" defer></script>
   <script>
+    function alertMessage(text) {
+      alert(text);
+    }
+
+    window.browser_user = {
+      name: 'Dane Mackier',
+      id: '123asd132',
+      email: 'dane@filledstacks.com',
+    }
+
+    window.logger = (flutter_value) => {
+      console.log({ js_context: this, flutter_value });
+    };
+
+
     function delay(time) {
       return new Promise(resolve => setTimeout(resolve, time));
     }

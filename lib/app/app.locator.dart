@@ -17,6 +17,7 @@ import '../services/course_service.dart';
 import '../services/google_cloud_logger_service.dart';
 import '../services/http_service.dart';
 import '../services/layout_service.dart';
+import '../services/native_interaction_web.dart';
 import '../services/user_service.dart';
 import 'app.router.dart';
 
@@ -40,8 +41,12 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => FirebaseAuthenticationService());
   locator.registerLazySingleton(() => UserService());
   locator.registerLazySingleton(() => LayoutService());
+<<<<<<< HEAD
   locator.registerLazySingleton(() => AnalyticsService());
   locator.registerLazySingleton(() => GoogleCloudLoggerService());
+=======
+  locator.registerLazySingleton(() => NativeInteractionService());
+>>>>>>> 9bbe50e (Refactors javascript -> dart code)
   if (stackedRouter == null) {
     throw Exception(
         'Stacked is building to use the Router (Navigator 2.0) navigation but no stackedRouter is supplied. Pass the stackedRouter to the setupLocator function in main.dart');
