@@ -35,7 +35,7 @@ class _CourseChapterUserNotLogged
                     discountPeriod: '1 Week only',
                   ),
                   AcademyButton(
-                    title: 'Sign in to view',
+                    title: ksCTASignInToView,
                     onTap: viewModel.signInWithGoogle,
                   ),
                 ],

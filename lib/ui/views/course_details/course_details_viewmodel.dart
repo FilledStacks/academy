@@ -65,6 +65,12 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
   }
 
   Future<void> showChapter(Chapter chapter) async {
+    unawaited(_analyticsService.logChapterSelected(
+      id: chapter.id,
+      chapterTitle: chapter.title,
+      courseTitle: fetchedCourse?.title,
+    ));
+
     _routerService.replaceWith(CourseChapterViewRoute(
       key: UniqueKey(),
       chapterId: chapter.id,
@@ -72,12 +78,6 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
     ));
 
     notifyListeners();
-
-    unawaited(_analyticsService.logChapterSelected(
-      id: chapter.id,
-      chapterTitle: chapter.title,
-      courseTitle: fetchedCourse?.title,
-    ));
   }
 
   bool isSidebarItemSelected(SideBarItem sideBarItem) {

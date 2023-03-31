@@ -48,8 +48,9 @@ class CourseLandingOverview extends ViewModelWidget<CourseLandingViewModel> {
                 discountPeriod: '1 Week only',
               ),
               verticalSpaceSmall,
-              const AcademyButton(
-                title: 'Enroll in course',
+              AcademyButton(
+                title: ksCTAEnrollInCourse,
+                onTap: viewModel.enroll,
               ),
               verticalSpaceLarge,
               CoursePerksCard(

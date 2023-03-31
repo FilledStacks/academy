@@ -1,14 +1,19 @@
+import 'dart:async';
+
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/app/app.router.dart';
 import 'package:filledstacked_academy/models/models.dart';
+import 'package:filledstacked_academy/services/analytics_service.dart';
 import 'package:filledstacked_academy/services/course_service.dart';
+import 'package:filledstacked_academy/ui/common/app_strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class CourseLandingViewModel extends FutureViewModel {
   final log = getLogger('CourseLandingViewModel');
+  final _analyticsService = locator<AnalyticsService>();
   final _courseService = locator<CourseService>();
   final _routerService = locator<RouterService>();
 
@@ -32,6 +37,12 @@ class CourseLandingViewModel extends FutureViewModel {
   }
 
   Future<void> navigateToChapter(Chapter chapter) async {
+    unawaited(_analyticsService.logChapterSelected(
+      id: chapter.id,
+      chapterTitle: chapter.title,
+      courseTitle: fetchedCourse?.title,
+    ));
+
     await _routerService.navigateTo(CourseDetailsViewRoute(
       courseId: courseId,
       children: List.from([
@@ -50,5 +61,11 @@ class CourseLandingViewModel extends FutureViewModel {
     }
 
     return chapters;
+  }
+
+  Future<void> enroll() async {
+    unawaited(_analyticsService.logButtonClick(name: ksCTAEnrollInCourse));
+
+    // do enroll tasks
   }
 }

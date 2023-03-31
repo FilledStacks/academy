@@ -54,7 +54,10 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                 children: [
                   viewModel.hasUser
                       ? const HomeGreetUser()
-                      : const AcademyButton(title: 'Sign in with Google'),
+                      : AcademyButton(
+                          title: ksCTASignInWithGoogle,
+                          onTap: viewModel.signInWithGoogle,
+                        ),
                 ],
               ),
               if (viewModel.showValidationError)
