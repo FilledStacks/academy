@@ -1,3 +1,4 @@
+import 'package:filledstacked_academy/extensions/hover_extensions.dart';
 import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/views/main_layout/widgets/menu_button.dart';
 import 'package:filledstacked_academy/ui/widgets/common/academy_icon.dart';
@@ -32,7 +33,10 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
                         padding: EdgeInsets.symmetric(
                             horizontal:
                                 viewModel.contentWidth == null ? 40 : 0),
-                        child: const AcademyIcon(),
+                        child: GestureDetector(
+                          onTap: viewModel.navigateToHome,
+                          child: const AcademyIcon(),
+                        ).showCursorOnHover,
                       ),
                       const MenuButton(),
                     ]),

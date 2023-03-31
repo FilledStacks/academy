@@ -1,3 +1,4 @@
+import 'package:filledstacked_academy/extensions/hover_extensions.dart';
 import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
 import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
@@ -11,41 +12,44 @@ class HomeGreetUser extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
-    return Container(
-      alignment: Alignment.center,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Welcome, ',
-            style: GoogleFonts.openSans(
-              fontWeight: FontWeight.w700,
-              fontSize: 60,
-            ),
-          ),
-          Row(
-            children: [
-              if (viewModel.currentUser.hasProfilePicture) ...[
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    viewModel.currentUser.profilePicture!,
-                  ),
-                  radius: 30,
-                ),
-                horizontalSpaceSmall,
-              ],
-              GradientText(
-                viewModel.currentUser.fullName,
-                style: GoogleFonts.openSans(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 25,
-                ),
-                colors: kgTitle,
+    return GestureDetector(
+      onTap: viewModel.navigateToUserProfile,
+      child: Container(
+        alignment: Alignment.center,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Welcome, ',
+              style: GoogleFonts.openSans(
+                fontWeight: FontWeight.w700,
+                fontSize: 60,
               ),
-            ],
-          ),
-        ],
+            ),
+            Row(
+              children: [
+                if (viewModel.currentUser.hasProfilePicture) ...[
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      viewModel.currentUser.profilePicture!,
+                    ),
+                    radius: 30,
+                  ),
+                  horizontalSpaceSmall,
+                ],
+                GradientText(
+                  viewModel.currentUser.fullName,
+                  style: GoogleFonts.openSans(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 25,
+                  ),
+                  colors: kgTitle,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
-    );
+    ).showCursorOnHover;
   }
 }

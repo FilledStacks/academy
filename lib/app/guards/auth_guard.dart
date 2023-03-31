@@ -9,7 +9,7 @@ class AuthGuard extends StackedRouteGuard {
     final _userService = locator<UserService>();
 
     if (!_userService.hasFirebaseUser) {
-      router.push(HomeViewRoute());
+      router.push(const UnknownViewRoute());
       return;
     }
 

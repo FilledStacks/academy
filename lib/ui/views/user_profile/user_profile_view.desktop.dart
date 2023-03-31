@@ -33,6 +33,11 @@ class UserProfileViewDesktop extends ViewModelWidget<UserProfileViewModel> {
                 ),
               ),
             verticalSpaceSmall,
+            AcademyButton(
+              title: 'Payment Capture',
+              onTap: viewModel.navigateToPaymentCapture,
+            ),
+            verticalSpaceSmall,
             AcademyButton(title: 'Go back HOME', onTap: viewModel.goBack),
           ],
         ),

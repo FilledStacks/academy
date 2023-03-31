@@ -7,6 +7,6 @@ class UnknownViewModel extends BaseViewModel {
   final _routerService = locator<RouterService>();
 
   Future<void> navigateToHome() async {
-    await _routerService.navigateTo(HomeViewRoute());
+    await _routerService.clearStackAndShow(const MainLayoutViewRoute());
   }
 }

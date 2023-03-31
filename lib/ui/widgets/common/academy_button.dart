@@ -7,18 +7,20 @@ class AcademyButton extends StatelessWidget {
   final void Function()? onTap;
   final bool isBusy;
   final bool useFullWidth;
+  final bool enabled;
   const AcademyButton({
     Key? key,
     required this.title,
     this.onTap,
     this.isBusy = false,
     this.useFullWidth = false,
+    this.enabled = true,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: enabled ? onTap : null,
       child: Row(
         mainAxisSize: useFullWidth ? MainAxisSize.max : MainAxisSize.min,
         children: [
@@ -29,7 +31,7 @@ class AcademyButton extends StatelessWidget {
             ),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: enabled ? Colors.white : Colors.white.withOpacity(0.25),
               borderRadius: BorderRadius.circular(4.0),
             ),
             child: isBusy
@@ -37,8 +39,10 @@ class AcademyButton extends StatelessWidget {
                 : Text(
                     title,
                     style: ktsBodyLarge.copyWith(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
+                      color: enabled
+                          ? Colors.black
+                          : Colors.black.withOpacity(0.25),
+                      fontWeight: enabled ? FontWeight.w600 : FontWeight.w400,
                     ),
                   ),
           ),

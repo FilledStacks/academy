@@ -12,6 +12,10 @@ class UserProfileViewModel extends BaseViewModel {
   bool get hasUser => _userService.hasUser;
   User get currentUser => _userService.currentUser;
 
+  Future<void> navigateToPaymentCapture() async {
+    await _routerService.navigateTo(PaymentCaptureViewRoute());
+  }
+
   Future<void> goBack() async {
     await _routerService.clearStackAndShow(HomeViewRoute());
   }

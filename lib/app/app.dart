@@ -8,6 +8,7 @@ import 'package:filledstacked_academy/ui/views/course_details/course_details_vie
 import 'package:filledstacked_academy/ui/views/course_landing/course_landing_view.dart';
 import 'package:filledstacked_academy/ui/views/home/home_view.dart';
 import 'package:filledstacked_academy/ui/views/main_layout/main_layout_view.dart';
+import 'package:filledstacked_academy/ui/views/payment_capture/payment_capture_view.dart';
 import 'package:filledstacked_academy/ui/views/unknown/unknown_view.dart';
 import 'package:filledstacked_academy/ui/views/user_profile/user_profile_view.dart';
 import 'package:stacked/stacked.dart';
@@ -42,9 +43,14 @@ import 'guards/auth_guard.dart';
           path: 'profile',
           guards: [AuthGuard],
         ),
+        CustomRoute(
+          page: PaymentCaptureView,
+          path: 'payment-capture',
+          guards: [AuthGuard],
+        ),
       ],
     ),
-    // @stacked-route
+// @stacked-route
 
     CustomRoute(
       page: UnknownView,

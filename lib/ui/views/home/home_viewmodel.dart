@@ -41,6 +41,10 @@ class HomeViewModel extends FormViewModel {
     ));
   }
 
+  Future<void> navigateToUserProfile() async {
+    await _routerService.navigateTo(const UserProfileViewRoute());
+  }
+
   Future<void> signInWithGoogle() async {
     _log.i('');
 
