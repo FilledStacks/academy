@@ -1,16 +1,21 @@
+import 'dart:async';
+
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/app/app.router.dart';
 import 'package:filledstacked_academy/enums/bottom_sheet_type.dart';
 import 'package:filledstacked_academy/enums/sign_in_result.dart';
 import 'package:filledstacked_academy/models/user/user.dart';
+import 'package:filledstacked_academy/services/analytics_service.dart';
 import 'package:filledstacked_academy/services/user_service.dart';
+import 'package:filledstacked_academy/ui/common/app_strings.dart';
 import 'package:filledstacked_academy/ui/views/home/home_view.form.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends FormViewModel {
   final _log = getLogger('HomeViewModel');
+  final _analyticsService = locator<AnalyticsService>();
   final _routerService = locator<RouterService>();
   final _userService = locator<UserService>();
   final _sheetService = locator<BottomSheetService>();
@@ -30,6 +35,7 @@ class HomeViewModel extends FormViewModel {
   User get currentUser => _userService.currentUser;
 
   Future<void> navigateToCourse() async {
+    unawaited(_analyticsService.logButtonClick(name: ksCTAHomeViewHeroImage));
     await _routerService.navigateTo(CourseLandingViewRoute(
       courseId: 'flutter-web',
     ));
@@ -37,6 +43,8 @@ class HomeViewModel extends FormViewModel {
 
   Future<void> signInWithGoogle() async {
     _log.i('');
+
+    unawaited(_analyticsService.logButtonClick(name: ksCTASignInWithGoogle));
 
     final result = await runBusyFuture(_userService.signInWithGoogle());
 

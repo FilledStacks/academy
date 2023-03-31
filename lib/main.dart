@@ -1,4 +1,5 @@
 import 'package:filledstacked_academy/app/app.locator.dart';
+import 'package:filledstacked_academy/services/analytics_service.dart';
 import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/setup/setup_bottom_sheet_ui.dart';
 import 'package:filledstacked_academy/ui/setup/setup_dialog_ui.dart';
@@ -51,7 +52,11 @@ class MyApp extends StatelessWidget {
               bodyColor: Colors.white,
             ),
           ),
-          routerDelegate: stackedRouter.delegate(),
+          routerDelegate: stackedRouter.delegate(
+            navigatorObservers: () => [
+              locator<AnalyticsService>().getAnalyticsObserver(),
+            ],
+          ),
           routeInformationParser: stackedRouter.defaultRouteParser(),
         )
             .animate()

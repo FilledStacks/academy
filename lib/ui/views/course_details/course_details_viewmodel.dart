@@ -1,16 +1,19 @@
+import 'dart:async';
+
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/app/app.router.dart';
+import 'package:filledstacked_academy/models/models.dart';
+import 'package:filledstacked_academy/services/analytics_service.dart';
 import 'package:filledstacked_academy/services/course_service.dart';
 import 'package:filledstacked_academy/services/layout_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../../../models/models.dart';
-
 class CourseDetailsViewModel extends FutureViewModel<Course?> {
   final log = getLogger('CourseDetailsViewModel');
+  final _analyticsService = locator<AnalyticsService>();
   final _courseService = locator<CourseService>();
   final _routerService = locator<RouterService>();
   final _layouService = locator<LayoutService>();
@@ -62,6 +65,12 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
   }
 
   Future<void> showChapter(Chapter chapter) async {
+    unawaited(_analyticsService.logChapterSelected(
+      id: chapter.id,
+      chapterTitle: chapter.title,
+      courseTitle: fetchedCourse?.title,
+    ));
+
     _routerService.replaceWith(CourseChapterViewRoute(
       key: UniqueKey(),
       chapterId: chapter.id,
