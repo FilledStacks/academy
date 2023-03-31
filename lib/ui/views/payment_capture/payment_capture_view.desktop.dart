@@ -71,7 +71,11 @@ class PaymentCaptureViewDesktop
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AcademyButton(title: 'Accept', onTap: viewModel.onAccept),
+                AcademyButton(
+                  title: 'Accept',
+                  onTap: viewModel.onAccept,
+                  enabled: viewModel.canAccept,
+                ),
                 horizontalSpaceSmall,
                 AcademyButton(title: 'Cancel', onTap: viewModel.onCancel),
               ],

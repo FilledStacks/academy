@@ -12,6 +12,9 @@ class PaymentCaptureViewModel extends FormViewModel {
   final _routerService = locator<RouterService>();
   final _userService = locator<UserService>();
 
+  bool get canAccept =>
+      !hasCardExpiryValidationMessage && !hasCardCvvValidationMessage;
+
   Future<void> initializeForm() async {
     cardOwnerValue = _userService.currentUser.fullName;
   }
