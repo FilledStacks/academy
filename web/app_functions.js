@@ -20,7 +20,6 @@ async function jsOpenTabFunction(url) {
         var timer = setInterval(function() {
                 if (win.closed) {
                     clearInterval(timer);
-                    alert("'Popup Window' closed!");
                     resolve('Paid');
                 }
             }, 500);

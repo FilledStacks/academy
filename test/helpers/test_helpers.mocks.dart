@@ -25,7 +25,7 @@ import 'package:logger/logger.dart' as _i23;
 import 'package:filledstacked_academy/services/course_service.dart' as _i13;
 import 'package:filledstacked_academy/services/http_service.dart' as _i12;
 import 'package:filledstacked_academy/services/layout_service.dart' as _i18;
-import 'package:filledstacked_academy/services/native_interaction_mobile.dart'
+import 'package:filledstacked_academy/services/native_interaction_service.dart'
     as _i19;
 import 'package:filledstacked_academy/services/user_service.dart' as _i15;
 import 'package:flutter/material.dart' as _i6;
@@ -977,6 +977,7 @@ class MockGoogleCloudLoggerService extends _i1.Mock
 class MockNativeInteractionService extends _i1.Mock
     implements _i19.NativeInteractionService {
   @override
+<<<<<<< HEAD
   String getPlatformFromJS() => (super.noSuchMethod(
         Invocation.method(
           #getPlatformFromJS,
@@ -1041,6 +1042,8 @@ class MockNativeInteractionService extends _i1.Mock
         returnValueForMissingStub: null,
       );
 =======
+=======
+>>>>>>> 303667e (Finally completes the Native actions interaction for web)
   _i5.Future<String> callJSPromise() => (super.noSuchMethod(
         Invocation.method(
           #callJSPromise,
@@ -1058,5 +1061,17 @@ class MockNativeInteractionService extends _i1.Mock
         returnValue: _i5.Future<String>.value(''),
         returnValueForMissingStub: _i5.Future<String>.value(''),
       ) as _i5.Future<String>);
+<<<<<<< HEAD
 >>>>>>> 9bbe50e (Refactors javascript -> dart code)
+=======
+  @override
+  String getPlatformFromJS() => (super.noSuchMethod(
+        Invocation.method(
+          #getPlatformFromJS,
+          [],
+        ),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+>>>>>>> 303667e (Finally completes the Native actions interaction for web)
 }

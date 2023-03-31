@@ -18,8 +18,7 @@ class HomeImage extends ViewModelWidget<HomeViewModel> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: CachedNetworkImage(
-          imageUrl:
-              'packages/filledstacked_academy/assets/master-web-hero-image.png',
+          imageUrl: 'assets/master-web-hero-image.png',
           width: getValueForScreenType<double>(
             context: context,
             mobile: double.infinity,

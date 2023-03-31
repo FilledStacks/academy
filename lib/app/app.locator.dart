@@ -17,7 +17,7 @@ import '../services/course_service.dart';
 import '../services/google_cloud_logger_service.dart';
 import '../services/http_service.dart';
 import '../services/layout_service.dart';
-import '../services/native_interaction_web.dart';
+import '../services/native_interaction_service.dart';
 import '../services/user_service.dart';
 import 'app.router.dart';
 

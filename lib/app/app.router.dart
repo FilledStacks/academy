@@ -13,9 +13,16 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+<<<<<<< HEAD
 import 'package:flutter/material.dart' as _i12;
 import 'package:stacked/stacked.dart' as _i11;
 import 'package:stacked_services/stacked_services.dart' as _i9;
+=======
+import 'package:flutter/foundation.dart' as _i12;
+import 'package:flutter/material.dart' as _i10;
+import 'package:stacked/stacked.dart' as _i9;
+import 'package:stacked_services/stacked_services.dart' as _i1;
+>>>>>>> 303667e (Finally completes the Native actions interaction for web)
 
 import '../models/models.dart' as _i13;
 import '../ui/views/course_chapter/course_chapter_view.dart' as _i8;
@@ -218,8 +225,13 @@ class UnknownViewRoute extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
+<<<<<<< HEAD
 /// [_i3.HomeView]
 class HomeViewRoute extends _i11.PageRouteInfo<HomeViewArgs> {
+=======
+/// [_i4.HomeView]
+class HomeViewRoute extends _i9.PageRouteInfo<HomeViewArgs> {
+>>>>>>> 303667e (Finally completes the Native actions interaction for web)
   HomeViewRoute({_i12.Key? key})
       : super(
           HomeViewRoute.name,
