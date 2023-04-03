@@ -7,17 +7,18 @@ import 'package:filledstacked_academy/models/user/user.dart' as academy;
 import 'package:stacked/stacked.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 
+import 'google_cloud_logger_service.dart';
+
 typedef AppUser = academy.User;
 typedef FirebaseUser = User;
 
 class UserService with ListenableServiceMixin {
   final log = getLogger('UserService');
   final _authenticationService = locator<FirebaseAuthenticationService>();
+  final _cloudLogger = locator<GoogleCloudLoggerService>();
 
   UserService() {
-    _setUserFromFirebaseAuth(
-      firebaseUser: _authenticationService.firebaseAuth.currentUser,
-    );
+    _initialise();
   }
 
   AppUser? _currentUser;
@@ -28,6 +29,14 @@ class UserService with ListenableServiceMixin {
   bool get hasFirebaseUser =>
       _authenticationService.firebaseAuth.currentUser != null;
 
+  Future<void> _initialise() async {
+    _setUserFromFirebaseAuth(
+      firebaseUser: _authenticationService.firebaseAuth.currentUser,
+    );
+    await _cloudLogger.initialise();
+    _trackUserSessionDetails(currentUser);
+  }
+
   /// Sets User from FirebaseAuth
   void _setUserFromFirebaseAuth({FirebaseUser? firebaseUser}) {
     if (firebaseUser == null) {
@@ -37,6 +46,13 @@ class UserService with ListenableServiceMixin {
     }
 
     notifyListeners();
+  }
+
+  Future<void> _trackUserSessionDetails(AppUser user) async {
+    _cloudLogger.setUserId(
+      userId: user.id,
+      sessionId: 0,
+    );
   }
 
   /// Authenticates a User through Firebase using Google Provider.
@@ -61,6 +77,7 @@ class UserService with ListenableServiceMixin {
 
       if (result.additionalUserInfo?.isNewUser ?? false) {
         log.v('Current signed up user: $_currentUser');
+        await _trackUserSessionDetails(_currentUser!);
         return SignInResult.createdAccount;
       }
 
