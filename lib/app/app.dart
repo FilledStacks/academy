@@ -15,6 +15,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:filledstacked_academy/services/google_cloud_logger_service.dart';
 // @stacked-import
 
 import 'guards/auth_guard.dart';
@@ -71,8 +72,11 @@ import 'guards/auth_guard.dart';
     LazySingleton(classType: UserService),
     LazySingleton(classType: LayoutService),
     LazySingleton(classType: AnalyticsService),
+    LazySingleton(classType: GoogleCloudLoggerService),
 // @stacked-service
   ],
-  logger: StackedLogger(),
+  logger: StackedLogger(
+    loggerOutputs: [GoogleCloudLoggerService],
+  ),
 )
 class App {}

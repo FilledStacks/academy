@@ -90,6 +90,7 @@ flutter:
   assets:
     - assets/
     - assets/chapter_icons/
+    - assets/credentials/
     - assets/google_fonts/
   #   - images/a_dot_ham.jpeg
 
