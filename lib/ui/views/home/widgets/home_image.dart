@@ -1,12 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:filledstacked_academy/extensions/hover_extensions.dart';
-import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/common/app_constants.dart';
 import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
-import 'package:filledstacked_academy/ui/widgets/common/academy_local_image.dart';
+import 'package:filledstacked_academy/ui/widgets/common/academy_image/academy_image.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeImage extends ViewModelWidget<HomeViewModel> {
@@ -30,7 +27,7 @@ class HomeImage extends ViewModelWidget<HomeViewModel> {
       onTap: viewModel.navigateToCourse,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-        child: AcademyLocalImage(
+        child: AcademyImage(
           'assets/master-web-hero-image.png',
           height: height,
           width: width,
