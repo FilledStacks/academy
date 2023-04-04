@@ -55,6 +55,8 @@ dependencies:
         url: https://github.com/ferrarafer/pod_player.git
         ref: dev
   firebase_analytics: ^10.1.6
+  googleapis: ^10.1.0
+  googleapis_auth: ^1.4.0
 
 dev_dependencies:
   flutter_test:
@@ -68,7 +70,7 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   build_runner: ^2.2.0
 
-  stacked_generator: ^1.0.0
+  stacked_generator: ^1.0.1
   mockito: ^5.1.0
   freezed: ^2.3.2
   json_serializable:
@@ -88,6 +90,7 @@ flutter:
   assets:
     - assets/
     - assets/chapter_icons/
+    - assets/credentials/
     - assets/google_fonts/
   #   - images/a_dot_ham.jpeg
 
