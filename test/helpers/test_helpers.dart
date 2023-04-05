@@ -3,6 +3,7 @@ import 'package:filledstacked_academy/exceptions/resource_not_found.dart';
 import 'package:filledstacked_academy/models/models.dart';
 import 'package:filledstacked_academy/services/analytics_service.dart';
 import 'package:filledstacked_academy/services/course_service.dart';
+import 'package:filledstacked_academy/services/environment_service.dart';
 import 'package:filledstacked_academy/services/google_cloud_logger_service.dart';
 import 'package:filledstacked_academy/services/http_service.dart';
 import 'package:filledstacked_academy/services/layout_service.dart';
@@ -11,7 +12,6 @@ import 'package:filledstacked_academy/services/user_service.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -27,7 +27,9 @@ import 'test_helpers.mocks.dart';
   MockSpec<AnalyticsService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<GoogleCloudLoggerService>(
       onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<NativeInteractionService>(onMissingStub: OnMissingStub.returnDefault)
+  MockSpec<NativeInteractionService>(
+      onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<EnvironmentService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -41,6 +43,7 @@ void registerServices() {
   getAndRegisterAnalyticsService();
   getAndRegisterGoogleCloudLoggerService();
   getAndRegisterNativeInteractionService();
+  getAndRegisterEnvironmentService();
 // @stacked-mock-register
 }
 
@@ -155,6 +158,13 @@ MockNativeInteractionService getAndRegisterNativeInteractionService() {
   _removeRegistrationIfExists<NativeInteractionService>();
   final service = MockNativeInteractionService();
   locator.registerSingleton<NativeInteractionService>(service);
+  return service;
+}
+
+MockEnvironmentService getAndRegisterEnvironmentService() {
+  _removeRegistrationIfExists<EnvironmentService>();
+  final service = MockEnvironmentService();
+  locator.registerSingleton<EnvironmentService>(service);
   return service;
 }
 // @stacked-mock-create
