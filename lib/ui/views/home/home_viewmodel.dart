@@ -29,8 +29,7 @@ class HomeViewModel extends FormViewModel {
 
   bool get enableNotifyButton => hasEmail && isFormValid;
 
-  bool get showValidationError =>
-      hasEmail && emailValue!.length > 3 && hasEmailValidationMessage;
+  bool get showValidationError => hasEmail && hasEmailValidationMessage;
 
   bool get hasUser => _userService.hasUser;
 
