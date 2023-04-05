@@ -1,5 +1,6 @@
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/services/analytics_service.dart';
+import 'package:filledstacked_academy/services/environment_service.dart';
 import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/setup/setup_bottom_sheet_ui.dart';
 import 'package:filledstacked_academy/ui/setup/setup_dialog_ui.dart';
@@ -14,21 +15,23 @@ import 'app/app.router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: "AIzaSyCuy_EwDiCVsUIPWqCcQDKsA2WlGvNAyCc",
-      authDomain: "filledstacks-academy.firebaseapp.com",
-      projectId: "filledstacks-academy",
-      storageBucket: "filledstacks-academy.appspot.com",
-      messagingSenderId: "403422740160",
-      appId: "1:403422740160:web:dedda8708f7c9c4249f725",
-    ),
-  );
 
   setPathUrlStrategy();
   await setupLocator(stackedRouter: stackedRouter);
   setupDialogUi();
   setupBottomSheetUi();
+
+  final _environmentService = locator<EnvironmentService>();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: _environmentService.apiKey,
+      appId: _environmentService.appId,
+      authDomain: _environmentService.authDomain,
+      messagingSenderId: _environmentService.messagingSenderId,
+      projectId: _environmentService.projectId,
+      storageBucket: _environmentService.storageBucket,
+    ),
+  );
 
   runApp(const MyApp());
 }
