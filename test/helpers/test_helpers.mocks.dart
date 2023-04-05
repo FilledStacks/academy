@@ -453,7 +453,8 @@ class MockDialogService extends _i1.Mock implements _i12.DialogService {
       _i8.BuildContext,
       _i13.DialogRequest<dynamic>,
       dynamic Function(_i10.DialogResponse<dynamic>),
-    )? builder,
+    )?
+        builder,
   }) =>
       super.noSuchMethod(
         Invocation.method(
@@ -606,14 +607,14 @@ class MockCourseService extends _i1.Mock implements _i15.CourseService {
         returnValueForMissingStub: <_i16.Course>[],
       ) as List<_i16.Course>);
   @override
-  _i7.Future<_i16.Course?> getCourseForId(String? id) => (super.noSuchMethod(
+  _i7.Future<_i16.Course> getCourseForId(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getCourseForId,
           [id],
         ),
         returnValue: _i7.Future<_i16.Course?>.value(),
         returnValueForMissingStub: _i7.Future<_i16.Course?>.value(),
-      ) as _i7.Future<_i16.Course?>);
+      ) as _i7.Future<_i16.Course>);
 }
 
 /// A class which mocks [UserService].

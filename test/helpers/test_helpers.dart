@@ -1,10 +1,10 @@
 import 'package:filledstacked_academy/app/app.locator.dart';
+import 'package:filledstacked_academy/exceptions/resource_not_found.dart';
 import 'package:filledstacked_academy/models/models.dart';
 import 'package:filledstacked_academy/services/analytics_service.dart';
 import 'package:filledstacked_academy/services/course_service.dart';
 import 'package:filledstacked_academy/services/google_cloud_logger_service.dart';
 import 'package:filledstacked_academy/services/http_service.dart';
-import 'package:filledstacked_academy/services/layout_service.dart';
 import 'package:filledstacked_academy/services/layout_service.dart';
 import 'package:filledstacked_academy/services/native_interaction_service.dart';
 import 'package:filledstacked_academy/services/user_service.dart';
@@ -116,7 +116,7 @@ MockCourseService getAndRegisterCourseService({
         (course) => course.id == realInvocation.positionalArguments[0],
       );
     } on StateError catch (_) {
-      return null;
+      throw ResourceNotFoundException(name: 'courses', id: 'test-id');
     }
   });
 
