@@ -44,7 +44,9 @@ class HomeView extends StackedView<HomeViewModel> with $HomeView {
 
 class HomeViewValidators {
   static String? validateEmail(String? email) {
-    final emailValid = EmailValidator.validate(email ?? '');
+    final emailValid =
+        EmailValidator.validate(email ?? '') && (email?.length ?? 0) > 3;
+
     return emailValid ? null : 'Please enter a valid email';
   }
 }

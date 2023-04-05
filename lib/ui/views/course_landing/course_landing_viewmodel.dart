@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/app/app.router.dart';
+import 'package:filledstacked_academy/exceptions/resource_not_found.dart';
 import 'package:filledstacked_academy/models/models.dart';
 import 'package:filledstacked_academy/services/analytics_service.dart';
 import 'package:filledstacked_academy/services/course_service.dart';
@@ -27,13 +28,18 @@ class CourseLandingViewModel extends FutureViewModel {
 
   @override
   Future<void> futureToRun() async {
-    fetchedCourse = await _courseService.getCourseForId(courseId);
-    if (fetchedCourse == null) {
+    try {
+      fetchedCourse = await _courseService.getCourseForId(courseId);
+      _chapters = extractAllChapters(fetchedCourse);
+    } on ResourceNotFoundException catch (_) {
       await _routerService.replaceWith(const UnknownViewRoute());
-      return;
+    } catch (e) {
+      log.e(
+        'Unexpected error has occured while fetching the course using id $courseId',
+        e,
+        StackTrace.current,
+      );
     }
-
-    _chapters = extractAllChapters(fetchedCourse);
   }
 
   Future<void> navigateToChapter(Chapter chapter) async {

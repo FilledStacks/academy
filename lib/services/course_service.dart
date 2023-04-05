@@ -1,4 +1,5 @@
 import 'package:filledstacked_academy/app/app.logger.dart';
+import 'package:filledstacked_academy/exceptions/resource_not_found.dart';
 import 'package:filledstacked_academy/models/models.dart';
 
 class CourseService {
@@ -120,17 +121,17 @@ class CourseService {
             ])
       ];
 
-  Future<Course?> getCourseForId(String id) async {
+  Future<Course> getCourseForId(String id) async {
     try {
       // Delay added to avoid execute a sync function as Future
       await Future.delayed(const Duration(microseconds: 100));
       return courses.firstWhere((element) => element.id == id);
     } on StateError catch (_) {
       log.w('Course with id equal "$id" not found');
-      return null;
+      throw ResourceNotFoundException(name: 'courses', id: id);
     } catch (e) {
       log.e(e.toString());
-      return null;
+      rethrow;
     }
   }
 }

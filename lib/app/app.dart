@@ -1,7 +1,9 @@
 import 'package:filledstacked_academy/services/analytics_service.dart';
 import 'package:filledstacked_academy/services/course_service.dart';
+import 'package:filledstacked_academy/services/google_cloud_logger_service.dart';
 import 'package:filledstacked_academy/services/http_service.dart';
 import 'package:filledstacked_academy/services/layout_service.dart';
+import 'package:filledstacked_academy/services/native_interaction_service.dart';
 import 'package:filledstacked_academy/services/user_service.dart';
 import 'package:filledstacked_academy/ui/views/course_chapter/course_chapter_view.dart';
 import 'package:filledstacked_academy/ui/views/course_details/course_details_view.dart';
@@ -15,9 +17,10 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:filledstacked_academy/services/google_cloud_logger_service.dart';
+
 // @stacked-import
 
+import '../utils/google_cloud_logger_output.dart';
 import 'guards/auth_guard.dart';
 
 @StackedApp(
@@ -73,10 +76,11 @@ import 'guards/auth_guard.dart';
     LazySingleton(classType: LayoutService),
     LazySingleton(classType: AnalyticsService),
     LazySingleton(classType: GoogleCloudLoggerService),
+    LazySingleton(classType: NativeInteractionService),
 // @stacked-service
   ],
   logger: StackedLogger(
-    loggerOutputs: [GoogleCloudLoggerService],
+    loggerOutputs: [GoogleCloudLoggerOutput],
   ),
 )
 class App {}

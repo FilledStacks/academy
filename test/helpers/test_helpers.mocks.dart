@@ -15,6 +15,8 @@ import 'package:filledstacked_academy/services/google_cloud_logger_service.dart'
     as _i22;
 import 'package:filledstacked_academy/services/http_service.dart' as _i14;
 import 'package:filledstacked_academy/services/layout_service.dart' as _i20;
+import 'package:filledstacked_academy/services/native_interaction_service.dart'
+    as _i24;
 import 'package:filledstacked_academy/services/user_service.dart' as _i17;
 import 'package:firebase_analytics/firebase_analytics.dart' as _i4;
 import 'package:flutter/material.dart' as _i8;
@@ -451,7 +453,8 @@ class MockDialogService extends _i1.Mock implements _i12.DialogService {
       _i8.BuildContext,
       _i13.DialogRequest<dynamic>,
       dynamic Function(_i10.DialogResponse<dynamic>),
-    )? builder,
+    )?
+        builder,
   }) =>
       super.noSuchMethod(
         Invocation.method(
@@ -604,14 +607,14 @@ class MockCourseService extends _i1.Mock implements _i15.CourseService {
         returnValueForMissingStub: <_i16.Course>[],
       ) as List<_i16.Course>);
   @override
-  _i7.Future<_i16.Course?> getCourseForId(String? id) => (super.noSuchMethod(
+  _i7.Future<_i16.Course> getCourseForId(String? id) => (super.noSuchMethod(
         Invocation.method(
           #getCourseForId,
           [id],
         ),
         returnValue: _i7.Future<_i16.Course?>.value(),
         returnValueForMissingStub: _i7.Future<_i16.Course?>.value(),
-      ) as _i7.Future<_i16.Course?>);
+      ) as _i7.Future<_i16.Course>);
 }
 
 /// A class which mocks [UserService].
@@ -1015,4 +1018,38 @@ class MockGoogleCloudLoggerService extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+}
+
+/// A class which mocks [NativeInteractionService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockNativeInteractionService extends _i1.Mock
+    implements _i24.NativeInteractionService {
+  @override
+  _i7.Future<String> callJSPromise() => (super.noSuchMethod(
+        Invocation.method(
+          #callJSPromise,
+          [],
+        ),
+        returnValue: _i7.Future<String>.value(''),
+        returnValueForMissingStub: _i7.Future<String>.value(''),
+      ) as _i7.Future<String>);
+  @override
+  _i7.Future<String> callOpenTab() => (super.noSuchMethod(
+        Invocation.method(
+          #callOpenTab,
+          [],
+        ),
+        returnValue: _i7.Future<String>.value(''),
+        returnValueForMissingStub: _i7.Future<String>.value(''),
+      ) as _i7.Future<String>);
+  @override
+  String getPlatformFromJS() => (super.noSuchMethod(
+        Invocation.method(
+          #getPlatformFromJS,
+          [],
+        ),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
 }

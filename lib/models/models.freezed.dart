@@ -712,3 +712,174 @@ abstract class _Chapter extends Chapter {
   _$$_ChapterCopyWith<_$_Chapter> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+BrowserUser _$BrowserUserFromJson(Map<String, dynamic> json) {
+  return _BrowserUser.fromJson(json);
+}
+
+/// @nodoc
+mixin _$BrowserUser {
+  String get name => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $BrowserUserCopyWith<BrowserUser> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BrowserUserCopyWith<$Res> {
+  factory $BrowserUserCopyWith(
+          BrowserUser value, $Res Function(BrowserUser) then) =
+      _$BrowserUserCopyWithImpl<$Res, BrowserUser>;
+  @useResult
+  $Res call({String name, String id, String email});
+}
+
+/// @nodoc
+class _$BrowserUserCopyWithImpl<$Res, $Val extends BrowserUser>
+    implements $BrowserUserCopyWith<$Res> {
+  _$BrowserUserCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? id = null,
+    Object? email = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_BrowserUserCopyWith<$Res>
+    implements $BrowserUserCopyWith<$Res> {
+  factory _$$_BrowserUserCopyWith(
+          _$_BrowserUser value, $Res Function(_$_BrowserUser) then) =
+      __$$_BrowserUserCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String name, String id, String email});
+}
+
+/// @nodoc
+class __$$_BrowserUserCopyWithImpl<$Res>
+    extends _$BrowserUserCopyWithImpl<$Res, _$_BrowserUser>
+    implements _$$_BrowserUserCopyWith<$Res> {
+  __$$_BrowserUserCopyWithImpl(
+      _$_BrowserUser _value, $Res Function(_$_BrowserUser) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? id = null,
+    Object? email = null,
+  }) {
+    return _then(_$_BrowserUser(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_BrowserUser implements _BrowserUser {
+  _$_BrowserUser({required this.name, required this.id, required this.email});
+
+  factory _$_BrowserUser.fromJson(Map<String, dynamic> json) =>
+      _$$_BrowserUserFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final String id;
+  @override
+  final String email;
+
+  @override
+  String toString() {
+    return 'BrowserUser(name: $name, id: $id, email: $email)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_BrowserUser &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.email, email) || other.email == email));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, id, email);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_BrowserUserCopyWith<_$_BrowserUser> get copyWith =>
+      __$$_BrowserUserCopyWithImpl<_$_BrowserUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_BrowserUserToJson(
+      this,
+    );
+  }
+}
+
+abstract class _BrowserUser implements BrowserUser {
+  factory _BrowserUser(
+      {required final String name,
+      required final String id,
+      required final String email}) = _$_BrowserUser;
+
+  factory _BrowserUser.fromJson(Map<String, dynamic> json) =
+      _$_BrowserUser.fromJson;
+
+  @override
+  String get name;
+  @override
+  String get id;
+  @override
+  String get email;
+  @override
+  @JsonKey(ignore: true)
+  _$$_BrowserUserCopyWith<_$_BrowserUser> get copyWith =>
+      throw _privateConstructorUsedError;
+}
