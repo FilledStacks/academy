@@ -9,11 +9,10 @@
 /// Maybe this should be generated for the user as well?
 ///
 /// import 'package:customer_app/services/stackdriver/stackdriver_service.dart';
-
-import 'package:filledstacked_academy/app/app.locator.dart';
-import 'package:filledstacked_academy/services/google_cloud_logger_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
+
+import '../utils/google_cloud_logger_output.dart';
 
 class SimpleLogPrinter extends LogPrinter {
   final String className;
@@ -140,19 +139,6 @@ List<String>? _formatStackTrace(StackTrace stackTrace, int methodCount) {
   }
 }
 
-class GoogleCloudLoggerOutput extends LogOutput {
-  @override
-  void output(OutputEvent event) {
-    if (locator.isRegistered<GoogleCloudLoggerService>()) {
-      final loggerService = locator<GoogleCloudLoggerService>();
-      loggerService.writeEntry(
-        level: event.level,
-        lines: event.lines,
-      );
-    }
-  }
-}
-
 Logger getLogger(
   String className, {
   bool printCallingFunctionName = true,
@@ -170,7 +156,7 @@ Logger getLogger(
     ),
     output: MultiOutput([
       if (!kReleaseMode) ConsoleOutput(),
-      GoogleCloudLoggerOutput(),
+      if (kReleaseMode) GoogleCloudLoggerOutput(),
     ]),
   );
 }

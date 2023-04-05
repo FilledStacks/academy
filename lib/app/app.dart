@@ -20,6 +20,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 // @stacked-import
 
+import '../utils/google_cloud_logger_output.dart';
 import 'guards/auth_guard.dart';
 
 @StackedApp(
@@ -79,7 +80,7 @@ import 'guards/auth_guard.dart';
 // @stacked-service
   ],
   logger: StackedLogger(
-    loggerOutputs: [GoogleCloudLoggerService],
+    loggerOutputs: [GoogleCloudLoggerOutput],
   ),
 )
 class App {}
