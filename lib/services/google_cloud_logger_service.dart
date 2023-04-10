@@ -1,4 +1,6 @@
+import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
+import 'package:filledstacked_academy/services/environment_service.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:googleapis/logging/v2.dart';
 import 'package:googleapis_auth/auth_io.dart';
@@ -13,11 +15,18 @@ class GoogleCloudLoggerService {
   static late LoggingApi _loggingApi;
 
   final log = getLogger('GoogleCloudLoggerService');
+  // final _environmentService = locator<EnvironmentService>();
   final resource = MonitoredResource()..type = 'global';
 
-  String get projectId => 'filledstacks-academy';
-  String get environment => 'production';
-  bool get isDevelopment => false;
+  // String get projectId => _environmentService.projectId;
+  // String get environment => _environmentService.currentEnvironment.name;
+  // bool get _isDevelopment => _environmentService.isDevelopment;
+
+  /// Why is working like below and not as above !?
+  String get projectId => locator<EnvironmentService>().projectId;
+  String get environment =>
+      locator<EnvironmentService>().currentEnvironment.name;
+  bool get _isDevelopment => locator<EnvironmentService>().isDevelopment;
 
   late Map<String, String> labels;
 
@@ -25,11 +34,11 @@ class GoogleCloudLoggerService {
 
   Future<void> initialise() async {
     try {
-      if (!isDevelopment) {
+      if (!_isDevelopment) {
         labels = {'project_id': projectId, 'environment': environment};
 
         final credentialJson = await rootBundle.loadString(
-          'assets/credentials/academy-$environment-logging.json',
+          'credentials/academy-$environment-logging.json',
         );
 
         _credentials = ServiceAccountCredentials.fromJson(credentialJson);
@@ -73,7 +82,7 @@ class GoogleCloudLoggerService {
       logEntry.labels = labels;
       logEntry.severity = _getSeverityFromLevel(level);
 
-      var request = WriteLogEntriesRequest();
+      final request = WriteLogEntriesRequest();
       request.entries = [logEntry];
 
       _loggingApi.entries.write(request).catchError((error) {

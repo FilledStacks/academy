@@ -59,6 +59,7 @@ dependencies:
   googleapis_auth: ^1.4.0
   js: ^0.6.5
   logger: ^1.3.0
+  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -93,6 +94,7 @@ flutter:
     - assets/
     - assets/chapter_icons/
     - assets/credentials/
+    - assets/environments/
     - assets/google_fonts/
   #   - images/a_dot_ham.jpeg
 
