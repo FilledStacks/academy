@@ -1,11 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:filledstacked_academy/extensions/hover_extensions.dart';
-import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/common/app_constants.dart';
 import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
+import 'package:filledstacked_academy/ui/widgets/common/academy_image/academy_image.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeImage extends ViewModelWidget<HomeViewModel> {
@@ -13,32 +11,26 @@ class HomeImage extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
+    final height = getValueForScreenType<double>(
+      context: context,
+      mobile: 650,
+    );
+
+    final width = getValueForScreenType<double>(
+      context: context,
+      mobile: double.infinity,
+      tablet: kdDesktopMaxContentWidth * 0.4,
+      desktop: kdDesktopMaxContentWidth * 0.4,
+    );
+
     return GestureDetector(
       onTap: viewModel.navigateToCourse,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-        child: CachedNetworkImage(
-          imageUrl: 'assets/master-web-hero-image.png',
-          width: getValueForScreenType<double>(
-            context: context,
-            mobile: double.infinity,
-            tablet: kdDesktopMaxContentWidth * 0.4,
-            desktop: kdDesktopMaxContentWidth * 0.4,
-          ),
-          height: getValueForScreenType<double>(
-            context: context,
-            mobile: 650,
-          ),
-          placeholder: (context, url) => Shimmer.fromColors(
-            baseColor: kcDarkGreyColor,
-            highlightColor: kcDarkGreyShimmerEndColor,
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              color: kcMediumGrey,
-            ),
-          ),
-          fit: BoxFit.cover,
+        child: AcademyImage(
+          'assets/master-web-hero-image.png',
+          height: height,
+          width: width,
         ),
       ).showCursorOnHover,
     );
