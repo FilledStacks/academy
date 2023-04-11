@@ -103,7 +103,7 @@ class UserService with ListenableServiceMixin {
       lastName = nameParts.getRange(1, nameParts.length).join(' ');
     }
 
-    return AppUser.empty().copyWith(
+    return AppUser(
       id: user.uid,
       email: hasEmail ? user.email! : 'NO_EMAIL',
       firstName: firstName,
