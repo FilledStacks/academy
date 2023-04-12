@@ -1,8 +1,8 @@
 import 'package:filledstacked_academy/extensions/hover_extensions.dart';
-import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/views/main_layout/widgets/menu_button.dart';
 import 'package:filledstacked_academy/ui/widgets/common/academy_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
 import 'main_layout_viewmodel.dart';
@@ -16,9 +16,9 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
     MainLayoutViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-      backgroundColor: kcBackgroundColor,
-      body: Center(
+    return Center(
+      child: DefaultTextStyle(
+        style: GoogleFonts.openSans(color: Colors.white),
         child: SizedBox(
           height: 1400,
           width: viewModel.contentWidth,
