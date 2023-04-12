@@ -1,4 +1,5 @@
 import 'package:filledstacked_academy/extensions/hover_extensions.dart';
+import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
 import 'package:filledstacked_academy/ui/views/main_layout/widgets/menu_button.dart';
 import 'package:filledstacked_academy/ui/widgets/common/academy_icon.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
 import 'main_layout_viewmodel.dart';
+
+const double _kNavbarHeight = 90;
 
 class MainLayoutView extends StackedView<MainLayoutViewModel> {
   const MainLayoutView({super.key});
@@ -20,12 +23,12 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
       child: DefaultTextStyle(
         style: GoogleFonts.openSans(color: Colors.white),
         child: SizedBox(
-          height: 1400,
-          width: viewModel.contentWidth,
+          height: screenHeight(context),
+          width: viewModel.contentWidth, // kdDesktopMaxContentWidth
           child: ListView(
             children: [
               SizedBox(
-                height: 90,
+                height: _kNavbarHeight,
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -42,7 +45,8 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
                     ]),
               ),
               ConstrainedBox(
-                constraints: const BoxConstraints.tightFor(height: 900),
+                constraints: BoxConstraints.tightFor(
+                    height: screenHeight(context) - _kNavbarHeight),
                 child: const NestedRouter(),
               )
             ],

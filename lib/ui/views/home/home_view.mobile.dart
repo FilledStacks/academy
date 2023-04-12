@@ -23,8 +23,7 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
         padding: const EdgeInsets.symmetric(
           horizontal: 40,
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        child: ListView(
           children: [
             const HomeTitle(),
             verticalSpaceTiny,

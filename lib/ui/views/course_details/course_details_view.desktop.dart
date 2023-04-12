@@ -21,16 +21,13 @@ class CourseDetailsViewDesktop extends ViewModelWidget<CourseDetailsViewModel> {
     return Scaffold(
       backgroundColor: kcBackgroundColor,
       body: Padding(
-        padding: const EdgeInsets.all(40),
+        padding: const EdgeInsets.symmetric(horizontal: 40),
         child: Row(
           children: [
-            SizedBox(
-              height: 900,
-              child: _SideSelectionList(
-                busy: viewModel.isBusy,
-                items: viewModel.sidebarItems,
-                isItemSelected: viewModel.isSidebarItemSelected,
-              ),
+            _SideSelectionList(
+              busy: viewModel.isBusy,
+              items: viewModel.sidebarItems,
+              isItemSelected: viewModel.isSidebarItemSelected,
             ),
             Expanded(
                 child: Stack(
