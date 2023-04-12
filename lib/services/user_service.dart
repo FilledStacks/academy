@@ -58,8 +58,9 @@ class UserService with ListenableServiceMixin {
   /// Authenticates a User through Firebase using Google Provider.
   Future<SignInResult> signInWithGoogle() async {
     log.i('Google sign in initialized');
-    final result = await _authenticationService.signInWithGoogle();
-    return handleSocialSignInResult(result);
+    return handleSocialSignInResult(
+      await _authenticationService.signInWithGoogle(),
+    );
   }
 
   /// Assigns extracted User from Firebase User to [_currentUser] and returns
@@ -102,7 +103,7 @@ class UserService with ListenableServiceMixin {
       lastName = nameParts.getRange(1, nameParts.length).join(' ');
     }
 
-    return AppUser.empty().copyWith(
+    return AppUser(
       id: user.uid,
       email: hasEmail ? user.email! : 'NO_EMAIL',
       firstName: firstName,
