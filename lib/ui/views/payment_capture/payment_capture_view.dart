@@ -13,8 +13,9 @@ import 'payment_capture_viewmodel.dart';
     FormTextField(name: 'cardNumber'),
     FormTextField(name: 'cardOwner'),
     FormTextField(
-        name: 'cardExpiry',
-        validator: PaymentCaptureViewValidators.validateExpiryDate),
+      name: 'cardExpiry',
+      validator: PaymentCaptureViewValidators.validateExpiryDate,
+    ),
     FormTextField(
       name: 'cardCvv',
       validator: PaymentCaptureViewValidators.validateCvv,
