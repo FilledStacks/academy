@@ -8,12 +8,14 @@ class CourseLandingViewMobile extends ViewModelWidget<CourseLandingViewModel> {
 
   @override
   Widget build(BuildContext context, CourseLandingViewModel viewModel) {
-    return const Center(
-      child: Text(
-        'Hello, MOBILE UI!',
-        style: TextStyle(
-          fontSize: 35,
-          fontWeight: FontWeight.w900,
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'Hello, MOBILE UI!',
+          style: TextStyle(
+            fontSize: 35,
+            fontWeight: FontWeight.w900,
+          ),
         ),
       ),
     );

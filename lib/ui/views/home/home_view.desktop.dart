@@ -21,58 +21,61 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        SizedBox(
-          width: kdDesktopMaxContentWidth * 0.6,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              verticalSpace(150),
-              const HomeTitle(),
-              const HomeSubtitle(),
-              verticalSpaceMedium,
-              Container(
-                height: 130,
-                padding: const EdgeInsets.symmetric(horizontal: 100),
-                child: SvgPicture.asset(
-                  'assets/sign-up-arrow.svg',
-                  placeholderBuilder: (context) => Shimmer.fromColors(
-                    baseColor: kcDarkGreyColor,
-                    highlightColor: kcDarkGreyShimmerEndColor,
-                    child: Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                      color: kcMediumGrey,
+    return Scaffold(
+      backgroundColor: kcBackgroundColor,
+      body: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          SizedBox(
+            width: kdDesktopMaxContentWidth * 0.6,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                verticalSpace(150),
+                const HomeTitle(),
+                const HomeSubtitle(),
+                verticalSpaceMedium,
+                Container(
+                  height: 130,
+                  padding: const EdgeInsets.symmetric(horizontal: 100),
+                  child: SvgPicture.asset(
+                    'assets/sign-up-arrow.svg',
+                    placeholderBuilder: (context) => Shimmer.fromColors(
+                      baseColor: kcDarkGreyColor,
+                      highlightColor: kcDarkGreyShimmerEndColor,
+                      child: Container(
+                        width: double.infinity,
+                        height: double.infinity,
+                        color: kcMediumGrey,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              verticalSpaceSmall,
-              Row(
-                children: [
-                  viewModel.hasUser
-                      ? const HomeGreetUser()
-                      : AcademyButton(
-                          title: ksCTASignInWithGoogle,
-                          onTap: viewModel.signInWithGoogle,
-                        ),
-                ],
-              ),
-              if (viewModel.showValidationError)
-                Text(
-                  viewModel.emailValidationMessage!,
-                  style: const TextStyle(
-                    color: Colors.red,
-                  ),
+                verticalSpaceSmall,
+                Row(
+                  children: [
+                    viewModel.hasUser
+                        ? const HomeGreetUser()
+                        : AcademyButton(
+                            title: ksCTASignInWithGoogle,
+                            onTap: viewModel.signInWithGoogle,
+                          ),
+                  ],
                 ),
-              verticalSpace(120),
-            ],
+                if (viewModel.showValidationError)
+                  Text(
+                    viewModel.emailValidationMessage!,
+                    style: const TextStyle(
+                      color: Colors.red,
+                    ),
+                  ),
+                verticalSpace(120),
+              ],
+            ),
           ),
-        ),
-        const HomeImage(),
-      ],
+          const HomeImage(),
+        ],
+      ),
     );
   }
 }

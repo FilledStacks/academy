@@ -1,3 +1,4 @@
+import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
 import 'package:filledstacked_academy/ui/views/course_landing/widgets/course_landing_chapters_grid.dart';
 import 'package:filledstacked_academy/ui/views/course_landing/widgets/course_landing_overview.dart';
@@ -12,21 +13,23 @@ class CourseLandingViewDesktop extends ViewModelWidget<CourseLandingViewModel> {
 
   @override
   Widget build(BuildContext context, CourseLandingViewModel viewModel) {
-    return viewModel.isBusy
-        ? const Center(child: CircularProgressIndicator())
-        : SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 45),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                CourseLandingTrailer(),
-                verticalSpaceLarge,
-                CourseLandingOverview(),
-                verticalSpaceLarge,
-                CourseLandingChaptersGrid(),
-                verticalSpaceLarge,
-              ],
-            ),
-          );
+    return Scaffold(
+        backgroundColor: kcBackgroundColor,
+        body: viewModel.isBusy
+            ? const Center(child: CircularProgressIndicator())
+            : SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 45),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    CourseLandingTrailer(),
+                    verticalSpaceLarge,
+                    CourseLandingOverview(),
+                    verticalSpaceLarge,
+                    CourseLandingChaptersGrid(),
+                    verticalSpaceLarge,
+                  ],
+                ),
+              ));
   }
 }

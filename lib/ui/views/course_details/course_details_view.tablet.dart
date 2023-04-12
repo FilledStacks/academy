@@ -1,3 +1,4 @@
+import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -9,6 +10,7 @@ class CourseDetailsViewTablet extends ViewModelWidget<CourseDetailsViewModel> {
   @override
   Widget build(BuildContext context, CourseDetailsViewModel viewModel) {
     return const Scaffold(
+      backgroundColor: kcBackgroundColor,
       body: Center(
         child: Text(
           'Hello, TABLET UI!',

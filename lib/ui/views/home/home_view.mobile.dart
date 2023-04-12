@@ -1,3 +1,4 @@
+import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
 import 'package:filledstacked_academy/ui/views/home/home_view.form.dart';
 import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
@@ -16,30 +17,33 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 40,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const HomeTitle(),
-          verticalSpaceTiny,
-          const HomeSubtitle(),
-          verticalSpaceLarge,
-          InputField(controller: emailController),
-          if (viewModel.showValidationError)
-            Text(
-              viewModel.emailValidationMessage!,
-              style: const TextStyle(
-                color: Colors.red,
+    return Scaffold(
+      backgroundColor: kcBackgroundColor,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 40,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const HomeTitle(),
+            verticalSpaceTiny,
+            const HomeSubtitle(),
+            verticalSpaceLarge,
+            InputField(controller: emailController),
+            if (viewModel.showValidationError)
+              Text(
+                viewModel.emailValidationMessage!,
+                style: const TextStyle(
+                  color: Colors.red,
+                ),
               ),
-            ),
-          verticalSpaceMedium,
-          const HomeNotifyButton(),
-          verticalSpaceMedium,
-          const HomeImage(),
-        ],
+            verticalSpaceMedium,
+            const HomeNotifyButton(),
+            verticalSpaceMedium,
+            const HomeImage(),
+          ],
+        ),
       ),
     );
   }
