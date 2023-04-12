@@ -9,9 +9,9 @@ class CourseDetailsViewMobile extends ViewModelWidget<CourseDetailsViewModel> {
 
   @override
   Widget build(BuildContext context, CourseDetailsViewModel viewModel) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: kcBackgroundColor,
-      body: const Center(
+      body: Center(
         child: Text(
           'Hello, MOBILE UI!',
           style: TextStyle(
