@@ -37,9 +37,12 @@ class ChapterCard extends StatelessWidget {
               ),
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 29),
               child: Column(
+                mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       GradientText(
                         colors: const [
@@ -47,19 +50,26 @@ class ChapterCard extends StatelessWidget {
                           kcTitleGradientRight
                         ],
                         position.toString().padLeft(2, '0'),
-                        style: ktsTitle.copyWith(fontSize: 24),
+                        style:
+                            ktsBodyLarge.copyWith(fontWeight: FontWeight.w800),
                       ),
                       horizontalSpaceTiny,
-                      Text(
-                        title,
-                        style: ktsTitle.copyWith(fontSize: 24),
+                      Expanded(
+                        child: Text(
+                          title,
+                          style: ktsBodyLarge.copyWith(
+                              fontWeight: FontWeight.w800),
+                        ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 19),
-                  Text(
-                    description,
-                    style: ktsBodyLarge.copyWith(color: kcCourseOverview),
+                  const SizedBox(height: 10),
+                  Expanded(
+                    child: Text(
+                      description,
+                      style: ktsBodyRegular.copyWith(color: kcCourseOverview),
+                      overflow: TextOverflow.fade,
+                    ),
                   ),
                 ],
               ),
