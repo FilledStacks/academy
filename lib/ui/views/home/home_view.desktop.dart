@@ -28,8 +28,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
         children: [
           SizedBox(
             width: kdDesktopMaxContentWidth * 0.6,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
               children: [
                 verticalSpace(150),
                 const HomeTitle(),
