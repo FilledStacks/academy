@@ -12,20 +12,17 @@ async function jsPromiseFunction(message) {
 }
 
 
-async function jsOpenTabFunction(url) {
+async function jsOpenPopup(url) {
     let promise = new Promise(function(resolve, reject) {
         var win = window.open(url,"New Popup Window","width=800,height=800");
-        console.log("window",win);
-
         var timer = setInterval(function() {
                 if (win.closed) {
                     clearInterval(timer);
-                    resolve('Paid');
+                    resolve();
                 }
             }, 500);
-        console.log("window",win);
+        
     });
     let result = await promise;
-    console.log("result",result);
     return result;
 }

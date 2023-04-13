@@ -466,7 +466,8 @@ class MockDialogService extends _i1.Mock implements _i13.DialogService {
       _i9.BuildContext,
       _i14.DialogRequest<dynamic>,
       dynamic Function(_i11.DialogResponse<dynamic>),
-    )? builder,
+    )?
+        builder,
   }) =>
       super.noSuchMethod(
         Invocation.method(
@@ -996,12 +997,6 @@ class MockGoogleCloudLoggerService extends _i1.Mock
         returnValueForMissingStub: '',
       ) as String);
   @override
-  bool get isDevelopment => (super.noSuchMethod(
-        Invocation.getter(#isDevelopment),
-        returnValue: false,
-        returnValueForMissingStub: false,
-      ) as bool);
-  @override
   _i8.Future<void> initialise() => (super.noSuchMethod(
         Invocation.method(
           #initialise,
@@ -1050,16 +1045,7 @@ class MockGoogleCloudLoggerService extends _i1.Mock
 class MockNativeInteractionService extends _i1.Mock
     implements _i24.NativeInteractionService {
   @override
-  _i8.Future<String> callJSPromise() => (super.noSuchMethod(
-        Invocation.method(
-          #callJSPromise,
-          [],
-        ),
-        returnValue: _i8.Future<String>.value(''),
-        returnValueForMissingStub: _i8.Future<String>.value(''),
-      ) as _i8.Future<String>);
-  @override
-  _i8.Future<String> callOpenTab() => (super.noSuchMethod(
+  _i8.Future<String> callOpenPopup() => (super.noSuchMethod(
         Invocation.method(
           #callOpenTab,
           [],
@@ -1067,15 +1053,6 @@ class MockNativeInteractionService extends _i1.Mock
         returnValue: _i8.Future<String>.value(''),
         returnValueForMissingStub: _i8.Future<String>.value(''),
       ) as _i8.Future<String>);
-  @override
-  String getPlatformFromJS() => (super.noSuchMethod(
-        Invocation.method(
-          #getPlatformFromJS,
-          [],
-        ),
-        returnValue: '',
-        returnValueForMissingStub: '',
-      ) as String);
 }
 
 /// A class which mocks [EnvironmentService].

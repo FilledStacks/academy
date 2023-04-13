@@ -4,8 +4,8 @@ import 'package:filledstacked_academy/services/user_service.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:stacked/stacked.dart';
 
-class MenuButtonViewModel extends BaseViewModel {
-  final log = getLogger('MenuButtoViewModel');
+class MenuOverlayViewModel extends BaseViewModel {
+  final log = getLogger('MenuButtonViewModel');
   final _userService = locator<UserService>();
 
   Future<void> logout() async {

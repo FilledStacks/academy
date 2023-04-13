@@ -10,17 +10,9 @@ class NativeInteractionService implements NativeInteractionsInterface {
   }
 
   @override
-  Future<String> callJSPromise() => instance.callJSPromise();
-
-  @override
-  Future<String> callOpenTab() => instance.callOpenTab();
-
-  @override
-  String getPlatformFromJS() => instance.getPlatformFromJS();
+  Future<String> callOpenPopup() => instance.callOpenPopup();
 }
 
 abstract class NativeInteractionsInterface {
-  String getPlatformFromJS();
-  Future<String> callJSPromise();
-  Future<String> callOpenTab();
+  Future<String> callOpenPopup();
 }
