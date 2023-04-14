@@ -43,22 +43,4 @@ class HomeViewModel extends FormViewModel {
   Future<void> navigateToUserProfile() async {
     await _routerService.navigateTo(const UserProfileViewRoute());
   }
-
-  Future<void> signInWithGoogle() async {
-    _log.i('');
-
-    unawaited(_analyticsService.logButtonClick(name: ksCTASignInWithGoogle));
-
-    final result = await runBusyFuture(_userService.signInWithGoogle());
-
-    if (result == SignInResult.failure) {
-      await _sheetService.showCustomSheet(
-        variant: BottomSheetType.notice,
-        title: 'Sign in failed',
-        description: 'Please, try again later or contact support',
-      );
-
-      return;
-    }
-  }
 }
