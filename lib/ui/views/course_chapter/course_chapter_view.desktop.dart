@@ -1,6 +1,7 @@
 import 'package:filledstacked_academy/ui/common/app_strings.dart';
 import 'package:filledstacked_academy/ui/widgets/common/academy_button.dart';
 import 'package:filledstacked_academy/ui/widgets/common/course_price_card.dart';
+import 'package:filledstacked_academy/ui/widgets/common/google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';

@@ -28,15 +28,15 @@ class _CourseChapterUserNotLogged
             children: [
               const _CourseChapterArrow(),
               Column(
-                children: [
-                  const CoursePriceCard(
+                children: const [
+                  CoursePriceCard(
                     price: '35',
                     discountPrice: '20',
                     discountPeriod: '1 Week only',
                   ),
-                  AcademyButton(
+                  GoogleSignIn(
+                    eventName: ksCTASignInToView,
                     title: ksCTASignInToView,
-                    onTap: viewModel.signInWithGoogle,
                   ),
                 ],
               )
