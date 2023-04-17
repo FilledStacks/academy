@@ -16,10 +16,16 @@ class GoogleSignInModel extends BaseViewModel {
   final _sheetService = locator<BottomSheetService>();
   final _userService = locator<UserService>();
 
+  /// CTA name for Analytics
+  final String eventName;
+  GoogleSignInModel({
+    this.eventName = ksCTASignInWithGoogle,
+  });
+
   Future<void> signInWithGoogle() async {
     log.i('');
 
-    unawaited(_analyticsService.logButtonClick(name: ksCTASignInWithGoogle));
+    unawaited(_analyticsService.logButtonClick(name: eventName));
 
     final result = await runBusyFuture(_userService.signInWithGoogle());
 

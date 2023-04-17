@@ -8,10 +8,16 @@ import 'google_sign_in_model.dart';
 class GoogleSignIn extends StackedView<GoogleSignInModel> {
   final bool isBusy;
   final bool enabled;
+
+  /// CTA name for Analytics
+  final String eventName;
+  final String title;
   const GoogleSignIn({
     Key? key,
     this.isBusy = false,
     this.enabled = true,
+    this.eventName = ksCTASignInWithGoogle,
+    this.title = ksCTASignInWithGoogle,
   }) : super(key: key);
 
   @override
@@ -24,11 +30,11 @@ class GoogleSignIn extends StackedView<GoogleSignInModel> {
       enabled: enabled,
       isBusy: isBusy || viewModel.isBusy,
       onTap: viewModel.signInWithGoogle,
-      title: ksCTASignInWithGoogle,
+      title: title,
     );
   }
 
   @override
   GoogleSignInModel viewModelBuilder(BuildContext context) =>
-      GoogleSignInModel();
+      GoogleSignInModel(eventName: eventName);
 }
