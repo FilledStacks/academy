@@ -5,8 +5,8 @@ import 'package:stacked/stacked.dart';
 
 import 'unknown_viewmodel.dart';
 
-class UnknownViewMobile extends ViewModelWidget<UnknownViewModel> {
-  const UnknownViewMobile({super.key});
+class UnknownViewTablet extends ViewModelWidget<UnknownViewModel> {
+  const UnknownViewTablet({super.key});
 
   @override
   Widget build(BuildContext context, UnknownViewModel viewModel) {

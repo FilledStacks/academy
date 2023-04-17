@@ -1,17 +1,18 @@
-import 'package:filledstacked_academy/extensions/hover_extensions.dart';
-import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
-import 'package:filledstacked_academy/ui/views/main_layout/widgets/menu_button.dart';
-import 'package:filledstacked_academy/ui/widgets/common/academy_icon.dart';
+import 'package:academy/extensions/hover_extensions.dart';
+import 'package:academy/ui/common/app_constants.dart';
+import 'package:academy/ui/common/ui_helpers.dart';
+import 'package:academy/ui/widgets/common/academy_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
 import 'main_layout_viewmodel.dart';
 
+// Add outside class
 const double _kNavbarHeight = 90;
 
 class MainLayoutView extends StackedView<MainLayoutViewModel> {
-  const MainLayoutView({super.key});
+  const MainLayoutView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
@@ -20,35 +21,43 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
     Widget? child,
   ) {
     return Center(
+      // #2: Give a default text style that matches our app style
       child: DefaultTextStyle(
         style: GoogleFonts.openSans(color: Colors.white),
+        // #3: Restrict the content dimensions
         child: SizedBox(
           height: screenHeight(context),
-          width: viewModel.contentWidth, // kdDesktopMaxContentWidth
+          width: kdDesktopMaxContentWidth,
+          // #4: Main body as a list
           child: ListView(
             children: [
+              // Navbar
               SizedBox(
                 height: _kNavbarHeight,
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal:
-                                viewModel.contentWidth == null ? 40 : 0),
+                        padding: EdgeInsets.symmetric(horizontal: 40),
                         child: GestureDetector(
-                          onTap: viewModel.navigateToHome,
                           child: const AcademyIcon(),
                         ).showCursorOnHover,
                       ),
-                      const MenuButton(),
+                      MaterialButton(
+                          child: const Icon(
+                            Icons.menu,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {})
                     ]),
               ),
+              // Main Content
               ConstrainedBox(
                 constraints: BoxConstraints.tightFor(
-                    height: screenHeight(context) - _kNavbarHeight),
+                  height: screenHeight(context) - _kNavbarHeight,
+                ),
                 child: const NestedRouter(),
-              )
+              ),
             ],
           ),
         ),

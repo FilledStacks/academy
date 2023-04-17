@@ -1,10 +1,12 @@
-import 'package:filledstacked_academy/extensions/hover_extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:academy/ui/common/app_colors.dart';
+import 'package:academy/ui/common/ui_helpers.dart';
+import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class NoticeSheet extends StatelessWidget {
+import 'notice_sheet_model.dart';
+
+class NoticeSheet extends StackedView<NoticeSheetModel> {
   final Function(SheetResponse)? completer;
   final SheetRequest request;
   const NoticeSheet({
@@ -14,7 +16,11 @@ class NoticeSheet extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder(
+    BuildContext context,
+    NoticeSheetModel viewModel,
+    Widget? child,
+  ) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       child: Column(
@@ -23,37 +29,16 @@ class NoticeSheet extends StatelessWidget {
         children: [
           Text(
             request.title!,
-            style: GoogleFonts.openSans(
-              color: Colors.black,
-              fontWeight: FontWeight.w900,
-              fontSize: 25,
-            ),
+            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
           ),
           verticalSpaceTiny,
           Text(
             request.description!,
-            style: GoogleFonts.openSans(
-              color: Colors.black,
-              fontWeight: FontWeight.w600,
-              fontSize: 14,
-            ),
+            style: const TextStyle(fontSize: 14, color: kcMediumGrey),
             maxLines: 3,
             softWrap: true,
           ),
           verticalSpaceLarge,
-          Center(
-            child: MaterialButton(
-              onPressed: () => completer?.call(SheetResponse(confirmed: true)),
-              child: Text(
-                'Close',
-                style: GoogleFonts.openSans(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w900,
-                  fontSize: 18,
-                ),
-              ),
-            ).showCursorOnHover,
-          ),
         ],
       ),
       decoration: const BoxDecoration(
@@ -65,4 +50,7 @@ class NoticeSheet extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  NoticeSheetModel viewModelBuilder(BuildContext context) => NoticeSheetModel();
 }

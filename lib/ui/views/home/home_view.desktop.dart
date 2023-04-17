@@ -1,80 +1,50 @@
-import 'package:filledstacked_academy/ui/common/app_colors.dart';
-import 'package:filledstacked_academy/ui/common/app_constants.dart';
-import 'package:filledstacked_academy/ui/common/app_strings.dart';
-import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
-import 'package:filledstacked_academy/ui/views/home/home_view.form.dart';
-import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
-import 'package:filledstacked_academy/ui/views/home/widgets/home_greet_user.dart';
-import 'package:filledstacked_academy/ui/views/home/widgets/home_image.dart';
-import 'package:filledstacked_academy/ui/views/home/widgets/home_subtitle.dart';
-import 'package:filledstacked_academy/ui/views/home/widgets/home_title.dart';
-import 'package:filledstacked_academy/ui/widgets/common/academy_button.dart';
+import 'package:academy/ui/common/app_colors.dart';
+import 'package:academy/ui/common/ui_helpers.dart';
+import 'package:academy/ui/views/home/widgets/home_image.dart';
+import 'package:academy/ui/views/home/widgets/home_subtitle.dart';
+import 'package:academy/ui/views/home/widgets/home_title.dart';
+import 'package:academy/ui/widgets/common/google_sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 
+import 'home_viewmodel.dart';
+
 class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
-  final TextEditingController emailController;
-  const HomeViewDesktop({Key? key, required this.emailController})
-      : super(key: key);
+  const HomeViewDesktop({super.key});
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Scaffold(
-      backgroundColor: kcBackgroundColor,
-      body: Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          SizedBox(
-            width: kdDesktopMaxContentWidth * 0.6,
-            child: ListView(
-              children: [
-                verticalSpace(150),
-                const HomeTitle(),
-                const HomeSubtitle(),
-                verticalSpaceMedium,
-                Container(
-                  height: 130,
-                  padding: const EdgeInsets.symmetric(horizontal: 100),
-                  child: SvgPicture.asset(
-                    'assets/sign-up-arrow.svg',
-                    placeholderBuilder: (context) => Shimmer.fromColors(
-                      baseColor: kcDarkGreyColor,
-                      highlightColor: kcDarkGreyShimmerEndColor,
-                      child: Container(
-                        width: double.infinity,
-                        height: double.infinity,
-                        color: kcMediumGrey,
-                      ),
-                    ),
+        backgroundColor: kcBackgroundColor,
+        // Outside Row
+        body: Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              // Left side of screen
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  verticalSpace(150),
+                  const HomeTitle(),
+                  const HomeSubtitle(),
+                  verticalSpaceMedium,
+
+                  // Arrow
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 100),
+                    child: SvgPicture.asset('assets/sign-up-arrow.svg'),
                   ),
-                ),
-                verticalSpaceSmall,
-                Row(
-                  children: [
-                    viewModel.hasUser
-                        ? const HomeGreetUser()
-                        : AcademyButton(
-                            title: ksCTASignInWithGoogle,
-                            onTap: viewModel.signInWithGoogle,
-                          ),
-                  ],
-                ),
-                if (viewModel.showValidationError)
-                  Text(
-                    viewModel.emailValidationMessage!,
-                    style: const TextStyle(
-                      color: Colors.red,
-                    ),
-                  ),
-                verticalSpace(120),
-              ],
-            ),
+                  verticalSpaceSmall,
+                  const GoogleSignIn(),
+                  verticalSpace(120),
+                ],
+              ),
+              horizontalSpaceMedium,
+              const HomeImage(),
+            ],
           ),
-          const HomeImage(),
-        ],
-      ),
-    );
+        ));
   }
 }

@@ -3,6 +3,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
 
 import 'unknown_view.desktop.dart';
+import 'unknown_view.tablet.dart';
 import 'unknown_view.mobile.dart';
 import 'unknown_viewmodel.dart';
 
@@ -17,6 +18,7 @@ class UnknownView extends StackedView<UnknownViewModel> {
   ) {
     return ScreenTypeLayout.builder(
       mobile: (_) => const UnknownViewMobile(),
+      tablet: (_) => const UnknownViewTablet(),
       desktop: (_) => const UnknownViewDesktop(),
     );
   }

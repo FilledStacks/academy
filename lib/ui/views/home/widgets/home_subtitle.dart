@@ -1,38 +1,26 @@
-import 'package:filledstacked_academy/extensions/hover_extensions.dart';
-import 'package:filledstacked_academy/ui/common/app_colors.dart';
-import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
+import 'package:academy/ui/common/shared_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:stacked/stacked.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 
-class HomeSubtitle extends ViewModelWidget<HomeViewModel> {
+class HomeSubtitle extends StatelessWidget {
   const HomeSubtitle({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, HomeViewModel viewModel) {
+  Widget build(BuildContext context) {
     final children = [
       Text(
         'Build amazing software, the right way.',
-        style: GoogleFonts.openSans(
-          fontWeight: FontWeight.w600,
-          fontSize: 20,
-        ),
+        style: ktsBodyLarge.copyWith(fontWeight: FontWeight.w600),
       ),
-      if (!viewModel.hasUser)
-        Text(
-          ' Sign up now',
-          style: GoogleFonts.openSans(
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            color: kcTitleGradientRight,
-          ),
-        ).scaleOnHover().moveOnHover(y: 5),
+      GradientText(
+        ' Sign up to be notified',
+        style: ktsBodyLarge.copyWith(fontWeight: FontWeight.w600),
+        colors: const [Color(0xff0CFF60), Color(0xff0091FB)],
+      )
     ];
-
     return ScreenTypeLayout.builder(
       mobile: (_) => Column(children: children),
-      tablet: (_) => Row(children: children),
       desktop: (_) => Row(children: children),
     );
   }

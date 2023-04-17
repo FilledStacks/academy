@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-TextStyle get ktsTitle => GoogleFonts.openSans(
+TextStyle get ktsTitleText => GoogleFonts.openSans(
       fontSize: 80,
-      height: 0.95,
-      fontWeight: FontWeight.w800,
-    );
-
-TextStyle get ktsTitle2 => GoogleFonts.openSans(
-      fontSize: 40,
       height: 0.95,
       fontWeight: FontWeight.w800,
     );

@@ -33,9 +33,9 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600;700;800&display=swap" rel="stylesheet">
+  
 
-  <title>FilledStacks Academy</title>
+  <title>My Stacked Application</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
@@ -48,6 +48,7 @@
 
 <body>
   <style>
+    
     body {
       background-color: #0A0A0A;
       height: 100vh;
@@ -135,23 +136,7 @@
       border-radius: 50%;
     }
   </style>
-  <script src="app_functions.js" defer></script>
   <script>
-    function alertMessage(text) {
-      alert(text);
-    }
-
-    window.browser_user = {
-      name: 'Dane Mackier',
-      id: '123asd132',
-      email: 'dane@filledstacks.com',
-    }
-
-    window.logger = (flutter_value) => {
-      console.log({ js_context: this, flutter_value });
-    };
-
-
     function delay(time) {
       return new Promise(resolve => setTimeout(resolve, time));
     }

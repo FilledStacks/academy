@@ -27,9 +27,3 @@ linter:
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
-analyzer:
-  exclude:
-    - lib/models/**/*.g.dart
-    - lib/models/**/*.freezed.dart
-    - lib/models/*.g.dart
-    - lib/models/*.freezed.dart

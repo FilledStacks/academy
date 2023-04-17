@@ -1,7 +1,5 @@
-import 'package:filledstacked_academy/ui/common/app_colors.dart';
-import 'package:filledstacked_academy/ui/common/shared_styles.dart';
-import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
-import 'package:filledstacked_academy/ui/widgets/common/academy_button.dart';
+import 'package:academy/ui/common/app_colors.dart';
+import 'package:academy/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -17,21 +15,25 @@ class UnknownViewDesktop extends ViewModelWidget<UnknownViewModel> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Text(
               '404',
-              style: ktsTitle.copyWith(letterSpacing: 20.0),
+              style: TextStyle(
+                  fontSize: 80,
+                  height: 0.95,
+                  color: Colors.white,
+                  letterSpacing: 20.0),
             ),
             verticalSpaceSmall,
             Text(
               'PAGE NOT FOUND',
-              style: ktsBodyLarge.copyWith(
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
                 letterSpacing: 20.0,
                 wordSpacing: 10.0,
               ),
             ),
-            verticalSpaceMedium,
-            AcademyButton(title: 'Go HOME', onTap: viewModel.navigateToHome),
           ],
         ),
       ),
