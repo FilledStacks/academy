@@ -16,71 +16,70 @@ class CourseService {
                 title: 'Prerequisites',
                 chapters: [
                   Chapter(
-                    id: 'readme',
-                    title: 'README',
+                    id: 'system-requirements',
+                    title: 'System Requirements',
                     description:
-                        'Everything you need to know before starting this course.',
+                        'What you need to have installed, what version we will be working with.',
                     durationInSeconds: 450,
                   ),
                   Chapter(
-                    id: 'basics',
-                    title: 'Stacked Basics',
+                    id: 'knowledge-requirements',
+                    title: 'Knowledge Requirements',
                     description:
-                        'Get to know Stacked, what it provides, how to use the CLI and how it works',
+                        'What you need to know to get the most out of this course',
                     durationInSeconds: 683,
-                  ),
-                  Chapter(
-                    id: 'intro-services',
-                    title: 'Intro to Stacked Services',
-                    description:
-                        'An introduction to the Services provided by Stacked that give you the basic functionality for an application',
-                    durationInSeconds: 383,
                   ),
                 ],
               ),
               Module(
-                id: 'app',
-                title: 'App',
+                id: 'intro-flutter-web',
+                title: 'Intro to Flutter Web',
                 chapters: [
                   Chapter(
-                    id: 'what-are-we-building',
-                    title: 'What we will build',
-                    description: 'Everything you need to know to build',
+                    id: 'html-vs-canvas',
+                    title: 'Html vs Canvas',
+                    description:
+                        'The difference between Html and Canvas flutter web apps',
                     durationInSeconds: 3578,
                   ),
                   Chapter(
-                    id: 'landing',
-                    title: 'The Landing Page',
+                    id: 'seo-vs-web',
+                    title: 'SEO vs Web app',
                     description:
-                        'Lets build the landing page of the application. The view the user will see first',
+                        'The difference between an SEO built website and a Web application',
                     durationInSeconds: 322,
-                  ),
-                  Chapter(
-                    id: 'intro-services',
-                    title: 'Intro to Stacked Services',
-                    description:
-                        'An introduction to the Services provided by Stacked that give you the basic functionality for an application',
-                    durationInSeconds: 1234,
                   ),
                 ],
               ),
               Module(
-                id: 'prerequisites',
-                title: 'Prerequisites',
+                id: 'stacked',
+                title: 'Stacked',
                 chapters: [
                   Chapter(
-                    id: 'readme',
-                    title: 'README',
-                    description:
-                        'Everything you need to know before starting this course.',
+                    id: 'what-is-stacked',
+                    title: 'What is Stacked',
+                    description: 'What is Stacked and why we use it',
                     durationInSeconds: 4324,
                   ),
                   Chapter(
-                    id: 'basics',
-                    title: 'Stacked Basics',
+                    id: 'getting-started',
+                    title: 'Getting Started with Stacked',
                     description:
-                        'Get to know Stacked, what it provides, how to use the CLI and how it works',
+                        'How to get started with stacked and create your first project',
                     durationInSeconds: 3433,
+                  ),
+                  Chapter(
+                    id: 'state-in-stacked',
+                    title: 'State management in Stacked',
+                    description: 'How state management works in Stacked',
+                    durationInSeconds: 2213,
+                  ),
+                  Chapter(
+                    id: 'stacked-navigation',
+                    title: 'Navigation in Stacked',
+                    description:
+                        'An overview of how navigation works in Stacked',
+                    durationInSeconds: 2213,
                   ),
                   Chapter(
                     id: 'intro-services',
@@ -92,28 +91,32 @@ class CourseService {
                 ],
               ),
               Module(
-                id: 'prerequisites',
-                title: 'Prerequisites',
+                id: 'building-web-ui',
+                title: 'Building Web UI',
                 chapters: [
                   Chapter(
-                    id: 'readme',
-                    title: 'README',
-                    description:
-                        'Everything you need to know before starting this course.',
+                    id: 'building-landing',
+                    title: 'Build a landing page',
+                    description: 'Build the applications landing page',
                     durationInSeconds: 1122,
                   ),
                   Chapter(
-                    id: 'basics',
-                    title: 'Stacked Basics',
-                    description:
-                        'Get to know Stacked, what it provides, how to use the CLI and how it works',
+                    id: 'refactor-for-responsive',
+                    title: 'Refactor for Responsive',
+                    description: 'Refactor the widgets for Responsive Design',
                     durationInSeconds: 334,
                   ),
                   Chapter(
-                    id: 'intro-services',
-                    title: 'Intro to Stacked Services',
+                    id: 'overview-of-responsive-builder',
+                    title: 'Overview of Responsive Builder',
                     description:
-                        'An introduction to the Services provided by Stacked that give you the basic functionality for an application',
+                        'An overview of the responsive builder package and how it works.',
+                    durationInSeconds: 887,
+                  ),
+                  Chapter(
+                    id: 'build-mobile-responsive-ui',
+                    title: 'Building a responsive mobile UI',
+                    description: 'Building a mobile UI for the landing page',
                     durationInSeconds: 887,
                   ),
                 ],
