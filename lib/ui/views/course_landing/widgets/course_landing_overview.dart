@@ -26,12 +26,12 @@ class CourseLandingOverview extends ViewModelWidget<CourseLandingViewModel> {
                   children: [
                     Text(
                       ksCourseDetailsTitle,
-                      style: ktsTitle2.copyWith(color: kcCourseOverview),
+                      style: ktsTitle2.copyWith(color: kcLightGrey),
                     ),
                     verticalSpaceSmall,
                     Text(
                       viewModel.fetchedCourse?.description ?? '',
-                      style: ktsBodyLarge.copyWith(color: kcCourseOverview),
+                      style: ktsBodyLarge.copyWith(color: kcLightGrey),
                     ),
                   ],
                 )

@@ -21,7 +21,7 @@ class CoursePerksCard extends StatelessWidget {
               Text(
                 ksCourseBenefitsCardTitle,
                 style: ktsBodyLarge.copyWith(
-                  color: kcCourseOverview,
+                  color: kcLightGrey,
                   fontSize: 40.0,
                   fontWeight: FontWeight.w600,
                 ),
@@ -35,7 +35,7 @@ class CoursePerksCard extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(
                       perks[index],
-                      style: ktsBodyLarge.copyWith(color: kcCourseOverview),
+                      style: ktsBodyLarge.copyWith(color: kcLightGrey),
                       textAlign: TextAlign.end,
                     ),
                   );

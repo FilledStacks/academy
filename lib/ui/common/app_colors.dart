@@ -13,5 +13,3 @@ const Color kcBackgroundColor = kcBlack;
 const List<Color> kgTitle = [kcTitleGradientLeft, kcTitleGradientRight];
 const Color kcTitleGradientLeft = Color(0xff0CFF60);
 const Color kcTitleGradientRight = Color(0xff0091FB);
-
-const Color kcCourseOverview = Color(0xFFB0B0B0);

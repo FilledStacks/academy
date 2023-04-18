@@ -67,7 +67,7 @@ class ChapterCard extends StatelessWidget {
                   Expanded(
                     child: Text(
                       description,
-                      style: ktsBodyRegular.copyWith(color: kcCourseOverview),
+                      style: ktsBodyRegular.copyWith(color: kcLightGrey),
                       overflow: TextOverflow.fade,
                     ),
                   ),
