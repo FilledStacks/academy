@@ -1,8 +1,8 @@
-import 'package:academy/app/app.bottomsheets.dart';
-import 'package:academy/app/app.dialogs.dart';
-import 'package:academy/app/app.locator.dart';
-import 'package:academy/app/app.router.dart';
-import 'package:academy/ui/common/app_colors.dart';
+import 'package:filledstacks_academy/app/app.bottomsheets.dart';
+import 'package:filledstacks_academy/app/app.dialogs.dart';
+import 'package:filledstacks_academy/app/app.locator.dart';
+import 'package:filledstacks_academy/app/app.router.dart';
+import 'package:filledstacks_academy/ui/common/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';

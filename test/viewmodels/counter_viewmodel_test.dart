@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:academy/app/app.locator.dart';
+import 'package:filledstacks_academy/app/app.locator.dart';
 
 import '../helpers/test_helpers.dart';
 

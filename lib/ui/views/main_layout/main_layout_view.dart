@@ -1,7 +1,7 @@
-import 'package:academy/extensions/hover_extensions.dart';
-import 'package:academy/ui/common/app_constants.dart';
-import 'package:academy/ui/common/ui_helpers.dart';
-import 'package:academy/ui/widgets/common/academy_icon.dart';
+import 'package:filledstacks_academy/extensions/hover_extensions.dart';
+import 'package:filledstacks_academy/ui/common/app_constants.dart';
+import 'package:filledstacks_academy/ui/common/ui_helpers.dart';
+import 'package:filledstacks_academy/ui/widgets/common/academy_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
@@ -38,7 +38,7 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 40),
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
                         child: GestureDetector(
                           child: const AcademyIcon(),
                         ).showCursorOnHover,

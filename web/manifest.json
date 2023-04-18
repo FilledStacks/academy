@@ -1,6 +1,6 @@
 {
-    "name": "academy",
-    "short_name": "academy",
+    "name": "filledstacks_academy",
+    "short_name": "filledstacks_academy",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

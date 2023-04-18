@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.academy">
+    package="com.example.filledstacks_academy">
    <application
-        android:label="academy"
+        android:label="filledstacks_academy"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

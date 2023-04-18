@@ -1,23 +1,21 @@
-import 'package:academy/ui/bottom_sheets/notice/notice_sheet.dart';
-import 'package:academy/ui/dialogs/info_alert/info_alert_dialog.dart';
-import 'package:academy/ui/views/home/home_view.dart';
-import 'package:academy/ui/views/main_layout/main_layout_view.dart';
-import 'package:academy/ui/views/unknown/unknown_view.dart';
+import 'package:filledstacks_academy/services/course_service.dart';
+import 'package:filledstacks_academy/ui/bottom_sheets/notice/notice_sheet.dart';
+import 'package:filledstacks_academy/ui/dialogs/info_alert/info_alert_dialog.dart';
+import 'package:filledstacks_academy/ui/views/course_details/course_details_view.dart';
+import 'package:filledstacks_academy/ui/views/course_landing/course_landing_view.dart';
+import 'package:filledstacks_academy/ui/views/home/home_view.dart';
+import 'package:filledstacks_academy/ui/views/unknown/unknown_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 // @stacked-import
 
 @StackedApp(
   routes: [
-    CustomRoute(
-      page: MainLayoutView,
-      initial: true,
-      children: [
-        CustomRoute(page: HomeView, path: ''),
-        // @stacked-route
-      ],
-    ),
+    CustomRoute(page: HomeView, initial: true),
+    CustomRoute(page: CourseLandingView),
+    CustomRoute(page: CourseDetailsView),
 
+    // @stacked-route
     CustomRoute(page: UnknownView, path: '/404'),
 
     /// When none of the above routes match, redirect to UnknownView
@@ -27,7 +25,9 @@ import 'package:stacked_services/stacked_services.dart';
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: RouterService),
-    // @stacked-service
+    LazySingleton(classType: CourseService),
+
+// @stacked-service
   ],
   bottomsheets: [
     StackedBottomsheet(classType: NoticeSheet),
@@ -37,5 +37,6 @@ import 'package:stacked_services/stacked_services.dart';
     StackedDialog(classType: InfoAlertDialog),
     // @stacked-dialog
   ],
+  logger: StackedLogger(),
 )
 class App {}

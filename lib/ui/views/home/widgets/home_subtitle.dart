@@ -1,4 +1,4 @@
-import 'package:academy/ui/common/shared_styles.dart';
+import 'package:filledstacks_academy/ui/common/shared_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';

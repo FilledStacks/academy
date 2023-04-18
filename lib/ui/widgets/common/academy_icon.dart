@@ -1,4 +1,4 @@
-import 'package:academy/ui/common/shared_styles.dart';
+import 'package:filledstacks_academy/ui/common/shared_styles.dart';
 import 'package:flutter/material.dart';
 
 class AcademyIcon extends StatelessWidget {

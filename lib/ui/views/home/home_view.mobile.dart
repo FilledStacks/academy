@@ -1,6 +1,7 @@
-import 'package:academy/ui/common/app_colors.dart';
-import 'package:academy/ui/common/ui_helpers.dart';
-import 'package:academy/ui/widgets/common/google_sign_in.dart';
+import 'package:filledstacks_academy/ui/common/app_colors.dart';
+import 'package:filledstacks_academy/ui/common/ui_helpers.dart';
+import 'package:filledstacks_academy/ui/widgets/common/academy_icon.dart';
+import 'package:filledstacks_academy/ui/widgets/common/google_sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -22,6 +23,7 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
             vertical: 50,
           ),
           children: const [
+            AcademyIcon(),
             verticalSpaceLarge,
             HomeTitle(),
             verticalSpaceTiny,
