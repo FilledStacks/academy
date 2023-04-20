@@ -7,6 +7,6 @@ class HomeViewModel extends BaseViewModel {
   final _routerService = locator<RouterService>();
 
   Future<void> navigateToCourse() async {
-    await _routerService.navigateToCourseDetailsView();
+    await _routerService.navigateToCourseLandingView();
   }
 }
