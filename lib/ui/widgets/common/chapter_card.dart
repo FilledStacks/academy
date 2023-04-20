@@ -10,86 +10,59 @@ class ChapterCard extends StatelessWidget {
   final String title;
   final String description;
   final void Function()? onTap;
-  final Widget? icon;
   const ChapterCard({
     Key? key,
     required this.position,
     required this.title,
     required this.description,
     required this.onTap,
-    this.icon,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final hasIcon = position.isEven;
-
     return GestureDetector(
       onTap: onTap,
-      child: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.5),
-            child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                color: kcMediumGrey,
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 29),
-              child: Column(
+      child: Padding(
+        padding: const EdgeInsets.all(8.5),
+        child: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+            color: kcMediumGrey,
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 29),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      GradientText(
-                        colors: const [
-                          kcTitleGradientLeft,
-                          kcTitleGradientRight
-                        ],
-                        position.toString().padLeft(2, '0'),
-                        style:
-                            ktsBodyLarge.copyWith(fontWeight: FontWeight.w800),
-                      ),
-                      horizontalSpaceTiny,
-                      Expanded(
-                        child: Text(
-                          title,
-                          style: ktsBodyLarge.copyWith(
-                              fontWeight: FontWeight.w800),
-                        ),
-                      ),
-                    ],
+                  GradientText(
+                    colors: const [kcTitleGradientLeft, kcTitleGradientRight],
+                    position.toString().padLeft(2, '0'),
+                    style: ktsBodyLarge.copyWith(fontWeight: FontWeight.w800),
                   ),
-                  const SizedBox(height: 10),
+                  horizontalSpaceTiny,
                   Expanded(
                     child: Text(
-                      description,
-                      style: ktsBodyRegular.copyWith(color: kcLightGrey),
-                      overflow: TextOverflow.fade,
+                      title,
+                      style: ktsBodyLarge.copyWith(fontWeight: FontWeight.w800),
                     ),
                   ),
                 ],
               ),
-            ),
-          ),
-          if (hasIcon)
-            Positioned(
-              top: 0,
-              left: 0,
-              child: Container(
-                constraints: const BoxConstraints(
-                  minWidth: 34,
-                  minHeight: 34,
-                  maxWidth: 34,
-                  maxHeight: 34,
+              const SizedBox(height: 10),
+              Expanded(
+                child: Text(
+                  description,
+                  style: ktsBodyRegular.copyWith(color: kcLightGrey),
+                  overflow: TextOverflow.fade,
                 ),
-                child: Image.asset('assets/chapter_icons/mermaid.png'),
               ),
-            ),
-        ],
+            ],
+          ),
+        ),
       ),
     ).showCursorOnHover;
   }
