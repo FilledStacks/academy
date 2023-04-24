@@ -30,7 +30,7 @@ class CourseDetailsViewDesktop extends ViewModelWidget<CourseDetailsViewModel> {
             ),
             Expanded(
                 child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(45),
+                    padding: const EdgeInsets.all(40),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

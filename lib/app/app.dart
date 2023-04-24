@@ -7,15 +7,25 @@ import 'package:filledstacks_academy/ui/views/home/home_view.dart';
 import 'package:filledstacks_academy/ui/views/unknown/unknown_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:filledstacks_academy/ui/views/main_layout/main_layout_view.dart';
+import 'package:filledstacks_academy/services/layout_service.dart';
 // @stacked-import
 
 @StackedApp(
   routes: [
-    CustomRoute(page: HomeView, initial: true),
-    CustomRoute(page: CourseLandingView),
-    CustomRoute(page: CourseDetailsView),
+    // #1: Make MainLayout the initial view
+    CustomRoute(
+      page: MainLayoutView,
+      initial: true,
+      // #2: Pass the existing views as children
+      children: [
+        CustomRoute(page: HomeView, path: ''),
+        CustomRoute(page: CourseLandingView),
+        CustomRoute(page: CourseDetailsView),
+      ],
+    ),
 
-    // @stacked-route
+// @stacked-route
     CustomRoute(page: UnknownView, path: '/404'),
 
     /// When none of the above routes match, redirect to UnknownView
@@ -27,6 +37,7 @@ import 'package:stacked_services/stacked_services.dart';
     LazySingleton(classType: RouterService),
     LazySingleton(classType: CourseService),
 
+    LazySingleton(classType: LayoutService),
 // @stacked-service
   ],
   bottomsheets: [

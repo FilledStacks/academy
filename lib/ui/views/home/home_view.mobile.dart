@@ -23,7 +23,6 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
             vertical: 50,
           ),
           children: const [
-            AcademyIcon(),
             verticalSpaceLarge,
             HomeTitle(),
             verticalSpaceTiny,

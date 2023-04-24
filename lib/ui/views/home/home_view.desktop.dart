@@ -18,21 +18,21 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Scaffold(
-        backgroundColor: kcBackgroundColor,
-        // Outside Row
-        body: Center(
-          child: SizedBox(
-            width: kdDesktopMaxContentWidth,
-            height: kdDesktopMaxContentHeight,
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                // Left side of screen
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+      backgroundColor: kcBackgroundColor,
+      // Outside Row
+      body: Center(
+        child: SizedBox(
+          width: kdDesktopMaxContentWidth,
+          height: kdDesktopMaxContentHeight,
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              // Left side of screen
+              SizedBox(
+                width: kdDesktopMaxContentWidth * 0.5,
+                child: ListView(
                   children: [
-                    const AcademyIcon(),
-                    const Spacer(flex: 2),
+                    verticalSpace(60),
                     const HomeTitle(),
                     const HomeSubtitle(),
                     verticalSpaceMedium,
@@ -44,16 +44,17 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                     ),
                     verticalSpaceSmall,
                     const GoogleSignIn(),
-                    const Spacer(flex: 3)
                   ],
                 ),
-                horizontalSpaceMedium,
-                HomeImage(
-                  onTap: viewModel.navigateToCourse,
-                ),
-              ],
-            ),
+              ),
+              horizontalSpaceMedium,
+              HomeImage(
+                onTap: viewModel.navigateToCourse,
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
