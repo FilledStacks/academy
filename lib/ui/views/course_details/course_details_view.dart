@@ -7,9 +7,7 @@ import 'course_details_view.mobile.dart';
 import 'course_details_viewmodel.dart';
 
 class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
-  const CourseDetailsView({
-    super.key,
-  });
+  const CourseDetailsView({super.key});
 
   @override
   Widget builder(

@@ -35,8 +35,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   
-  stacked: ^3.2.0
-  stacked_services: ^1.0.0
+  stacked: ^3.2.1
+  stacked_services: ^1.0.2
   url_strategy: ^0.2.0
   responsive_builder: ^0.6.0
   flutter_animate: ^4.1.0
@@ -59,7 +59,7 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   build_runner: ^2.2.0
 
-  stacked_generator: ^1.3.2
+  stacked_generator: ^1.3.3
   mockito: ^5.3.2
   freezed: ^2.3.2
   json_serializable: ^6.6.1

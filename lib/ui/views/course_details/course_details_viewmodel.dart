@@ -16,8 +16,6 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
   Course? fetchedCourse;
   Chapter? selectedChapter;
 
-  CourseDetailsViewModel();
-
   bool get busyFetchingCourese => fetchedCourse == null;
 
   @override

@@ -240,6 +240,16 @@ class MockRouterService extends _i1.Mock implements _i4.RouterService {
         returnValueForMissingStub: _i5.Future<bool>.value(false),
       ) as _i5.Future<bool>);
   @override
+  _i5.Future<bool> back<T extends Object?>({T? result}) => (super.noSuchMethod(
+        Invocation.method(
+          #back,
+          [],
+          {#result: result},
+        ),
+        returnValue: _i5.Future<bool>.value(false),
+        returnValueForMissingStub: _i5.Future<bool>.value(false),
+      ) as _i5.Future<bool>);
+  @override
   _i2.RoutingController topMostRouter({bool? ignorePagelessRoutes = false}) =>
       (super.noSuchMethod(
         Invocation.method(
