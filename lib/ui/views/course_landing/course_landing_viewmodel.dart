@@ -41,13 +41,10 @@ class CourseLandingViewModel extends FutureViewModel {
   }
 
   Future<void> navigateToChapter(Chapter chapter) async {
-    // TODO (Course): Add navigation back here
-    // await _routerService.navigateTo(CourseDetailsViewRoute(
-    //   courseId: courseId,
-    //   children: List.from([
-    //     CourseChapterViewRoute(chapterId: chapter.id),
-    //   ]),
-    // ));
+    await _routerService.navigateToCourseDetailsView(
+      courseId: courseId,
+      chapter: chapter,
+    );
   }
 
   @visibleForTesting
