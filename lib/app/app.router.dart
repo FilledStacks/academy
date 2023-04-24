@@ -9,6 +9,7 @@ import 'package:flutter/material.dart' as _i7;
 import 'package:stacked/stacked.dart' as _i6;
 import 'package:stacked_services/stacked_services.dart' as _i5;
 
+import '../models/models.dart' as _i8;
 import '../ui/views/course_details/course_details_view.dart' as _i3;
 import '../ui/views/course_landing/course_landing_view.dart' as _i2;
 import '../ui/views/home/home_view.dart' as _i1;
@@ -40,9 +41,14 @@ class StackedRouterWeb extends _i6.RootStackRouter {
       );
     },
     CourseDetailsViewRoute.name: (routeData) {
+      final args = routeData.argsAs<CourseDetailsViewArgs>();
       return _i6.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i3.CourseDetailsView(),
+        child: _i3.CourseDetailsView(
+          key: args.key,
+          courseId: args.courseId,
+          chapter: args.chapter,
+        ),
         opaque: true,
         barrierDismissible: false,
       );
@@ -110,14 +116,41 @@ class CourseLandingViewRoute extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.CourseDetailsView]
-class CourseDetailsViewRoute extends _i6.PageRouteInfo<void> {
-  const CourseDetailsViewRoute()
-      : super(
+class CourseDetailsViewRoute extends _i6.PageRouteInfo<CourseDetailsViewArgs> {
+  CourseDetailsViewRoute({
+    _i7.Key? key,
+    required String courseId,
+    _i8.Chapter? chapter,
+  }) : super(
           CourseDetailsViewRoute.name,
           path: '/course-details-view',
+          args: CourseDetailsViewArgs(
+            key: key,
+            courseId: courseId,
+            chapter: chapter,
+          ),
         );
 
   static const String name = 'CourseDetailsView';
+}
+
+class CourseDetailsViewArgs {
+  const CourseDetailsViewArgs({
+    this.key,
+    required this.courseId,
+    this.chapter,
+  });
+
+  final _i7.Key? key;
+
+  final String courseId;
+
+  final _i8.Chapter? chapter;
+
+  @override
+  String toString() {
+    return 'CourseDetailsViewArgs{key: $key, courseId: $courseId, chapter: $chapter}';
+  }
 }
 
 /// generated route for
@@ -149,10 +182,18 @@ extension RouterStateExtension on _i5.RouterService {
     );
   }
 
-  Future<dynamic> navigateToCourseDetailsView(
-      {void Function(_i6.NavigationFailure)? onFailure}) async {
+  Future<dynamic> navigateToCourseDetailsView({
+    _i7.Key? key,
+    required String courseId,
+    _i8.Chapter? chapter,
+    void Function(_i6.NavigationFailure)? onFailure,
+  }) async {
     return navigateTo(
-      const CourseDetailsViewRoute(),
+      CourseDetailsViewRoute(
+        key: key,
+        courseId: courseId,
+        chapter: chapter,
+      ),
       onFailure: onFailure,
     );
   }
@@ -181,10 +222,18 @@ extension RouterStateExtension on _i5.RouterService {
     );
   }
 
-  Future<dynamic> replaceWithCourseDetailsView(
-      {void Function(_i6.NavigationFailure)? onFailure}) async {
+  Future<dynamic> replaceWithCourseDetailsView({
+    _i7.Key? key,
+    required String courseId,
+    _i8.Chapter? chapter,
+    void Function(_i6.NavigationFailure)? onFailure,
+  }) async {
     return replaceWith(
-      const CourseDetailsViewRoute(),
+      CourseDetailsViewRoute(
+        key: key,
+        courseId: courseId,
+        chapter: chapter,
+      ),
       onFailure: onFailure,
     );
   }
