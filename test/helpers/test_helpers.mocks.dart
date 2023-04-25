@@ -666,6 +666,12 @@ class MockLayoutService extends _i1.Mock implements _i13.LayoutService {
 /// See the documentation for Mockito's code generation for more information.
 class MockUserService extends _i1.Mock implements _i14.UserService {
   @override
+  bool get hasFirebaseUser => (super.noSuchMethod(
+        Invocation.getter(#hasFirebaseUser),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+  @override
   int get listenersCount => (super.noSuchMethod(
         Invocation.getter(#listenersCount),
         returnValue: 0,

@@ -12,6 +12,9 @@ class UserService with ListenableServiceMixin {
   User? _currentUser;
   User? get currentUser => _currentUser;
 
+  bool get hasFirebaseUser =>
+      _authenticationService.firebaseAuth.currentUser != null;
+
   UserService() {
     _setUserFromFirebaseAuth(_authenticationService.firebaseAuth.currentUser);
   }

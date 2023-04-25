@@ -12,6 +12,9 @@ import 'package:filledstacks_academy/ui/views/main_layout/main_layout_view.dart'
 import 'package:filledstacks_academy/services/layout_service.dart';
 import 'package:filledstacks_academy/ui/views/course_chapter/course_chapter_view.dart';
 import 'package:filledstacks_academy/services/user_service.dart';
+import 'package:filledstacks_academy/ui/views/payment_capture/payment_capture_view.dart';
+
+import 'guards/auth_guard.dart';
 // @stacked-import
 
 @StackedApp(
@@ -28,6 +31,11 @@ import 'package:filledstacks_academy/services/user_service.dart';
           children: [
             CustomRoute(page: CourseChapterView, path: ':chapterId'),
           ],
+        ),
+        CustomRoute(
+          page: PaymentCaptureView,
+          path: 'payment',
+          guards: [AuthGuard],
         ),
       ],
     ),
