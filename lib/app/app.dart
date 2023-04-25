@@ -9,19 +9,24 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:filledstacks_academy/ui/views/main_layout/main_layout_view.dart';
 import 'package:filledstacks_academy/services/layout_service.dart';
+import 'package:filledstacks_academy/ui/views/course_chapter/course_chapter_view.dart';
 // @stacked-import
 
 @StackedApp(
   routes: [
-    // #1: Make MainLayout the initial view
     CustomRoute(
       page: MainLayoutView,
       initial: true,
-      // #2: Pass the existing views as children
       children: [
         CustomRoute(page: HomeView, path: ''),
         CustomRoute(page: CourseLandingView),
-        CustomRoute(page: CourseDetailsView),
+        CustomRoute(
+          page: CourseDetailsView,
+          path: 'course/:courseId',
+          children: [
+            CustomRoute(page: CourseChapterView, path: ':chapterId'),
+          ],
+        ),
       ],
     ),
 

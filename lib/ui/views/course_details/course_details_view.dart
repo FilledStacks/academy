@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked/stacked_annotations.dart';
 
 import 'course_details_view.desktop.dart';
 import 'course_details_view.mobile.dart';
 import 'course_details_viewmodel.dart';
 
 class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
-  const CourseDetailsView({super.key});
+  final String courseId;
+  const CourseDetailsView({
+    super.key,
+    @pathParam required this.courseId,
+  });
 
   @override
   Widget builder(
@@ -26,7 +31,7 @@ class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
   CourseDetailsViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      CourseDetailsViewModel();
+      CourseDetailsViewModel(courseId: courseId);
 
   @override
   void onViewModelReady(CourseDetailsViewModel viewModel) {

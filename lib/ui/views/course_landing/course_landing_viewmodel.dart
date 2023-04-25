@@ -41,7 +41,7 @@ class CourseLandingViewModel extends FutureViewModel {
   }
 
   Future<void> navigateToChapter(Chapter chapter) async {
-    await _routerService.navigateToCourseDetailsView();
+    await _routerService.navigateToCourseDetailsView(courseId: courseId);
   }
 
   @visibleForTesting

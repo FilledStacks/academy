@@ -28,52 +28,7 @@ class CourseDetailsViewDesktop extends ViewModelWidget<CourseDetailsViewModel> {
               items: viewModel.sidebarItems,
               isItemSelected: viewModel.isSidebarItemSelected,
             ),
-            Expanded(
-                child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(40),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: screenHeight(context) * 0.7,
-                          alignment: Alignment.center,
-                          child: Stack(
-                            fit: StackFit.expand,
-                            children: [
-                              Image.asset(
-                                'assets/master-web-hero-image.png',
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                              ),
-                              Center(
-                                child: Text(
-                                  viewModel.selectedChapter?.id ??
-                                      'Select a Chapter on the left',
-                                  style: ktsTitle,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        verticalSpaceLarge,
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text('💻', style: ktsTitle2),
-                            horizontalSpaceSmall,
-                            GradientText(
-                              viewModel.selectedChapter?.title ?? '',
-                              colors: kgTitle,
-                              style: ktsTitle2,
-                            ),
-                          ],
-                        ),
-                        Text(
-                          viewModel.selectedChapter?.description ?? '',
-                          style: ktsBodyRegular.copyWith(color: kcLightGrey),
-                        ),
-                      ],
-                    )))
+            const Expanded(child: NestedRouter()),
           ],
         ));
   }
