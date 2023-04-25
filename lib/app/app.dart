@@ -6,10 +6,12 @@ import 'package:filledstacks_academy/ui/views/course_landing/course_landing_view
 import 'package:filledstacks_academy/ui/views/home/home_view.dart';
 import 'package:filledstacks_academy/ui/views/unknown/unknown_view.dart';
 import 'package:stacked/stacked_annotations.dart';
+import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:filledstacks_academy/ui/views/main_layout/main_layout_view.dart';
 import 'package:filledstacks_academy/services/layout_service.dart';
 import 'package:filledstacks_academy/ui/views/course_chapter/course_chapter_view.dart';
+import 'package:filledstacks_academy/services/user_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -43,6 +45,8 @@ import 'package:filledstacks_academy/ui/views/course_chapter/course_chapter_view
     LazySingleton(classType: CourseService),
 
     LazySingleton(classType: LayoutService),
+    LazySingleton(classType: UserService),
+    LazySingleton(classType: FirebaseAuthenticationService),
 // @stacked-service
   ],
   bottomsheets: [

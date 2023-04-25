@@ -46,6 +46,7 @@ dependencies:
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
   pod_player: ^0.1.0
+  stacked_firebase_auth: ^2.19.2
 
 dev_dependencies:
   flutter_test:
