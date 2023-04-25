@@ -47,6 +47,8 @@ dependencies:
   json_annotation: ^4.8.0
   pod_player: ^0.1.0
   stacked_firebase_auth: ^2.19.2
+  googleapis: ^11.0.0
+  googleapis_auth: ^1.4.0
 
 dev_dependencies:
   flutter_test:

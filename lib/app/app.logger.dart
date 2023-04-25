@@ -12,6 +12,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 
+import '../utils/google_cloud_logger_output.dart';
+
 class SimpleLogPrinter extends LogPrinter {
   final String className;
   final bool printCallingFunctionName;
@@ -154,6 +156,7 @@ Logger getLogger(
     ),
     output: MultiOutput([
       if (!kReleaseMode) ConsoleOutput(),
+      if (kReleaseMode) GoogleCloudLoggerOutput(),
     ]),
   );
 }

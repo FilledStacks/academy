@@ -5,6 +5,7 @@ import 'package:filledstacks_academy/ui/views/course_details/course_details_view
 import 'package:filledstacks_academy/ui/views/course_landing/course_landing_view.dart';
 import 'package:filledstacks_academy/ui/views/home/home_view.dart';
 import 'package:filledstacks_academy/ui/views/unknown/unknown_view.dart';
+import 'package:filledstacks_academy/utils/google_cloud_logger_output.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -15,6 +16,7 @@ import 'package:filledstacks_academy/services/user_service.dart';
 import 'package:filledstacks_academy/ui/views/payment_capture/payment_capture_view.dart';
 
 import 'guards/auth_guard.dart';
+import 'package:filledstacks_academy/services/google_cloud_logger_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -55,6 +57,7 @@ import 'guards/auth_guard.dart';
     LazySingleton(classType: LayoutService),
     LazySingleton(classType: UserService),
     LazySingleton(classType: FirebaseAuthenticationService),
+    LazySingleton(classType: GoogleCloudLoggerService),
 // @stacked-service
   ],
   bottomsheets: [
@@ -65,6 +68,6 @@ import 'guards/auth_guard.dart';
     StackedDialog(classType: InfoAlertDialog),
     // @stacked-dialog
   ],
-  logger: StackedLogger(),
+  logger: StackedLogger(loggerOutputs: [GoogleCloudLoggerOutput]),
 )
 class App {}
