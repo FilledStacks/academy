@@ -17,6 +17,7 @@ import 'package:filledstacks_academy/ui/views/payment_capture/payment_capture_vi
 
 import 'guards/auth_guard.dart';
 import 'package:filledstacks_academy/services/google_cloud_logger_service.dart';
+import 'package:filledstacks_academy/services/analytics_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -58,6 +59,7 @@ import 'package:filledstacks_academy/services/google_cloud_logger_service.dart';
     LazySingleton(classType: UserService),
     LazySingleton(classType: FirebaseAuthenticationService),
     LazySingleton(classType: GoogleCloudLoggerService),
+    LazySingleton(classType: AnalyticsService),
 // @stacked-service
   ],
   bottomsheets: [

@@ -2,6 +2,7 @@ import 'package:filledstacks_academy/app/app.bottomsheets.dart';
 import 'package:filledstacks_academy/app/app.dialogs.dart';
 import 'package:filledstacks_academy/app/app.locator.dart';
 import 'package:filledstacks_academy/app/app.router.dart';
+import 'package:filledstacks_academy/services/analytics_service.dart';
 import 'package:filledstacks_academy/ui/common/app_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,11 @@ class MyApp extends StatelessWidget {
                   bodyColor: Colors.white,
                 ),
               ),
-              routerDelegate: stackedRouter.delegate(),
+              routerDelegate: stackedRouter.delegate(
+                navigatorObservers: () => [
+                  locator<AnalyticsService>().getAnalyticsObserver(),
+                ],
+              ),
               routeInformationParser: stackedRouter.defaultRouteParser(),
             ).animate().fadeIn(
                   delay: const Duration(milliseconds: 50),

@@ -7,6 +7,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:filledstacks_academy/services/layout_service.dart';
 import 'package:filledstacks_academy/services/user_service.dart';
 import 'package:filledstacks_academy/services/google_cloud_logger_service.dart';
+import 'package:filledstacks_academy/services/analytics_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -20,6 +21,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<UserService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<GoogleCloudLoggerService>(
       onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<AnalyticsService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -30,6 +32,7 @@ void registerServices() {
   getAndRegisterLayoutService();
   getAndRegisterUserService();
   getAndRegisterGoogleCloudLoggerService();
+  getAndRegisterAnalyticsService();
 // @stacked-mock-register
 }
 
@@ -108,6 +111,13 @@ MockGoogleCloudLoggerService getAndRegisterGoogleCloudLoggerService() {
   _removeRegistrationIfExists<GoogleCloudLoggerService>();
   final service = MockGoogleCloudLoggerService();
   locator.registerSingleton<GoogleCloudLoggerService>(service);
+  return service;
+}
+
+MockAnalyticsService getAndRegisterAnalyticsService() {
+  _removeRegistrationIfExists<AnalyticsService>();
+  final service = MockAnalyticsService();
+  locator.registerSingleton<AnalyticsService>(service);
   return service;
 }
 // @stacked-mock-create

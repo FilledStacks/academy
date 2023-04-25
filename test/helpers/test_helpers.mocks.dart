@@ -8,6 +8,7 @@ import 'dart:ui' as _i10;
 
 import 'package:filledstacks_academy/enums/sign_in_result.dart' as _i16;
 import 'package:filledstacks_academy/models/models.dart' as _i3;
+import 'package:filledstacks_academy/services/analytics_service.dart' as _i19;
 import 'package:filledstacks_academy/services/course_service.dart' as _i13;
 import 'package:filledstacks_academy/services/google_cloud_logger_service.dart'
     as _i17;
@@ -822,3 +823,8 @@ class MockGoogleCloudLoggerService extends _i1.Mock
         returnValueForMissingStub: null,
       );
 }
+
+/// A class which mocks [AnalyticsService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockAnalyticsService extends _i1.Mock implements _i19.AnalyticsService {}

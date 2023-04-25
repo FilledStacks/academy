@@ -49,6 +49,7 @@ dependencies:
   stacked_firebase_auth: ^2.19.2
   googleapis: ^11.0.0
   googleapis_auth: ^1.4.0
+  firebase_analytics: ^10.2.1
 
 dev_dependencies:
   flutter_test:

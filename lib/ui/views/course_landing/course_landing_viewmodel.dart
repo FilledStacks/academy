@@ -5,6 +5,7 @@ import 'package:filledstacks_academy/app/app.logger.dart';
 import 'package:filledstacks_academy/app/app.router.dart';
 import 'package:filledstacks_academy/exceptions/resource_not_found.dart';
 import 'package:filledstacks_academy/models/models.dart';
+import 'package:filledstacks_academy/services/analytics_service.dart';
 import 'package:filledstacks_academy/services/course_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:stacked/stacked.dart';
@@ -15,6 +16,7 @@ class CourseLandingViewModel extends FutureViewModel {
 
   final _courseService = locator<CourseService>();
   final _routerService = locator<RouterService>();
+  final _analyticsService = locator<AnalyticsService>();
 
   final String courseId;
   CourseLandingViewModel({required this.courseId});
@@ -41,6 +43,12 @@ class CourseLandingViewModel extends FutureViewModel {
   }
 
   Future<void> navigateToChapter(Chapter chapter) async {
+    unawaited(_analyticsService.logChapterSelected(
+      id: chapter.id,
+      chapterTitle: chapter.title,
+      courseTitle: fetchedCourse?.title,
+    ));
+
     await _routerService.navigateToCourseDetailsView(courseId: courseId);
   }
 
