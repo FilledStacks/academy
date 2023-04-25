@@ -52,6 +52,7 @@ class PaymentCaptureView extends StackedView<PaymentCaptureViewModel>
   @override
   void onViewModelReady(PaymentCaptureViewModel viewModel) {
     syncFormWithViewModel(viewModel);
+    viewModel.initializeForm();
   }
 }
 
