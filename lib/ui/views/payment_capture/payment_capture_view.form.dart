@@ -6,6 +6,7 @@
 
 // ignore_for_file: public_member_api_docs, constant_identifier_names, non_constant_identifier_names,unnecessary_this
 
+import 'package:filledstacks_academy/ui/views/payment_capture/payment_capture_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -23,8 +24,8 @@ final Map<String, String? Function(String?)?>
     _PaymentCaptureViewTextValidations = {
   CardNumberValueKey: null,
   CardOwnerValueKey: null,
-  CardExpiryValueKey: null,
-  CardCvvValueKey: null,
+  CardExpiryValueKey: PaymentCaptureViewValidators.validateExpiryDate,
+  CardCvvValueKey: PaymentCaptureViewValidators.validateCvv,
 };
 
 mixin $PaymentCaptureView {

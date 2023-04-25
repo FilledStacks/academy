@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
 
 import 'payment_capture_viewmodel.dart';
+import 'payment_capture_view.form.dart';
 
 class PaymentCaptureViewDesktop
     extends ViewModelWidget<PaymentCaptureViewModel> {
@@ -59,6 +60,7 @@ class PaymentCaptureViewDesktop
             verticalSpaceSmall,
             InputField(
               controller: cardExpiryController,
+              errorText: viewModel.cardExpiryValidationMessage,
               hintText: 'MM / YY',
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly,
@@ -70,6 +72,7 @@ class PaymentCaptureViewDesktop
             verticalSpaceSmall,
             InputField(
               controller: cardCvvController,
+              errorText: viewModel.cardCvvValidationMessage,
               hintText: 'CVV',
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly,
