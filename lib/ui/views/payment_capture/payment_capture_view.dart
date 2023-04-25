@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked/stacked_annotations.dart';
 
 import 'payment_capture_view.desktop.dart';
-import 'payment_capture_view.tablet.dart';
+import 'payment_capture_view.form.dart';
 import 'payment_capture_view.mobile.dart';
 import 'payment_capture_viewmodel.dart';
 
-class PaymentCaptureView extends StackedView<PaymentCaptureViewModel> {
+@FormView(
+  fields: [
+    FormTextField(name: 'cardNumber'),
+    FormTextField(name: 'cardOwner'),
+    FormTextField(name: 'cardExpiry'),
+    FormTextField(name: 'cardCvv'),
+  ],
+)
+class PaymentCaptureView extends StackedView<PaymentCaptureViewModel>
+    with $PaymentCaptureView {
   const PaymentCaptureView({super.key});
 
   @override
@@ -18,8 +28,12 @@ class PaymentCaptureView extends StackedView<PaymentCaptureViewModel> {
   ) {
     return ScreenTypeLayout.builder(
       mobile: (_) => const PaymentCaptureViewMobile(),
-      tablet: (_) => const PaymentCaptureViewTablet(),
-      desktop: (_) => const PaymentCaptureViewDesktop(),
+      desktop: (_) => PaymentCaptureViewDesktop(
+        cardNumberController: cardNumberController,
+        cardOwnerController: cardOwnerController,
+        cardExpiryController: cardExpiryController,
+        cardCvvController: cardCvvController,
+      ),
     );
   }
 
@@ -28,4 +42,9 @@ class PaymentCaptureView extends StackedView<PaymentCaptureViewModel> {
     BuildContext context,
   ) =>
       PaymentCaptureViewModel();
+
+  @override
+  void onViewModelReady(PaymentCaptureViewModel viewModel) {
+    syncFormWithViewModel(viewModel);
+  }
 }
