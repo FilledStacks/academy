@@ -51,9 +51,19 @@ class StackedRouterWeb extends _i8.RootStackRouter {
       );
     },
     CourseLandingViewRoute.name: (routeData) {
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<CourseLandingViewArgs>(
+          orElse: () => CourseLandingViewArgs(
+                  courseId: queryParams.optString(
+                'courseId',
+                'flutter-web',
+              )));
       return _i8.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i4.CourseLandingView(),
+        child: _i4.CourseLandingView(
+          key: args.key,
+          courseId: args.courseId,
+        ),
         opaque: true,
         barrierDismissible: false,
       );
@@ -104,7 +114,7 @@ class StackedRouterWeb extends _i8.RootStackRouter {
             ),
             _i8.RouteConfig(
               CourseLandingViewRoute.name,
-              path: 'course-landing-view',
+              path: 'courses',
               parent: MainLayoutViewRoute.name,
             ),
             _i8.RouteConfig(
@@ -173,14 +183,37 @@ class HomeViewRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.CourseLandingView]
-class CourseLandingViewRoute extends _i8.PageRouteInfo<void> {
-  const CourseLandingViewRoute()
-      : super(
+class CourseLandingViewRoute extends _i8.PageRouteInfo<CourseLandingViewArgs> {
+  CourseLandingViewRoute({
+    _i9.Key? key,
+    String? courseId = 'flutter-web',
+  }) : super(
           CourseLandingViewRoute.name,
-          path: 'course-landing-view',
+          path: 'courses',
+          args: CourseLandingViewArgs(
+            key: key,
+            courseId: courseId,
+          ),
+          rawQueryParams: {'courseId': courseId},
         );
 
   static const String name = 'CourseLandingView';
+}
+
+class CourseLandingViewArgs {
+  const CourseLandingViewArgs({
+    this.key,
+    this.courseId = 'flutter-web',
+  });
+
+  final _i9.Key? key;
+
+  final String? courseId;
+
+  @override
+  String toString() {
+    return 'CourseLandingViewArgs{key: $key, courseId: $courseId}';
+  }
 }
 
 /// generated route for
@@ -285,10 +318,16 @@ extension RouterStateExtension on _i7.RouterService {
     );
   }
 
-  Future<dynamic> navigateToCourseLandingView(
-      {void Function(_i8.NavigationFailure)? onFailure}) async {
+  Future<dynamic> navigateToCourseLandingView({
+    _i9.Key? key,
+    String? courseId = 'flutter-web',
+    void Function(_i8.NavigationFailure)? onFailure,
+  }) async {
     return navigateTo(
-      const CourseLandingViewRoute(),
+      CourseLandingViewRoute(
+        key: key,
+        courseId: courseId,
+      ),
       onFailure: onFailure,
     );
   }
@@ -347,10 +386,16 @@ extension RouterStateExtension on _i7.RouterService {
     );
   }
 
-  Future<dynamic> replaceWithCourseLandingView(
-      {void Function(_i8.NavigationFailure)? onFailure}) async {
+  Future<dynamic> replaceWithCourseLandingView({
+    _i9.Key? key,
+    String? courseId = 'flutter-web',
+    void Function(_i8.NavigationFailure)? onFailure,
+  }) async {
     return replaceWith(
-      const CourseLandingViewRoute(),
+      CourseLandingViewRoute(
+        key: key,
+        courseId: courseId,
+      ),
       onFailure: onFailure,
     );
   }

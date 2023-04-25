@@ -19,7 +19,7 @@ import 'package:filledstacks_academy/ui/views/course_chapter/course_chapter_view
       initial: true,
       children: [
         CustomRoute(page: HomeView, path: ''),
-        CustomRoute(page: CourseLandingView),
+        CustomRoute(page: CourseLandingView, path: 'courses'),
         CustomRoute(
           page: CourseDetailsView,
           path: 'course/:courseId',
