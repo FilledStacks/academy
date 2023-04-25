@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
 import 'main_layout_viewmodel.dart';
+import 'widgets/menu_button.dart';
 
 const double _kNavbarHeight = 90;
 
@@ -37,12 +38,7 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
                           child: const AcademyIcon(),
                         ).showCursorOnHover,
                       ),
-                      MaterialButton(
-                          child: const Icon(
-                            Icons.menu,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {})
+                      const MenuButton(),
                     ]),
               ),
               ConstrainedBox(
