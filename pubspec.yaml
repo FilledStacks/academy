@@ -50,6 +50,7 @@ dependencies:
   googleapis: ^11.0.0
   googleapis_auth: ^1.4.0
   firebase_analytics: ^10.2.1
+  js: ^0.6.5
 
 dev_dependencies:
   flutter_test:
