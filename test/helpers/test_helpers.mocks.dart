@@ -6,10 +6,12 @@
 import 'dart:async' as _i7;
 import 'dart:ui' as _i11;
 
+import 'package:filledstacks_academy/enums/environment.dart' as _i23;
 import 'package:filledstacks_academy/enums/sign_in_result.dart' as _i17;
 import 'package:filledstacks_academy/models/models.dart' as _i3;
 import 'package:filledstacks_academy/services/analytics_service.dart' as _i20;
 import 'package:filledstacks_academy/services/course_service.dart' as _i14;
+import 'package:filledstacks_academy/services/environment_service.dart' as _i22;
 import 'package:filledstacks_academy/services/google_cloud_logger_service.dart'
     as _i18;
 import 'package:filledstacks_academy/services/layout_service.dart' as _i15;
@@ -909,4 +911,80 @@ class MockNativeInteractionService extends _i1.Mock
         returnValue: _i7.Future<String>.value(''),
         returnValueForMissingStub: _i7.Future<String>.value(''),
       ) as _i7.Future<String>);
+}
+
+/// A class which mocks [EnvironmentService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockEnvironmentService extends _i1.Mock
+    implements _i22.EnvironmentService {
+  @override
+  bool get isDevelopment => (super.noSuchMethod(
+        Invocation.getter(#isDevelopment),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+  @override
+  bool get isProduction => (super.noSuchMethod(
+        Invocation.getter(#isProduction),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+  @override
+  bool get isStaging => (super.noSuchMethod(
+        Invocation.getter(#isStaging),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+  @override
+  String get apiKey => (super.noSuchMethod(
+        Invocation.getter(#apiKey),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  String get appId => (super.noSuchMethod(
+        Invocation.getter(#appId),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  String get authDomain => (super.noSuchMethod(
+        Invocation.getter(#authDomain),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  String get messagingSenderId => (super.noSuchMethod(
+        Invocation.getter(#messagingSenderId),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  String get projectId => (super.noSuchMethod(
+        Invocation.getter(#projectId),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  String get storageBucket => (super.noSuchMethod(
+        Invocation.getter(#storageBucket),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  _i23.Environment get currentEnvironment => (super.noSuchMethod(
+        Invocation.getter(#currentEnvironment),
+        returnValue: _i23.Environment.development,
+        returnValueForMissingStub: _i23.Environment.development,
+      ) as _i23.Environment);
+  @override
+  _i7.Future<void> initialize() => (super.noSuchMethod(
+        Invocation.method(
+          #initialize,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
 }

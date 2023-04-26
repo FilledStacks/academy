@@ -1,8 +1,11 @@
+import 'package:filledstacks_academy/app/app.locator.dart';
 import 'package:filledstacks_academy/app/app.logger.dart';
 import 'package:flutter/services.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:googleapis/logging/v2.dart';
 import 'package:logger/logger.dart';
+
+import 'environment_service.dart';
 
 const _scopes = ['https://www.googleapis.com/auth/logging.write'];
 
@@ -12,11 +15,12 @@ class GoogleCloudLoggerService {
   static late LoggingApi _loggingApi;
 
   final log = getLogger('GoogleCloudLoggerService');
+  final _environmentService = locator<EnvironmentService>();
   final resource = MonitoredResource()..type = 'global';
 
-  String get projectId => 'project-id';
-  String get environment => 'production';
-  bool get isDevelopment => false;
+  String get projectId => _environmentService.projectId;
+  String get environment => _environmentService.currentEnvironment.name;
+  bool get isDevelopment => _environmentService.isDevelopment;
 
   late Map<String, String> labels;
 

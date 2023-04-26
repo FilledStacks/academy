@@ -9,6 +9,7 @@ import 'package:filledstacks_academy/services/user_service.dart';
 import 'package:filledstacks_academy/services/google_cloud_logger_service.dart';
 import 'package:filledstacks_academy/services/analytics_service.dart';
 import 'package:filledstacks_academy/services/native_interactions/native_interaction_service.dart';
+import 'package:filledstacks_academy/services/environment_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -25,6 +26,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<AnalyticsService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<NativeInteractionService>(
       onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<EnvironmentService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -37,6 +39,7 @@ void registerServices() {
   getAndRegisterGoogleCloudLoggerService();
   getAndRegisterAnalyticsService();
   getAndRegisterNativeInteractionService();
+  getAndRegisterEnvironmentService();
 // @stacked-mock-register
 }
 
@@ -129,6 +132,13 @@ MockNativeInteractionService getAndRegisterNativeInteractionService() {
   _removeRegistrationIfExists<NativeInteractionService>();
   final service = MockNativeInteractionService();
   locator.registerSingleton<NativeInteractionService>(service);
+  return service;
+}
+
+MockEnvironmentService getAndRegisterEnvironmentService() {
+  _removeRegistrationIfExists<EnvironmentService>();
+  final service = MockEnvironmentService();
+  locator.registerSingleton<EnvironmentService>(service);
   return service;
 }
 // @stacked-mock-create

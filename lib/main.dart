@@ -11,9 +11,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:url_strategy/url_strategy.dart';
 
+import 'services/environment_service.dart';
+
 Future<void> main() async {
   setPathUrlStrategy();
-  setupLocator(
+  await setupLocator(
     stackedRouter: stackedRouter,
   );
   setupDialogUi();
@@ -26,14 +28,16 @@ Future<void> main() async {
 Future<void> setupFirebase() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  final environmentService = locator<EnvironmentService>();
+
   await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: "000000000_00000000000000000000000000000",
-      authDomain: "project-id.firebaseapp.com",
-      projectId: "project-id",
-      storageBucket: "project-id.appspot.com",
-      messagingSenderId: "000000000000",
-      appId: "1:000000000000:web:0000000000000000000000",
+    options: FirebaseOptions(
+      apiKey: environmentService.apiKey,
+      authDomain: environmentService.authDomain,
+      projectId: environmentService.projectId,
+      storageBucket: environmentService.storageBucket,
+      messagingSenderId: environmentService.messagingSenderId,
+      appId: environmentService.appId,
     ),
   );
 }
