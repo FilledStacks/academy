@@ -6,13 +6,9 @@ import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/models/api_response/api_response.dart';
 import 'package:filledstacked_academy/models/models.dart';
-import 'package:filledstacked_academy/services/user_service.dart';
+import 'package:filledstacked_academy/services/environment_service.dart';
 
 import 'app_api.dart';
-
-const String kApiEndpoint = '';
-const int kDefaultRetryTimes = 2;
-const bool kUseEmulator = true;
 
 enum _HttpMethod {
   get,
@@ -24,8 +20,7 @@ enum _HttpMethod {
 /// An implementation of the [AppApi] that talks to the real Academy backend
 class AcademyApi implements AppApi {
   final log = getLogger('AcademyApi');
-
-  final _userService = locator<UserService>();
+  final _environmentService = locator<EnvironmentService>();
 
   late final Dio _httpClient;
 
@@ -33,7 +28,7 @@ class AcademyApi implements AppApi {
     _httpClient = Dio(
       BaseOptions(
         receiveDataWhenStatusError: true,
-        baseUrl: kUseEmulator ? 'http://localhost' : kApiEndpoint,
+        baseUrl: _environmentService.baseUrl,
       ),
     );
   }
@@ -42,7 +37,10 @@ class AcademyApi implements AppApi {
   Future<List<Course>> getCourses() async {
     final response = await _makeHttpRequest<Course>(
       method: _HttpMethod.get,
-      path: kUseEmulator ? ':5000' : 'v1_host-payment_method',
+      path: '4fc35623-1a19-4042-8333-1282724485f4',
+      queryParameteres: {
+        'mocky-delay': '1s',
+      },
     );
 
     if (response.hasErrors) {
@@ -56,9 +54,10 @@ class AcademyApi implements AppApi {
   Future<Course> getCourse({required String id}) async {
     final response = await _makeHttpRequest<Course>(
       method: _HttpMethod.get,
-      path: kUseEmulator ? ':5000' : 'v1',
+      path: 'a8bdae3c-fdae-4541-9c63-2521e0a1a266',
       queryParameteres: {
         'id': id,
+        'mocky-delay': '1s',
       },
     );
 
@@ -69,18 +68,6 @@ class AcademyApi implements AppApi {
     return response.data.first;
   }
 
-  Future<Map<String, dynamic>> _getHeaders() async {
-    try {
-      final hasUser = _userService.hasUser;
-      return {
-        // if (hasUser) 'authorization': 'Bearer $kVimeoToken',
-      };
-    } catch (error) {
-      log.e(error);
-      return {};
-    }
-  }
-
   Future<ApiResponse<T>> _makeHttpRequest<T>({
     required _HttpMethod method,
     required String path,
@@ -88,7 +75,7 @@ class AcademyApi implements AppApi {
     Map<String, dynamic> body = const {},
     bool verbose = false,
     bool verboseResponse = false,
-    int maxRetryTimes = kDefaultRetryTimes,
+    int maxRetryTimes = 2,
   }) async {
     Future<ApiResponse<T>> _retryHttpRequest<T>() async {
       if (maxRetryTimes == 0) {}
@@ -106,13 +93,6 @@ class AcademyApi implements AppApi {
     }
 
     Response response;
-    final requestOptions = Options(
-      headers: await _getHeaders(),
-      // We don't throw exceptions for anything under 500
-      // we need to handle it
-      validateStatus: (status) =>
-          (status ?? 500) < 500 || (status ?? 500) == 505,
-    );
 
     try {
       switch (method) {
@@ -121,7 +101,6 @@ class AcademyApi implements AppApi {
             path,
             queryParameters: queryParameteres,
             data: body,
-            options: requestOptions,
           );
           break;
         case _HttpMethod.put:
@@ -129,14 +108,12 @@ class AcademyApi implements AppApi {
             path,
             queryParameters: queryParameteres,
             data: body,
-            options: requestOptions,
           );
           break;
         case _HttpMethod.delete:
           response = await _httpClient.delete(
             path,
             queryParameters: queryParameteres,
-            options: requestOptions,
           );
           break;
         case _HttpMethod.get:
@@ -144,7 +121,6 @@ class AcademyApi implements AppApi {
           response = await _httpClient.get(
             path,
             queryParameters: queryParameteres,
-            options: requestOptions,
           );
       }
     } on DioError catch (e) {
