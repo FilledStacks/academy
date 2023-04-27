@@ -1,6 +1,6 @@
 import 'package:filledstacks_academy/app/app.locator.dart';
 import 'package:filledstacks_academy/enums/sign_in_result.dart';
-import 'package:filledstacks_academy/models/user.dart';
+import 'package:filledstacks_academy/models/models.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_firebase_auth/stacked_firebase_auth.dart'
     as firebase_auth;

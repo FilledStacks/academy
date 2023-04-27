@@ -9,7 +9,7 @@ class HomeViewModel extends BaseViewModel {
   final _nativeInteractionService = locator<NativeInteractionService>();
 
   Future<void> navigateToCourse() async {
-    _nativeInteractionService.openPopup();
-    // await _routerService.navigateToCourseLandingView();
+    // _nativeInteractionService.openPopup();
+    await _routerService.navigateToCourseLandingView();
   }
 }

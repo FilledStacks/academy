@@ -883,3 +883,624 @@ abstract class _BrowserUser implements BrowserUser {
   _$$_BrowserUserCopyWith<_$_BrowserUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+User _$UserFromJson(Map<String, dynamic> json) {
+  return _User.fromJson(json);
+}
+
+/// @nodoc
+mixin _$User {
+  String get id => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String? get firstName => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get lastName => throw _privateConstructorUsedError;
+  String? get profilePicture => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserCopyWith<$Res> {
+  factory $UserCopyWith(User value, $Res Function(User) then) =
+      _$UserCopyWithImpl<$Res, User>;
+  @useResult
+  $Res call(
+      {String id,
+      String email,
+      String? firstName,
+      String? phoneNumber,
+      String? lastName,
+      String? profilePicture});
+}
+
+/// @nodoc
+class _$UserCopyWithImpl<$Res, $Val extends User>
+    implements $UserCopyWith<$Res> {
+  _$UserCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? email = null,
+    Object? firstName = freezed,
+    Object? phoneNumber = freezed,
+    Object? lastName = freezed,
+    Object? profilePicture = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      firstName: freezed == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastName: freezed == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
+  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
+      __$$_UserCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      String email,
+      String? firstName,
+      String? phoneNumber,
+      String? lastName,
+      String? profilePicture});
+}
+
+/// @nodoc
+class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
+    implements _$$_UserCopyWith<$Res> {
+  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? email = null,
+    Object? firstName = freezed,
+    Object? phoneNumber = freezed,
+    Object? lastName = freezed,
+    Object? profilePicture = freezed,
+  }) {
+    return _then(_$_User(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      firstName: freezed == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastName: freezed == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_User extends _User {
+  _$_User(
+      {required this.id,
+      required this.email,
+      this.firstName,
+      this.phoneNumber,
+      this.lastName,
+      this.profilePicture})
+      : super._();
+
+  factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final String email;
+  @override
+  final String? firstName;
+  @override
+  final String? phoneNumber;
+  @override
+  final String? lastName;
+  @override
+  final String? profilePicture;
+
+  @override
+  String toString() {
+    return 'User(id: $id, email: $email, firstName: $firstName, phoneNumber: $phoneNumber, lastName: $lastName, profilePicture: $profilePicture)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_User &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.profilePicture, profilePicture) ||
+                other.profilePicture == profilePicture));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, id, email, firstName, phoneNumber, lastName, profilePicture);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UserCopyWith<_$_User> get copyWith =>
+      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_UserToJson(
+      this,
+    );
+  }
+}
+
+abstract class _User extends User {
+  factory _User(
+      {required final String id,
+      required final String email,
+      final String? firstName,
+      final String? phoneNumber,
+      final String? lastName,
+      final String? profilePicture}) = _$_User;
+  _User._() : super._();
+
+  factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
+
+  @override
+  String get id;
+  @override
+  String get email;
+  @override
+  String? get firstName;
+  @override
+  String? get phoneNumber;
+  @override
+  String? get lastName;
+  @override
+  String? get profilePicture;
+  @override
+  @JsonKey(ignore: true)
+  _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
+}
+
+ApiResponse<T> _$ApiResponseFromJson<T>(Map<String, dynamic> json) {
+  return _ApiResponse<T>.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ApiResponse<T> {
+  List<String> get errors => throw _privateConstructorUsedError;
+  @GenericModelConverter()
+  List<T> get data => throw _privateConstructorUsedError;
+  List<Meta> get meta => throw _privateConstructorUsedError;
+  String? get first => throw _privateConstructorUsedError;
+  String? get last => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ApiResponseCopyWith<T, ApiResponse<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApiResponseCopyWith<T, $Res> {
+  factory $ApiResponseCopyWith(
+          ApiResponse<T> value, $Res Function(ApiResponse<T>) then) =
+      _$ApiResponseCopyWithImpl<T, $Res, ApiResponse<T>>;
+  @useResult
+  $Res call(
+      {List<String> errors,
+      @GenericModelConverter() List<T> data,
+      List<Meta> meta,
+      String? first,
+      String? last});
+}
+
+/// @nodoc
+class _$ApiResponseCopyWithImpl<T, $Res, $Val extends ApiResponse<T>>
+    implements $ApiResponseCopyWith<T, $Res> {
+  _$ApiResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errors = null,
+    Object? data = null,
+    Object? meta = null,
+    Object? first = freezed,
+    Object? last = freezed,
+  }) {
+    return _then(_value.copyWith(
+      errors: null == errors
+          ? _value.errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<T>,
+      meta: null == meta
+          ? _value.meta
+          : meta // ignore: cast_nullable_to_non_nullable
+              as List<Meta>,
+      first: freezed == first
+          ? _value.first
+          : first // ignore: cast_nullable_to_non_nullable
+              as String?,
+      last: freezed == last
+          ? _value.last
+          : last // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ApiResponseCopyWith<T, $Res>
+    implements $ApiResponseCopyWith<T, $Res> {
+  factory _$$_ApiResponseCopyWith(
+          _$_ApiResponse<T> value, $Res Function(_$_ApiResponse<T>) then) =
+      __$$_ApiResponseCopyWithImpl<T, $Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<String> errors,
+      @GenericModelConverter() List<T> data,
+      List<Meta> meta,
+      String? first,
+      String? last});
+}
+
+/// @nodoc
+class __$$_ApiResponseCopyWithImpl<T, $Res>
+    extends _$ApiResponseCopyWithImpl<T, $Res, _$_ApiResponse<T>>
+    implements _$$_ApiResponseCopyWith<T, $Res> {
+  __$$_ApiResponseCopyWithImpl(
+      _$_ApiResponse<T> _value, $Res Function(_$_ApiResponse<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errors = null,
+    Object? data = null,
+    Object? meta = null,
+    Object? first = freezed,
+    Object? last = freezed,
+  }) {
+    return _then(_$_ApiResponse<T>(
+      errors: null == errors
+          ? _value._errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<T>,
+      meta: null == meta
+          ? _value._meta
+          : meta // ignore: cast_nullable_to_non_nullable
+              as List<Meta>,
+      first: freezed == first
+          ? _value.first
+          : first // ignore: cast_nullable_to_non_nullable
+              as String?,
+      last: freezed == last
+          ? _value.last
+          : last // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_ApiResponse<T> extends _ApiResponse<T> {
+  _$_ApiResponse(
+      {final List<String> errors = const [],
+      @GenericModelConverter() final List<T> data = const [],
+      final List<Meta> meta = const [],
+      this.first,
+      this.last})
+      : _errors = errors,
+        _data = data,
+        _meta = meta,
+        super._();
+
+  factory _$_ApiResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_ApiResponseFromJson(json);
+
+  final List<String> _errors;
+  @override
+  @JsonKey()
+  List<String> get errors {
+    if (_errors is EqualUnmodifiableListView) return _errors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_errors);
+  }
+
+  final List<T> _data;
+  @override
+  @JsonKey()
+  @GenericModelConverter()
+  List<T> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  final List<Meta> _meta;
+  @override
+  @JsonKey()
+  List<Meta> get meta {
+    if (_meta is EqualUnmodifiableListView) return _meta;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_meta);
+  }
+
+  @override
+  final String? first;
+  @override
+  final String? last;
+
+  @override
+  String toString() {
+    return 'ApiResponse<$T>(errors: $errors, data: $data, meta: $meta, first: $first, last: $last)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ApiResponse<T> &&
+            const DeepCollectionEquality().equals(other._errors, _errors) &&
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            const DeepCollectionEquality().equals(other._meta, _meta) &&
+            (identical(other.first, first) || other.first == first) &&
+            (identical(other.last, last) || other.last == last));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_errors),
+      const DeepCollectionEquality().hash(_data),
+      const DeepCollectionEquality().hash(_meta),
+      first,
+      last);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ApiResponseCopyWith<T, _$_ApiResponse<T>> get copyWith =>
+      __$$_ApiResponseCopyWithImpl<T, _$_ApiResponse<T>>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ApiResponseToJson<T>(
+      this,
+    );
+  }
+}
+
+abstract class _ApiResponse<T> extends ApiResponse<T> {
+  factory _ApiResponse(
+      {final List<String> errors,
+      @GenericModelConverter() final List<T> data,
+      final List<Meta> meta,
+      final String? first,
+      final String? last}) = _$_ApiResponse<T>;
+  _ApiResponse._() : super._();
+
+  factory _ApiResponse.fromJson(Map<String, dynamic> json) =
+      _$_ApiResponse<T>.fromJson;
+
+  @override
+  List<String> get errors;
+  @override
+  @GenericModelConverter()
+  List<T> get data;
+  @override
+  List<Meta> get meta;
+  @override
+  String? get first;
+  @override
+  String? get last;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ApiResponseCopyWith<T, _$_ApiResponse<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Meta _$MetaFromJson(Map<String, dynamic> json) {
+  return _Meta.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Meta {
+  int get count => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MetaCopyWith<Meta> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MetaCopyWith<$Res> {
+  factory $MetaCopyWith(Meta value, $Res Function(Meta) then) =
+      _$MetaCopyWithImpl<$Res, Meta>;
+  @useResult
+  $Res call({int count});
+}
+
+/// @nodoc
+class _$MetaCopyWithImpl<$Res, $Val extends Meta>
+    implements $MetaCopyWith<$Res> {
+  _$MetaCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? count = null,
+  }) {
+    return _then(_value.copyWith(
+      count: null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_MetaCopyWith<$Res> implements $MetaCopyWith<$Res> {
+  factory _$$_MetaCopyWith(_$_Meta value, $Res Function(_$_Meta) then) =
+      __$$_MetaCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int count});
+}
+
+/// @nodoc
+class __$$_MetaCopyWithImpl<$Res> extends _$MetaCopyWithImpl<$Res, _$_Meta>
+    implements _$$_MetaCopyWith<$Res> {
+  __$$_MetaCopyWithImpl(_$_Meta _value, $Res Function(_$_Meta) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? count = null,
+  }) {
+    return _then(_$_Meta(
+      count: null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Meta implements _Meta {
+  _$_Meta({this.count = 0});
+
+  factory _$_Meta.fromJson(Map<String, dynamic> json) => _$$_MetaFromJson(json);
+
+  @override
+  @JsonKey()
+  final int count;
+
+  @override
+  String toString() {
+    return 'Meta(count: $count)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Meta &&
+            (identical(other.count, count) || other.count == count));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, count);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MetaCopyWith<_$_Meta> get copyWith =>
+      __$$_MetaCopyWithImpl<_$_Meta>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MetaToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Meta implements Meta {
+  factory _Meta({final int count}) = _$_Meta;
+
+  factory _Meta.fromJson(Map<String, dynamic> json) = _$_Meta.fromJson;
+
+  @override
+  int get count;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MetaCopyWith<_$_Meta> get copyWith => throw _privateConstructorUsedError;
+}

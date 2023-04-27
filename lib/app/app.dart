@@ -1,3 +1,5 @@
+import 'package:filledstacks_academy/api/academy_api.dart';
+import 'package:filledstacks_academy/api/app_api.dart';
 import 'package:filledstacks_academy/services/course_service.dart';
 import 'package:filledstacks_academy/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:filledstacks_academy/ui/dialogs/info_alert/info_alert_dialog.dart';
@@ -56,13 +58,14 @@ import 'package:filledstacks_academy/services/environment_service.dart';
     LazySingleton(classType: DialogService),
     LazySingleton(classType: RouterService),
     LazySingleton(classType: CourseService),
-
     LazySingleton(classType: LayoutService),
     LazySingleton(classType: UserService),
     LazySingleton(classType: FirebaseAuthenticationService),
     LazySingleton(classType: GoogleCloudLoggerService),
     LazySingleton(classType: AnalyticsService),
     LazySingleton(classType: NativeInteractionService),
+    LazySingleton(classType: AcademyApi, asType: AppApi),
+
     Presolve(
       classType: EnvironmentService,
       presolveUsing: EnvironmentService.getInstance,

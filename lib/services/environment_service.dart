@@ -26,12 +26,16 @@ class EnvironmentService {
   bool get isProduction => currentEnvironment == Environment.production;
   bool get isStaging => currentEnvironment == Environment.staging;
 
+  /// Firebase
   String get apiKey => _getOrThrow('API_KEY');
   String get appId => _getOrThrow('APP_ID');
   String get authDomain => _getOrThrow('AUTH_DOMAIN');
   String get messagingSenderId => _getOrThrow('MESSAGING_SENDER_ID');
   String get projectId => _getOrThrow('PROJECT_ID');
   String get storageBucket => _getOrThrow('STORAGE_BUCKET');
+
+  /// Mocky
+  String get baseUrl => _getOrThrow('BASE_URL');
 
   Future<void> initialize() async {
     await dotenv.load(fileName: currentEnvironment.path);

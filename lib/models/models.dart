@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'convertors.dart';
+
 part 'models.freezed.dart';
 part 'models.g.dart';
 
@@ -87,4 +89,78 @@ class BrowserUser with _$BrowserUser {
 
   factory BrowserUser.fromJson(Map<String, dynamic> json) =>
       _$BrowserUserFromJson(json);
+}
+
+@freezed
+class User with _$User, SerializeJson {
+  User._();
+
+  factory User({
+    required String id,
+    required String email,
+    String? firstName,
+    String? phoneNumber,
+    String? lastName,
+    String? profilePicture,
+  }) = _User;
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  /// Constructs an empty user with default required values
+  factory User.empty() => User(
+        id: '',
+        email: '',
+      );
+
+  /// Returns 'firstName lastName' combination
+  String get fullName => [
+        if (firstName != null) firstName,
+        if (lastName != null) lastName
+      ].join(' ');
+
+  ///
+  bool get hasProfilePicture =>
+      profilePicture != null && profilePicture!.isNotEmpty;
+
+  /// Returns true if a user account has been created but CreateProfileView has
+  /// not been completed.
+  bool get hasCreatedAccount =>
+      firstName != null &&
+      firstName!.isNotEmpty &&
+      phoneNumber != null &&
+      phoneNumber!.isNotEmpty;
+}
+
+mixin SerializeJson {
+  Map<String, dynamic> toJson();
+}
+
+@freezed
+class ApiResponse<T> with _$ApiResponse<T> {
+  ApiResponse._();
+
+  factory ApiResponse({
+    @Default([]) List<String> errors,
+    @GenericModelConverter() @Default([]) List<T> data,
+    @Default([]) List<Meta> meta,
+    String? first,
+    String? last,
+  }) = _ApiResponse<T>;
+
+  factory ApiResponse.fromJson(Map<String, dynamic> json) =>
+      _$ApiResponseFromJson<T>(json);
+
+  /// Returns true if there's at least 1 error
+  bool get hasErrors => errors.isNotEmpty;
+
+  T get singleResult => data.first;
+}
+
+@freezed
+class Meta with _$Meta {
+  factory Meta({
+    @Default(0) int count,
+  }) = _Meta;
+
+  factory Meta.fromJson(Map<String, dynamic> json) => _$MetaFromJson(json);
 }

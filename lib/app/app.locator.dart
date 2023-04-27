@@ -12,6 +12,8 @@ import 'package:stacked_services/src/dialog/dialog_service.dart';
 import 'package:stacked_services/src/navigation/router_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
+import '../api/academy_api.dart';
+import '../api/app_api.dart';
 import '../services/analytics_service.dart';
 import '../services/course_service.dart';
 import '../services/environment_service.dart';
@@ -43,6 +45,7 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => GoogleCloudLoggerService());
   locator.registerLazySingleton(() => AnalyticsService());
   locator.registerLazySingleton(() => NativeInteractionService());
+  locator.registerLazySingleton<AppApi>(() => AcademyApi());
   final environmentService = await EnvironmentService.getInstance();
   locator.registerSingleton(environmentService);
 

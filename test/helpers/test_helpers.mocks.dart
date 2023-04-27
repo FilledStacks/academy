@@ -598,11 +598,15 @@ class MockDialogService extends _i1.Mock implements _i12.DialogService {
 /// See the documentation for Mockito's code generation for more information.
 class MockCourseService extends _i1.Mock implements _i14.CourseService {
   @override
-  List<_i3.Course> get courses => (super.noSuchMethod(
-        Invocation.getter(#courses),
-        returnValue: <_i3.Course>[],
-        returnValueForMissingStub: <_i3.Course>[],
-      ) as List<_i3.Course>);
+  _i7.Future<List<_i3.Course>> getCourses() => (super.noSuchMethod(
+        Invocation.method(
+          #getCourses,
+          [],
+        ),
+        returnValue: _i7.Future<List<_i3.Course>>.value(<_i3.Course>[]),
+        returnValueForMissingStub:
+            _i7.Future<List<_i3.Course>>.value(<_i3.Course>[]),
+      ) as _i7.Future<List<_i3.Course>>);
   @override
   _i7.Future<_i3.Course> getCourseForId(String? id) => (super.noSuchMethod(
         Invocation.method(
@@ -969,6 +973,12 @@ class MockEnvironmentService extends _i1.Mock
   @override
   String get storageBucket => (super.noSuchMethod(
         Invocation.getter(#storageBucket),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  String get baseUrl => (super.noSuchMethod(
+        Invocation.getter(#baseUrl),
         returnValue: '',
         returnValueForMissingStub: '',
       ) as String);
