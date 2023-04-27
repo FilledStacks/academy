@@ -466,8 +466,7 @@ class MockDialogService extends _i1.Mock implements _i13.DialogService {
       _i9.BuildContext,
       _i14.DialogRequest<dynamic>,
       dynamic Function(_i11.DialogResponse<dynamic>),
-    )?
-        builder,
+    )? builder,
   }) =>
       super.noSuchMethod(
         Invocation.method(
@@ -613,12 +612,6 @@ class MockHttpService extends _i1.Mock implements _i15.HttpService {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockCourseService extends _i1.Mock implements _i16.CourseService {
-  @override
-  List<_i3.Course> get courses => (super.noSuchMethod(
-        Invocation.getter(#courses),
-        returnValue: <_i3.Course>[],
-        returnValueForMissingStub: <_i3.Course>[],
-      ) as List<_i3.Course>);
   @override
   _i8.Future<_i3.Course> getCourseForId(String? id) => (super.noSuchMethod(
         Invocation.method(
@@ -1047,7 +1040,7 @@ class MockNativeInteractionService extends _i1.Mock
   @override
   _i8.Future<String> callOpenPopup() => (super.noSuchMethod(
         Invocation.method(
-          #callOpenTab,
+          #callOpenPopup,
           [],
         ),
         returnValue: _i8.Future<String>.value(''),
@@ -1111,6 +1104,12 @@ class MockEnvironmentService extends _i1.Mock
   @override
   String get storageBucket => (super.noSuchMethod(
         Invocation.getter(#storageBucket),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  String get baseUrl => (super.noSuchMethod(
+        Invocation.getter(#baseUrl),
         returnValue: '',
         returnValueForMissingStub: '',
       ) as String);
