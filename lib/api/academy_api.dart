@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/models/models.dart';
 import 'package:filledstacked_academy/services/environment_service.dart';
@@ -14,7 +13,6 @@ enum _HttpMethod { get, post, put, delete }
 /// An implementation of the [AppApi] that talks to the real Academy backend
 class AcademyApi implements AppApi {
   final log = getLogger('AcademyApi');
-  final _environmentService = locator<EnvironmentService>();
 
   late final Dio _httpClient;
 
@@ -22,7 +20,7 @@ class AcademyApi implements AppApi {
     _httpClient = Dio(
       BaseOptions(
         receiveDataWhenStatusError: true,
-        baseUrl: _environmentService.baseUrl,
+        baseUrl: EnvironmentService.baseUrl,
       ),
     );
   }

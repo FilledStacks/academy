@@ -15,14 +15,8 @@ class VimeoPlayerModel extends BaseViewModel {
       headers['Authorization'] = 'Bearer $token';
     }
 
-    log.w(headers);
-
     controller = PodPlayerController(
       playVideoFrom: PlayVideoFrom.vimeo(videoId, httpHeaders: headers),
-      // playVideoFrom: PlayVideoFrom.vimeoPrivateVideos(
-      //   videoId,
-      //   httpHeaders: headers,
-      // ),
       podPlayerConfig: const PodPlayerConfig(
         autoPlay: false,
         isLooping: false,

@@ -71,6 +71,7 @@ import 'guards/auth_guard.dart';
     LazySingleton(classType: RouterService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: BottomSheetService),
+    LazySingleton(classType: EnvironmentService),
     LazySingleton(classType: HttpService),
     LazySingleton(classType: CourseService),
     LazySingleton(classType: FirebaseAuthenticationService),
@@ -80,11 +81,6 @@ import 'guards/auth_guard.dart';
     LazySingleton(classType: GoogleCloudLoggerService),
     LazySingleton(classType: NativeInteractionService),
     LazySingleton(classType: AcademyApi, asType: AppApi),
-    Presolve(
-      classType: EnvironmentService,
-      presolveUsing: EnvironmentService.getInstance,
-    ),
-
 // @stacked-service
   ],
   logger: StackedLogger(
