@@ -10,8 +10,6 @@ class CourseService {
 
   Future<Course> getCourseForId(String id) async {
     try {
-      final response = await _api.getCourses();
-      log.wtf(response.length);
       return await _api.getCourse(id: id);
     } on StateError catch (_) {
       log.w('Course with id equal "$id" not found');
