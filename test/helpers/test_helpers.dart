@@ -111,8 +111,6 @@ MockCourseService getAndRegisterCourseService({
   final service = MockCourseService();
   locator.registerSingleton<CourseService>(service);
 
-  when(service.courses).thenReturn(courses);
-
   when(service.getCourseForId(any)).thenAnswer((realInvocation) async {
     try {
       return courses.firstWhere(
