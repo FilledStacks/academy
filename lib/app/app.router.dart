@@ -4,14 +4,6 @@
 // StackedRouterGenerator
 // **************************************************************************
 
-// GENERATED CODE - DO NOT MODIFY BY HAND
-
-// **************************************************************************
-// StackedRouterGenerator
-// **************************************************************************
-//
-// ignore_for_file: type=lint
-
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter/material.dart' as _i12;
 import 'package:stacked/stacked.dart' as _i11;
@@ -387,5 +379,191 @@ class CourseChapterViewArgs {
   @override
   String toString() {
     return 'CourseChapterViewArgs{key: $key, chapterId: $chapterId, chapter: $chapter}';
+  }
+}
+
+extension RouterStateExtension on _i9.RouterService {
+  Future<dynamic> navigateToMainLayoutView(
+      {void Function(_i11.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const MainLayoutViewRoute(),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> navigateToUnknownView(
+      {void Function(_i11.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const UnknownViewRoute(),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> navigateToHomeView({
+    _i12.Key? key,
+    void Function(_i11.NavigationFailure)? onFailure,
+  }) async {
+    return navigateTo(
+      HomeViewRoute(
+        key: key,
+      ),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> navigateToCourseLandingView({
+    _i12.Key? key,
+    required String courseId,
+    void Function(_i11.NavigationFailure)? onFailure,
+  }) async {
+    return navigateTo(
+      CourseLandingViewRoute(
+        key: key,
+        courseId: courseId,
+      ),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> navigateToCourseDetailsView({
+    _i12.Key? key,
+    required String courseId,
+    void Function(_i11.NavigationFailure)? onFailure,
+  }) async {
+    return navigateTo(
+      CourseDetailsViewRoute(
+        key: key,
+        courseId: courseId,
+      ),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> navigateToUserProfileView(
+      {void Function(_i11.NavigationFailure)? onFailure}) async {
+    return navigateTo(
+      const UserProfileViewRoute(),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> navigateToPaymentCaptureView({
+    _i12.Key? key,
+    void Function(_i11.NavigationFailure)? onFailure,
+  }) async {
+    return navigateTo(
+      PaymentCaptureViewRoute(
+        key: key,
+      ),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> navigateToCourseChapterView({
+    _i12.Key? key,
+    required String chapterId,
+    _i13.Chapter? chapter,
+    void Function(_i11.NavigationFailure)? onFailure,
+  }) async {
+    return navigateTo(
+      CourseChapterViewRoute(
+        key: key,
+        chapterId: chapterId,
+        chapter: chapter,
+      ),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> replaceWithMainLayoutView(
+      {void Function(_i11.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const MainLayoutViewRoute(),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> replaceWithUnknownView(
+      {void Function(_i11.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const UnknownViewRoute(),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> replaceWithHomeView({
+    _i12.Key? key,
+    void Function(_i11.NavigationFailure)? onFailure,
+  }) async {
+    return replaceWith(
+      HomeViewRoute(
+        key: key,
+      ),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> replaceWithCourseLandingView({
+    _i12.Key? key,
+    required String courseId,
+    void Function(_i11.NavigationFailure)? onFailure,
+  }) async {
+    return replaceWith(
+      CourseLandingViewRoute(
+        key: key,
+        courseId: courseId,
+      ),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> replaceWithCourseDetailsView({
+    _i12.Key? key,
+    required String courseId,
+    void Function(_i11.NavigationFailure)? onFailure,
+  }) async {
+    return replaceWith(
+      CourseDetailsViewRoute(
+        key: key,
+        courseId: courseId,
+      ),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> replaceWithUserProfileView(
+      {void Function(_i11.NavigationFailure)? onFailure}) async {
+    return replaceWith(
+      const UserProfileViewRoute(),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> replaceWithPaymentCaptureView({
+    _i12.Key? key,
+    void Function(_i11.NavigationFailure)? onFailure,
+  }) async {
+    return replaceWith(
+      PaymentCaptureViewRoute(
+        key: key,
+      ),
+      onFailure: onFailure,
+    );
+  }
+
+  Future<dynamic> replaceWithCourseChapterView({
+    _i12.Key? key,
+    required String chapterId,
+    _i13.Chapter? chapter,
+    void Function(_i11.NavigationFailure)? onFailure,
+  }) async {
+    return replaceWith(
+      CourseChapterViewRoute(
+        key: key,
+        chapterId: chapterId,
+        chapter: chapter,
+      ),
+      onFailure: onFailure,
+    );
   }
 }

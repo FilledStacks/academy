@@ -289,6 +289,16 @@ class MockRouterService extends _i1.Mock implements _i7.RouterService {
         returnValueForMissingStub: _i8.Future<bool>.value(false),
       ) as _i8.Future<bool>);
   @override
+  _i8.Future<bool> back<T extends Object?>({T? result}) => (super.noSuchMethod(
+        Invocation.method(
+          #back,
+          [],
+          {#result: result},
+        ),
+        returnValue: _i8.Future<bool>.value(false),
+        returnValueForMissingStub: _i8.Future<bool>.value(false),
+      ) as _i8.Future<bool>);
+  @override
   _i2.RoutingController topMostRouter({bool? ignorePagelessRoutes = false}) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -561,7 +571,9 @@ class MockDialogService extends _i1.Mock implements _i13.DialogService {
     String? title,
     String? description,
     String? cancelTitle = r'Cancel',
+    _i12.Color? cancelTitleColor,
     String? confirmationTitle = r'Ok',
+    _i12.Color? confirmationTitleColor,
     bool? barrierDismissible = false,
     _i13.DialogPlatform? dialogPlatform,
   }) =>
@@ -573,7 +585,9 @@ class MockDialogService extends _i1.Mock implements _i13.DialogService {
             #title: title,
             #description: description,
             #cancelTitle: cancelTitle,
+            #cancelTitleColor: cancelTitleColor,
             #confirmationTitle: confirmationTitle,
+            #confirmationTitleColor: confirmationTitleColor,
             #barrierDismissible: barrierDismissible,
             #dialogPlatform: dialogPlatform,
           },

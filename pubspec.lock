@@ -1026,10 +1026,10 @@ packages:
     dependency: "direct main"
     description:
       name: stacked
-      sha256: "1ebc0998c0de136bb80a761aa93f7578e596a66e57856260004cf5bd8335c6f9"
+      sha256: fa9b80c7f5d6a6ce0c976c2b0eb39117f47015ae9e53b12785e1aad263abb877
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.0"
+    version: "3.2.2"
   stacked_firebase_auth:
     dependency: "direct main"
     description:
@@ -1042,26 +1042,26 @@ packages:
     dependency: "direct dev"
     description:
       name: stacked_generator
-      sha256: f1d276ed9710d30a45eff83eaf9c03b83adc8c81771352a73b58a5d91875ecd7
+      sha256: "14e16e9d22ac36341c5b6e5cc046c91cffe5a0e2e02d9305798a4673870bd877"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.1"
+    version: "1.3.3"
   stacked_services:
     dependency: "direct main"
     description:
       name: stacked_services
-      sha256: f14486f7a7186222948e5993d7c843b5597b2074241ccb2960003acd5bd122be
+      sha256: a7b16f0abacfb50c3aa70aec1fb1506dc6321c7dbf669ae55cc992f42edee64a
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.2"
   stacked_shared:
     dependency: transitive
     description:
       name: stacked_shared
-      sha256: cdf6758e0048086d550051ce6072ddec31de131c8f7b518dec3ad437c6638c0a
+      sha256: "502f2b95d3857b0a0e7ebb77fef8c6ca8123c96fe67086ba3f6e66cbe695e703"
       url: "https://pub.dev"
     source: hosted
-    version: "1.3.0"
+    version: "1.3.2"
   stream_channel:
     dependency: transitive
     description:
