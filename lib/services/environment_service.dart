@@ -36,6 +36,7 @@ class EnvironmentService {
   String get messagingSenderId => _getOrThrow('MESSAGING_SENDER_ID');
   String get projectId => _getOrThrow('PROJECT_ID');
   String get storageBucket => _getOrThrow('STORAGE_BUCKET');
+  String get baseUrl => _getOrThrow('BASE_URL');
 
   Future<void> initialize() async {
     log.i(

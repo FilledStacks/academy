@@ -4,28 +4,17 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
-import 'package:filledstacked_academy/models/api_response/api_response.dart';
 import 'package:filledstacked_academy/models/models.dart';
-import 'package:filledstacked_academy/services/user_service.dart';
+import 'package:filledstacked_academy/services/environment_service.dart';
 
 import 'app_api.dart';
 
-const String kApiEndpoint = '';
-const int kDefaultRetryTimes = 2;
-const bool kUseEmulator = true;
-
-enum _HttpMethod {
-  get,
-  post,
-  put,
-  delete,
-}
+enum _HttpMethod { get, post, put, delete }
 
 /// An implementation of the [AppApi] that talks to the real Academy backend
 class AcademyApi implements AppApi {
   final log = getLogger('AcademyApi');
-
-  final _userService = locator<UserService>();
+  final _environmentService = locator<EnvironmentService>();
 
   late final Dio _httpClient;
 
@@ -33,86 +22,49 @@ class AcademyApi implements AppApi {
     _httpClient = Dio(
       BaseOptions(
         receiveDataWhenStatusError: true,
-        baseUrl: kUseEmulator ? 'http://localhost' : kApiEndpoint,
+        baseUrl: _environmentService.baseUrl,
       ),
     );
   }
 
   @override
   Future<List<Course>> getCourses() async {
-    final response = await _makeHttpRequest<Course>(
+    final response = await _makeHttpRequest(
       method: _HttpMethod.get,
-      path: kUseEmulator ? ':5000' : 'v1_host-payment_method',
+      path: '9e7938e8-92d1-4a4b-9ee8-6a95d8b6fee3',
     );
 
-    if (response.hasErrors) {
-      return Future.error(Exception(response.errors.join(',')));
-    }
+    if (response.statusCode != 200) return [];
 
-    return response.data;
+    return List<Course>.from(response.data.map((c) => Course.fromJson(c)));
   }
 
   @override
   Future<Course> getCourse({required String id}) async {
-    final response = await _makeHttpRequest<Course>(
+    final response = await _makeHttpRequest(
       method: _HttpMethod.get,
-      path: kUseEmulator ? ':5000' : 'v1',
+      path: '01706ed5-636d-4a7d-96cb-dccb3d3d2d9d',
       queryParameteres: {
         'id': id,
       },
     );
 
-    if (response.hasErrors) {
-      return Future.error(Exception(response.errors.join(',')));
+    if (response.statusCode != 200) {
+      return Future.error(Exception(response.statusMessage));
     }
 
-    return response.data.first;
+    return Course.fromJson(response.data);
   }
 
-  Future<Map<String, dynamic>> _getHeaders() async {
-    try {
-      final hasUser = _userService.hasUser;
-      return {
-        // if (hasUser) 'authorization': 'Bearer $kVimeoToken',
-      };
-    } catch (error) {
-      log.e(error);
-      return {};
-    }
-  }
-
-  Future<ApiResponse<T>> _makeHttpRequest<T>({
+  Future<Response> _makeHttpRequest({
     required _HttpMethod method,
     required String path,
     Map<String, dynamic> queryParameteres = const {},
     Map<String, dynamic> body = const {},
     bool verbose = false,
     bool verboseResponse = false,
-    int maxRetryTimes = kDefaultRetryTimes,
   }) async {
-    Future<ApiResponse<T>> _retryHttpRequest<T>() async {
-      if (maxRetryTimes == 0) {}
-
-      maxRetryTimes--;
-      return _makeHttpRequest(
-        method: method,
-        path: path,
-        queryParameteres: queryParameteres,
-        body: body,
-        verbose: verbose,
-        verboseResponse: verboseResponse,
-        maxRetryTimes: maxRetryTimes,
-      );
-    }
-
     Response response;
-    final requestOptions = Options(
-      headers: await _getHeaders(),
-      // We don't throw exceptions for anything under 500
-      // we need to handle it
-      validateStatus: (status) =>
-          (status ?? 500) < 500 || (status ?? 500) == 505,
-    );
 
     try {
       switch (method) {
@@ -121,7 +73,6 @@ class AcademyApi implements AppApi {
             path,
             queryParameters: queryParameteres,
             data: body,
-            options: requestOptions,
           );
           break;
         case _HttpMethod.put:
@@ -129,14 +80,12 @@ class AcademyApi implements AppApi {
             path,
             queryParameters: queryParameteres,
             data: body,
-            options: requestOptions,
           );
           break;
         case _HttpMethod.delete:
           response = await _httpClient.delete(
             path,
             queryParameters: queryParameteres,
-            options: requestOptions,
           );
           break;
         case _HttpMethod.get:
@@ -144,58 +93,39 @@ class AcademyApi implements AppApi {
           response = await _httpClient.get(
             path,
             queryParameters: queryParameteres,
-            options: requestOptions,
           );
       }
     } on DioError catch (e) {
       if (e.type == DioErrorType.unknown && e.error is SocketException) {
-        return ApiResponse(errors: [
-          'This seems to be a network issue. Please check your network and try again.'
-        ]);
+        log.e(
+          'This seems to be a network issue. Please check your network and try again.',
+        );
+        rethrow;
       }
 
       if (e.type == DioErrorType.connectionTimeout) {
-        return ApiResponse(errors: [
-          'This seems to be a network issue. Please check your network and try again.'
-        ]);
+        log.e(
+          'This seems to be a network issue. Please check your network and try again.',
+        );
+        rethrow;
       }
 
       log.e(
         'A response error occurred. ${e.response?.statusCode}\nERROR: ${e.response?.data}',
       );
-      return ApiResponse(errors: [
-        'Our service is not responding. Please contact support with this message. ${e.response?.statusCode}-${e.response?.data}'
-      ]);
+      rethrow;
     } catch (e) {
       log.e('Request to $path failed. Error details: $e');
-      return ApiResponse(
-        errors: ['The server didn\'t respond with anything. Check the logs'],
-      );
+      rethrow;
     }
 
-    ApiResponse<T> apiResponse;
+    final statusText = 'Status Code: ${response.statusCode}';
+    final responseText = 'Response Data: ${response.data}';
 
     if (verbose) {
-      log.v('Status Code: ${response.statusCode}');
+      log.v('$statusText${verboseResponse ? responseText : ''}');
     }
 
-    switch (response.statusCode) {
-      case 400:
-      case 404:
-        apiResponse = ApiResponse.fromJson(response.data);
-        break;
-      case 204:
-        apiResponse = ApiResponse();
-        break;
-      case 200:
-      default:
-        if (verboseResponse) {
-          log.v('Response Data: ${response.data}');
-        }
-
-        apiResponse = ApiResponse<T>.fromJson(response.data);
-    }
-
-    return apiResponse;
+    return response;
   }
 }
