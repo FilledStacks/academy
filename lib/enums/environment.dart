@@ -1,8 +1,8 @@
 enum Environment {
-  development(path: 'environments/.development.env'),
-  staging(path: 'environments/.staging.env'),
-  production(path: 'environments/.production.env');
+  development(path: 'assets/environments/development.env'),
+  staging(path: 'assets/environments/staging.env'),
+  production(path: 'assets/environments/production.env');
 
   final String path;
-  const Environment({this.path = 'environments/.development.env'});
+  const Environment({this.path = 'assets/environments/development.env'});
 }
