@@ -49,7 +49,12 @@ class CourseLandingViewModel extends FutureViewModel {
       courseTitle: fetchedCourse?.title,
     ));
 
-    await _routerService.navigateToCourseDetailsView(courseId: courseId);
+    await _routerService.navigateTo(CourseDetailsViewRoute(
+      courseId: courseId,
+      children: List.from([
+        CourseChapterViewRoute(chapterId: chapter.id),
+      ]),
+    ));
   }
 
   @visibleForTesting
