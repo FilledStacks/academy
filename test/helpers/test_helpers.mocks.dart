@@ -10,6 +10,7 @@ import 'package:filledstacks_academy/enums/sign_in_result.dart' as _i17;
 import 'package:filledstacks_academy/models/models.dart' as _i3;
 import 'package:filledstacks_academy/services/analytics_service.dart' as _i20;
 import 'package:filledstacks_academy/services/course_service.dart' as _i14;
+import 'package:filledstacks_academy/services/environment_service.dart' as _i22;
 import 'package:filledstacks_academy/services/google_cloud_logger_service.dart'
     as _i18;
 import 'package:filledstacks_academy/services/layout_service.dart' as _i15;
@@ -910,3 +911,9 @@ class MockNativeInteractionService extends _i1.Mock
         returnValueForMissingStub: _i7.Future<String>.value(''),
       ) as _i7.Future<String>);
 }
+
+/// A class which mocks [EnvironmentService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockEnvironmentService extends _i1.Mock
+    implements _i22.EnvironmentService {}

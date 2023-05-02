@@ -19,6 +19,7 @@ import 'guards/auth_guard.dart';
 import 'package:filledstacks_academy/services/google_cloud_logger_service.dart';
 import 'package:filledstacks_academy/services/analytics_service.dart';
 import 'package:filledstacks_academy/services/native_interactions/native_interaction_service.dart';
+import 'package:filledstacks_academy/services/environment_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -62,6 +63,7 @@ import 'package:filledstacks_academy/services/native_interactions/native_interac
     LazySingleton(classType: GoogleCloudLoggerService),
     LazySingleton(classType: AnalyticsService),
     LazySingleton(classType: NativeInteractionService),
+    LazySingleton(classType: EnvironmentService),
 // @stacked-service
   ],
   bottomsheets: [

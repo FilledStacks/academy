@@ -4,6 +4,8 @@ import 'package:googleapis_auth/auth_io.dart';
 import 'package:googleapis/logging/v2.dart';
 import 'package:logger/logger.dart';
 
+import 'environment_service.dart';
+
 const _scopes = ['https://www.googleapis.com/auth/logging.write'];
 
 class GoogleCloudLoggerService {
@@ -14,9 +16,9 @@ class GoogleCloudLoggerService {
   final log = getLogger('GoogleCloudLoggerService');
   final resource = MonitoredResource()..type = 'global';
 
-  String get projectId => 'project-id';
-  String get environment => 'production';
-  bool get isDevelopment => false;
+  String get projectId => EnvironmentService.projectId;
+  String get environment => EnvironmentService.currentEnvironment.name;
+  bool get isDevelopment => EnvironmentService.isDevelopment;
 
   late Map<String, String> labels;
 

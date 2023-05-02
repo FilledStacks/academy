@@ -3,6 +3,7 @@ import 'package:filledstacks_academy/app/app.dialogs.dart';
 import 'package:filledstacks_academy/app/app.locator.dart';
 import 'package:filledstacks_academy/app/app.router.dart';
 import 'package:filledstacks_academy/services/analytics_service.dart';
+import 'package:filledstacks_academy/services/environment_service.dart';
 import 'package:filledstacks_academy/ui/common/app_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -28,12 +29,12 @@ Future<void> setupFirebase() async {
 
   await Firebase.initializeApp(
     options: const FirebaseOptions(
-      apiKey: "000000000_00000000000000000000000000000",
-      authDomain: "project-id.firebaseapp.com",
-      projectId: "project-id",
-      storageBucket: "project-id.appspot.com",
-      messagingSenderId: "000000000000",
-      appId: "1:000000000000:web:0000000000000000000000",
+      apiKey: EnvironmentService.apiKey,
+      authDomain: EnvironmentService.authDomain,
+      projectId: EnvironmentService.projectId,
+      storageBucket: EnvironmentService.storageBucket,
+      messagingSenderId: EnvironmentService.messagingSenderId,
+      appId: EnvironmentService.appId,
     ),
   );
 }
