@@ -611,6 +611,41 @@ class MockDialogService extends _i1.Mock implements _i13.DialogService {
 /// See the documentation for Mockito's code generation for more information.
 class MockHttpService extends _i1.Mock implements _i15.HttpService {
   @override
+  _i8.Future<List<_i3.Course>> getCourses() => (super.noSuchMethod(
+        Invocation.method(
+          #getCourses,
+          [],
+        ),
+        returnValue: _i8.Future<List<_i3.Course>>.value(<_i3.Course>[]),
+        returnValueForMissingStub:
+            _i8.Future<List<_i3.Course>>.value(<_i3.Course>[]),
+      ) as _i8.Future<List<_i3.Course>>);
+  @override
+  _i8.Future<_i3.Course> getCourse({required String? id}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getCourse,
+          [],
+          {#id: id},
+        ),
+        returnValue: _i8.Future<_i3.Course>.value(_FakeCourse_3(
+          this,
+          Invocation.method(
+            #getCourse,
+            [],
+            {#id: id},
+          ),
+        )),
+        returnValueForMissingStub: _i8.Future<_i3.Course>.value(_FakeCourse_3(
+          this,
+          Invocation.method(
+            #getCourse,
+            [],
+            {#id: id},
+          ),
+        )),
+      ) as _i8.Future<_i3.Course>);
+  @override
   _i8.Future<void> addEmail(String? email) => (super.noSuchMethod(
         Invocation.method(
           #addEmail,

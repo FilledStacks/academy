@@ -1,5 +1,3 @@
-import 'package:filledstacked_academy/api/academy_api.dart';
-import 'package:filledstacked_academy/api/app_api.dart';
 import 'package:filledstacked_academy/services/analytics_service.dart';
 import 'package:filledstacked_academy/services/course_service.dart';
 import 'package:filledstacked_academy/services/google_cloud_logger_service.dart';
@@ -80,7 +78,6 @@ import 'guards/auth_guard.dart';
     LazySingleton(classType: AnalyticsService),
     LazySingleton(classType: GoogleCloudLoggerService),
     LazySingleton(classType: NativeInteractionService),
-    LazySingleton(classType: AcademyApi, asType: AppApi),
 // @stacked-service
   ],
   logger: StackedLogger(
