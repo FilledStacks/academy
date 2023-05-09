@@ -29,7 +29,7 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
   Future<Course?> futureToRun() async {
     fetchedCourse = await _courseService.getCourseForId(courseId);
     if (fetchedCourse == null) {
-      await _routerService.replaceWith(const UnknownViewRoute());
+      await _routerService.replaceWithUnknownView();
       return null;
     }
 
@@ -40,11 +40,11 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
     final chapterIdToShow =
         chapterId ?? fetchedCourse!.modules.first.chapters.first.id;
 
-    _routerService.navigateTo(CourseChapterViewRoute(
+    _routerService.navigateToCourseChapterView(
       key: UniqueKey(),
       chapterId: chapterIdToShow,
       chapter: fetchedCourse!.chapterForId(chapterIdToShow),
-    ));
+    );
 
     return fetchedCourse!;
   }
@@ -71,13 +71,13 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
       courseTitle: fetchedCourse?.title,
     ));
 
-    _routerService.replaceWith(CourseChapterViewRoute(
+    _routerService.replaceWithCourseChapterView(
       key: UniqueKey(),
       chapterId: chapter.id,
       chapter: chapter,
-    ));
+    );
 
-    notifyListeners();
+    rebuildUi();
   }
 
   bool isSidebarItemSelected(SideBarItem sideBarItem) {

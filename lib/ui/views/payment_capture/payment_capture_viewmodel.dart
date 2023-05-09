@@ -28,7 +28,7 @@ class PaymentCaptureViewModel extends FormViewModel {
       return;
     }
 
-    await _routerService.navigateTo(const UserProfileViewRoute());
+    await _routerService.navigateToUserProfileView();
   }
 
   Future<void> onCancel() async {

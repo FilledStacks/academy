@@ -30,12 +30,10 @@ class HomeViewModel extends FormViewModel {
 
   Future<void> navigateToCourse() async {
     unawaited(_analyticsService.logButtonClick(name: ksCTAHomeViewHeroImage));
-    await _routerService.navigateTo(CourseLandingViewRoute(
-      courseId: 'flutter-web',
-    ));
+    await _routerService.navigateToCourseLandingView(courseId: 'flutter-web');
   }
 
   Future<void> navigateToUserProfile() async {
-    await _routerService.navigateTo(const UserProfileViewRoute());
+    await _routerService.navigateToUserProfileView();
   }
 }
