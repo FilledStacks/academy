@@ -16,7 +16,7 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
   final _analyticsService = locator<AnalyticsService>();
   final _courseService = locator<CourseService>();
   final _routerService = locator<RouterService>();
-  final _layouService = locator<LayoutService>();
+  final _layoutService = locator<LayoutService>();
 
   final String courseId;
   CourseDetailsViewModel({required this.courseId});
@@ -85,6 +85,6 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
     return id == null ? false : sideBarItem.isSelected(id);
   }
 
-  void enterFullscreen() => _layouService.enterFullScreen();
-  void exitFullscreen() => _layouService.exitFullScreen();
+  void enterFullscreen() => _layoutService.enterFullScreen();
+  void exitFullscreen() => _layoutService.exitFullScreen();
 }

@@ -16,7 +16,9 @@ class PaymentCaptureViewModel extends FormViewModel {
       !hasCardExpiryValidationMessage && !hasCardCvvValidationMessage;
 
   void initializeForm() {
-    cardOwnerValue = _userService.currentUser.fullName;
+    if (!_userService.hasUser) return;
+
+    cardOwnerValue = _userService.currentUser!.fullName;
   }
 
   Future<void> onAccept() async {
@@ -34,7 +36,7 @@ class PaymentCaptureViewModel extends FormViewModel {
   Future<void> onCancel() async {
     log.i('Payment cancelled!');
     clearForm();
-    await _routerService.clearStackAndShow(HomeViewRoute());
+    await _routerService.clearStackAndShow(const HomeViewRoute());
   }
 
   String _composeValidationMessageText() {

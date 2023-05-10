@@ -26,7 +26,7 @@ class UserProfileViewDesktop extends ViewModelWidget<UserProfileViewModel> {
             ),
             if (viewModel.hasUser)
               Text(
-                viewModel.currentUser.fullName,
+                viewModel.currentUser?.fullName ?? '',
                 style: const TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w600,
