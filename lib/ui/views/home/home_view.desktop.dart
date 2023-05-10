@@ -1,7 +1,6 @@
 import 'package:filledstacked_academy/ui/common/app_colors.dart';
 import 'package:filledstacked_academy/ui/common/app_constants.dart';
 import 'package:filledstacked_academy/ui/common/ui_helpers.dart';
-import 'package:filledstacked_academy/ui/views/home/home_view.form.dart';
 import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/home_greet_user.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/home_image.dart';
@@ -14,9 +13,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
-  final TextEditingController emailController;
-  const HomeViewDesktop({Key? key, required this.emailController})
-      : super(key: key);
+  const HomeViewDesktop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
@@ -57,13 +54,6 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                         : const GoogleSignIn(),
                   ],
                 ),
-                if (viewModel.showValidationError)
-                  Text(
-                    viewModel.emailValidationMessage!,
-                    style: const TextStyle(
-                      color: Colors.red,
-                    ),
-                  ),
                 verticalSpace(120),
               ],
             ),
