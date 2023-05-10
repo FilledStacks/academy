@@ -28,7 +28,7 @@ final Map<String, String? Function(String?)?>
   CardCvvValueKey: PaymentCaptureViewValidators.validateCvv,
 };
 
-mixin $PaymentCaptureView on StatelessWidget {
+mixin $PaymentCaptureView {
   TextEditingController get cardNumberController =>
       _getFormTextEditingController(CardNumberValueKey);
   TextEditingController get cardOwnerController =>
@@ -42,11 +42,14 @@ mixin $PaymentCaptureView on StatelessWidget {
   FocusNode get cardExpiryFocusNode => _getFormFocusNode(CardExpiryValueKey);
   FocusNode get cardCvvFocusNode => _getFormFocusNode(CardCvvValueKey);
 
-  TextEditingController _getFormTextEditingController(String key,
-      {String? initialValue}) {
+  TextEditingController _getFormTextEditingController(
+    String key, {
+    String? initialValue,
+  }) {
     if (_PaymentCaptureViewTextEditingControllers.containsKey(key)) {
       return _PaymentCaptureViewTextEditingControllers[key]!;
     }
+
     _PaymentCaptureViewTextEditingControllers[key] =
         TextEditingController(text: initialValue);
     return _PaymentCaptureViewTextEditingControllers[key]!;
@@ -71,8 +74,10 @@ mixin $PaymentCaptureView on StatelessWidget {
 
   /// Registers a listener on every generated controller that calls [model.setData()]
   /// with the latest textController values
-  @Deprecated('Use syncFormWithViewModel instead.'
-      'This feature was deprecated after 3.1.0.')
+  @Deprecated(
+    'Use syncFormWithViewModel instead.'
+    'This feature was deprecated after 3.1.0.',
+  )
   void listenToFormUpdated(FormViewModel model) {
     cardNumberController.addListener(() => _updateFormData(model));
     cardOwnerController.addListener(() => _updateFormData(model));
@@ -80,7 +85,7 @@ mixin $PaymentCaptureView on StatelessWidget {
     cardCvvController.addListener(() => _updateFormData(model));
   }
 
-  final bool _autoTextFieldValidation = true;
+  static const bool _autoTextFieldValidation = true;
   bool validateFormFields(FormViewModel model) {
     _updateFormData(model, forceValidate: true);
     return model.isFormValid;
@@ -97,27 +102,10 @@ mixin $PaymentCaptureView on StatelessWidget {
           CardCvvValueKey: cardCvvController.text,
         }),
     );
+
     if (_autoTextFieldValidation || forceValidate) {
-      _updateValidationData(model);
+      updateValidationData(model);
     }
-  }
-
-  /// Updates the fieldsValidationMessages on the FormViewModel
-  void _updateValidationData(FormViewModel model) =>
-      model.setValidationMessages({
-        CardNumberValueKey: _getValidationMessage(CardNumberValueKey),
-        CardOwnerValueKey: _getValidationMessage(CardOwnerValueKey),
-        CardExpiryValueKey: _getValidationMessage(CardExpiryValueKey),
-        CardCvvValueKey: _getValidationMessage(CardCvvValueKey),
-      });
-
-  /// Returns the validation message for the given key
-  String? _getValidationMessage(String key) {
-    final validatorForKey = _PaymentCaptureViewTextValidations[key];
-    if (validatorForKey == null) return null;
-    String? validationMessageForKey =
-        validatorForKey(_PaymentCaptureViewTextEditingControllers[key]!.text);
-    return validationMessageForKey;
   }
 
   /// Calls dispose on all the generated controllers and focus nodes
@@ -236,12 +224,6 @@ extension ValueProperties on FormViewModel {
       this.fieldsValidationMessages[CardExpiryValueKey];
   String? get cardCvvValidationMessage =>
       this.fieldsValidationMessages[CardCvvValueKey];
-  void clearForm() {
-    cardNumberValue = '';
-    cardOwnerValue = '';
-    cardExpiryValue = '';
-    cardCvvValue = '';
-  }
 }
 
 extension Methods on FormViewModel {
@@ -253,4 +235,42 @@ extension Methods on FormViewModel {
       this.fieldsValidationMessages[CardExpiryValueKey] = validationMessage;
   setCardCvvValidationMessage(String? validationMessage) =>
       this.fieldsValidationMessages[CardCvvValueKey] = validationMessage;
+
+  /// Clears text input fields on the Form
+  void clearForm() {
+    cardNumberValue = '';
+    cardOwnerValue = '';
+    cardExpiryValue = '';
+    cardCvvValue = '';
+  }
+
+  /// Validates text input fields on the Form
+  void validateForm() {
+    this.setValidationMessages({
+      CardNumberValueKey: getValidationMessage(CardNumberValueKey),
+      CardOwnerValueKey: getValidationMessage(CardOwnerValueKey),
+      CardExpiryValueKey: getValidationMessage(CardExpiryValueKey),
+      CardCvvValueKey: getValidationMessage(CardCvvValueKey),
+    });
+  }
 }
+
+/// Returns the validation message for the given key
+String? getValidationMessage(String key) {
+  final validatorForKey = _PaymentCaptureViewTextValidations[key];
+  if (validatorForKey == null) return null;
+
+  String? validationMessageForKey = validatorForKey(
+    _PaymentCaptureViewTextEditingControllers[key]!.text,
+  );
+
+  return validationMessageForKey;
+}
+
+/// Updates the fieldsValidationMessages on the FormViewModel
+void updateValidationData(FormViewModel model) => model.setValidationMessages({
+      CardNumberValueKey: getValidationMessage(CardNumberValueKey),
+      CardOwnerValueKey: getValidationMessage(CardOwnerValueKey),
+      CardExpiryValueKey: getValidationMessage(CardExpiryValueKey),
+      CardCvvValueKey: getValidationMessage(CardCvvValueKey),
+    });

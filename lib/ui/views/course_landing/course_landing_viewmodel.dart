@@ -32,7 +32,7 @@ class CourseLandingViewModel extends FutureViewModel {
       fetchedCourse = await _courseService.getCourseForId(courseId);
       _chapters = extractAllChapters(fetchedCourse);
     } on ResourceNotFoundException catch (_) {
-      await _routerService.replaceWith(const UnknownViewRoute());
+      await _routerService.replaceWithUnknownView();
     } catch (e) {
       log.e(
         'Unexpected error has occured while fetching the course using id $courseId',

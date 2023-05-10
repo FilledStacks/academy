@@ -22,7 +22,7 @@ class UserService with ListenableServiceMixin {
   }
 
   AppUser? _currentUser;
-  AppUser get currentUser => _currentUser!;
+  AppUser? get currentUser => _currentUser;
 
   bool get hasUser => _currentUser != null;
 
@@ -48,11 +48,10 @@ class UserService with ListenableServiceMixin {
     notifyListeners();
   }
 
-  Future<void> _trackUserSessionDetails(AppUser user) async {
-    _cloudLogger.setUserId(
-      userId: user.id,
-      sessionId: 0,
-    );
+  Future<void> _trackUserSessionDetails(AppUser? user) async {
+    if (!hasUser) return;
+
+    _cloudLogger.setUserId(userId: user!.id, sessionId: 0);
   }
 
   /// Authenticates a User through Firebase using Google Provider.
