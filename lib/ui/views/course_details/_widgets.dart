@@ -116,8 +116,8 @@ class _CourseChapterListItem extends ViewModelWidget<CourseDetailsViewModel> {
             ),
           ),
           horizontalSpaceMedium,
-          Text(chapter.title),
-          const Spacer(),
+          Expanded(child: Text(chapter.title)),
+          horizontalSpaceMedium,
           Text(chapter.durationReadableTime)
         ],
       ).showCursorOnHover,

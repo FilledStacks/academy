@@ -11,7 +11,7 @@ class CourseChapterViewModel extends ReactiveViewModel {
 
   CourseChapterViewModel({
     required this.chapterId,
-    required this.chapter,
+    this.chapter,
   });
 
   @override

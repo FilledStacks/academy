@@ -1,5 +1,5 @@
 import 'package:filledstacked_academy/ui/common/shared_styles.dart';
-import 'package:filledstacked_academy/ui/widgets/common/vimeo_player/vimeo_player.dart';
+import 'package:filledstacked_academy/ui/widgets/common/iframe_player.dart';
 import 'package:flutter/material.dart';
 
 class CourseLandingTrailer extends StatelessWidget {
@@ -11,12 +11,9 @@ class CourseLandingTrailer extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(30),
-          child: const VimeoPlayer(
-            // videoId: '518228118', // PUBLIC DOORDASH VIDEO
-            // videoId: '498983118', // PUBLIC MICROSOFT VIDEO
-            videoId: '812073036', // PUBLIC PERSONAL VIDEO
+          child: const IframePlayer(
+            videoId: '783455878',
             videoThumbnail: 'assets/master-web-hero-image.png',
-            token: '1f4a4c0be7ab1421a3c8e32933114634',
           ),
         ),
         Positioned(

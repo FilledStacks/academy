@@ -12,8 +12,6 @@ import 'package:stacked_services/src/dialog/dialog_service.dart';
 import 'package:stacked_services/src/navigation/router_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
-import '../api/academy_api.dart';
-import '../api/app_api.dart';
 import '../services/analytics_service.dart';
 import '../services/course_service.dart';
 import '../services/environment_service.dart';
@@ -39,6 +37,7 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => RouterService());
   locator.registerLazySingleton(() => DialogService());
   locator.registerLazySingleton(() => BottomSheetService());
+  locator.registerLazySingleton(() => EnvironmentService());
   locator.registerLazySingleton(() => HttpService());
   locator.registerLazySingleton(() => CourseService());
   locator.registerLazySingleton(() => FirebaseAuthenticationService());
@@ -47,10 +46,6 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => AnalyticsService());
   locator.registerLazySingleton(() => GoogleCloudLoggerService());
   locator.registerLazySingleton(() => NativeInteractionService());
-  locator.registerLazySingleton<AppApi>(() => AcademyApi());
-  final environmentService = await EnvironmentService.getInstance();
-  locator.registerSingleton(environmentService);
-
   if (stackedRouter == null) {
     throw Exception(
         'Stacked is building to use the Router (Navigator 2.0) navigation but no stackedRouter is supplied. Pass the stackedRouter to the setupLocator function in main.dart');

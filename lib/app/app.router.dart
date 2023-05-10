@@ -53,11 +53,9 @@ class StackedRouterWeb extends _i11.RootStackRouter {
       );
     },
     HomeViewRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<HomeViewArgs>(orElse: () => const HomeViewArgs());
       return _i11.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i3.HomeView(key: args.key),
+        child: const _i3.HomeView(),
         transitionsBuilder: _i11.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -211,26 +209,14 @@ class UnknownViewRoute extends _i11.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.HomeView]
-class HomeViewRoute extends _i11.PageRouteInfo<HomeViewArgs> {
-  HomeViewRoute({_i12.Key? key})
+class HomeViewRoute extends _i11.PageRouteInfo<void> {
+  const HomeViewRoute()
       : super(
           HomeViewRoute.name,
           path: '',
-          args: HomeViewArgs(key: key),
         );
 
   static const String name = 'HomeView';
-}
-
-class HomeViewArgs {
-  const HomeViewArgs({this.key});
-
-  final _i12.Key? key;
-
-  @override
-  String toString() {
-    return 'HomeViewArgs{key: $key}';
-  }
 }
 
 /// generated route for
@@ -399,14 +385,10 @@ extension RouterStateExtension on _i9.RouterService {
     );
   }
 
-  Future<dynamic> navigateToHomeView({
-    _i12.Key? key,
-    void Function(_i11.NavigationFailure)? onFailure,
-  }) async {
+  Future<dynamic> navigateToHomeView(
+      {void Function(_i11.NavigationFailure)? onFailure}) async {
     return navigateTo(
-      HomeViewRoute(
-        key: key,
-      ),
+      const HomeViewRoute(),
       onFailure: onFailure,
     );
   }
@@ -491,14 +473,10 @@ extension RouterStateExtension on _i9.RouterService {
     );
   }
 
-  Future<dynamic> replaceWithHomeView({
-    _i12.Key? key,
-    void Function(_i11.NavigationFailure)? onFailure,
-  }) async {
+  Future<dynamic> replaceWithHomeView(
+      {void Function(_i11.NavigationFailure)? onFailure}) async {
     return replaceWith(
-      HomeViewRoute(
-        key: key,
-      ),
+      const HomeViewRoute(),
       onFailure: onFailure,
     );
   }

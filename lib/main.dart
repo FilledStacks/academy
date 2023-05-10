@@ -21,15 +21,14 @@ Future<void> main() async {
   setupDialogUi();
   setupBottomSheetUi();
 
-  final _environmentService = locator<EnvironmentService>();
   await Firebase.initializeApp(
-    options: FirebaseOptions(
-      apiKey: _environmentService.apiKey,
-      appId: _environmentService.appId,
-      authDomain: _environmentService.authDomain,
-      messagingSenderId: _environmentService.messagingSenderId,
-      projectId: _environmentService.projectId,
-      storageBucket: _environmentService.storageBucket,
+    options: const FirebaseOptions(
+      apiKey: EnvironmentService.apiKey,
+      appId: EnvironmentService.appId,
+      authDomain: EnvironmentService.authDomain,
+      messagingSenderId: EnvironmentService.messagingSenderId,
+      projectId: EnvironmentService.projectId,
+      storageBucket: EnvironmentService.storageBucket,
     ),
   );
 
