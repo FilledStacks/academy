@@ -46,8 +46,9 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           title: 'FilledStacks Academy',
           theme: Theme.of(context).copyWith(
-            primaryColor: kcBackgroundColor,
             focusColor: kcPrimaryColor,
+            primaryColor: kcBackgroundColor,
+            scaffoldBackgroundColor: Colors.transparent,
             textTheme: GoogleFonts.openSansTextTheme(
               Theme.of(context).textTheme,
             ).apply(
