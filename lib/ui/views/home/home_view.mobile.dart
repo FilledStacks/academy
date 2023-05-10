@@ -4,8 +4,11 @@ import 'package:filledstacked_academy/ui/views/home/home_viewmodel.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/home_image.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/home_subtitle.dart';
 import 'package:filledstacked_academy/ui/views/home/widgets/home_title.dart';
+import 'package:filledstacked_academy/ui/widgets/common/google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
+import 'widgets/home_greet_user.dart';
 
 class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
   const HomeViewMobile({Key? key}) : super(key: key);
@@ -15,16 +18,24 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
     return Scaffold(
       backgroundColor: kcBackgroundColor,
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 40,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 40),
         child: ListView(
-          children: const [
-            HomeTitle(),
+          children: [
+            const HomeTitle(),
             verticalSpaceTiny,
-            HomeSubtitle(),
+            const HomeSubtitle(),
+            verticalSpaceMedium,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                viewModel.hasUser
+                    ? const HomeGreetUser()
+                    : const GoogleSignIn(),
+              ],
+            ),
             verticalSpaceLarge,
-            HomeImage(),
+            const HomeImage(),
+            verticalSpace(120),
           ],
         ),
       ),

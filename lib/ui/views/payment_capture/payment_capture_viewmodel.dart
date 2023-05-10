@@ -36,7 +36,7 @@ class PaymentCaptureViewModel extends FormViewModel {
   Future<void> onCancel() async {
     log.i('Payment cancelled!');
     clearForm();
-    await _routerService.clearStackAndShow(HomeViewRoute());
+    await _routerService.clearStackAndShow(const HomeViewRoute());
   }
 
   String _composeValidationMessageText() {

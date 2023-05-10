@@ -34,7 +34,7 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
                     children: [
                       Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: viewModel.contentWidth == null ? 40 : 0,
+                          horizontal: viewModel.contentWidth == null ? 40 : 20,
                         ),
                         child: GestureDetector(
                           onTap: viewModel.navigateToHome,

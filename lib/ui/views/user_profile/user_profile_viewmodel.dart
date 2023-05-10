@@ -17,6 +17,6 @@ class UserProfileViewModel extends BaseViewModel {
   }
 
   Future<void> goBack() async {
-    await _routerService.clearStackAndShow(HomeViewRoute());
+    await _routerService.clearStackAndShow(const HomeViewRoute());
   }
 }
