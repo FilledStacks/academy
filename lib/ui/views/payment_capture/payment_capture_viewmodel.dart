@@ -16,7 +16,9 @@ class PaymentCaptureViewModel extends FormViewModel {
       !hasCardExpiryValidationMessage && !hasCardCvvValidationMessage;
 
   void initializeForm() {
-    cardOwnerValue = _userService.currentUser.fullName;
+    if (!_userService.hasUser) return;
+
+    cardOwnerValue = _userService.currentUser!.fullName;
   }
 
   Future<void> onAccept() async {

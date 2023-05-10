@@ -26,7 +26,7 @@ class HomeViewModel extends FormViewModel {
 
   bool get hasUser => _userService.hasUser;
 
-  User get currentUser => _userService.currentUser;
+  User? get currentUser => _userService.currentUser;
 
   Future<void> navigateToCourse() async {
     unawaited(_analyticsService.logButtonClick(name: ksCTAHomeViewHeroImage));

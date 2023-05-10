@@ -12,6 +12,8 @@ class HomeGreetUser extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
+    if (!viewModel.hasUser) return const SizedBox.shrink();
+
     return GestureDetector(
       onTap: viewModel.navigateToUserProfile,
       child: Container(
@@ -28,17 +30,17 @@ class HomeGreetUser extends ViewModelWidget<HomeViewModel> {
             ),
             Row(
               children: [
-                if (viewModel.currentUser.hasProfilePicture) ...[
+                if (viewModel.currentUser!.hasProfilePicture) ...[
                   CircleAvatar(
                     backgroundImage: NetworkImage(
-                      viewModel.currentUser.profilePicture!,
+                      viewModel.currentUser!.profilePicture!,
                     ),
                     radius: 30,
                   ),
                   horizontalSpaceSmall,
                 ],
                 GradientText(
-                  viewModel.currentUser.fullName,
+                  viewModel.currentUser!.fullName,
                   style: GoogleFonts.openSans(
                     fontWeight: FontWeight.w600,
                     fontSize: 25,
