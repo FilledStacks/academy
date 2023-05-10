@@ -43,6 +43,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Sensitive files
+# Sensitive data
 assets/credentials/
-assets/environments/
+config.*.json

@@ -1,4 +1,3 @@
-import 'package:filledstacked_academy/app/app.locator.dart';
 import 'package:filledstacked_academy/app/app.logger.dart';
 import 'package:filledstacked_academy/services/environment_service.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -15,18 +14,11 @@ class GoogleCloudLoggerService {
   static late LoggingApi _loggingApi;
 
   final log = getLogger('GoogleCloudLoggerService');
-  // final _environmentService = locator<EnvironmentService>();
   final resource = MonitoredResource()..type = 'global';
 
-  // String get projectId => _environmentService.projectId;
-  // String get environment => _environmentService.currentEnvironment.name;
-  // bool get _isDevelopment => _environmentService.isDevelopment;
-
-  /// Why is working like below and not as above !?
-  String get projectId => locator<EnvironmentService>().projectId;
-  String get environment =>
-      locator<EnvironmentService>().currentEnvironment.name;
-  bool get _isDevelopment => locator<EnvironmentService>().isDevelopment;
+  String get projectId => EnvironmentService.projectId;
+  String get environment => EnvironmentService.currentEnvironment.name;
+  bool get _isDevelopment => EnvironmentService.isDevelopment;
 
   late Map<String, String> labels;
 
