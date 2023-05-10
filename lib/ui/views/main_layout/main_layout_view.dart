@@ -34,8 +34,8 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
                     children: [
                       Padding(
                         padding: EdgeInsets.symmetric(
-                            horizontal:
-                                viewModel.contentWidth == null ? 40 : 0),
+                          horizontal: viewModel.contentWidth == null ? 40 : 20,
+                        ),
                         child: GestureDetector(
                           onTap: viewModel.navigateToHome,
                           child: const AcademyIcon(),
@@ -46,7 +46,8 @@ class MainLayoutView extends StackedView<MainLayoutViewModel> {
               ),
               ConstrainedBox(
                 constraints: BoxConstraints.tightFor(
-                    height: screenHeight(context) - _kNavbarHeight),
+                  height: screenHeight(context) - _kNavbarHeight,
+                ),
                 child: const NestedRouter(),
               )
             ],

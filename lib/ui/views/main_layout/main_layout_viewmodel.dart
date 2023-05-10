@@ -20,6 +20,6 @@ class MainLayoutViewModel extends ReactiveViewModel {
   }
 
   Future<void> navigateToHome() async {
-    await routerService.clearStackAndShow(HomeViewRoute());
+    await routerService.clearStackAndShow(const HomeViewRoute());
   }
 }

@@ -50,15 +50,25 @@ class ChapterCard extends StatelessWidget {
                           kcTitleGradientRight
                         ],
                         position.toString().padLeft(2, '0'),
-                        style:
-                            ktsBodyLarge.copyWith(fontWeight: FontWeight.w800),
+                        style: ktsBodyLarge.copyWith(
+                          fontSize: getResponsiveFontSize(
+                            context,
+                            fontSize: 10,
+                          ),
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
                       horizontalSpaceTiny,
                       Expanded(
                         child: Text(
                           title,
                           style: ktsBodyLarge.copyWith(
-                              fontWeight: FontWeight.w800),
+                            fontSize: getResponsiveFontSize(
+                              context,
+                              fontSize: 10,
+                            ),
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
                       ),
                     ],
@@ -67,8 +77,13 @@ class ChapterCard extends StatelessWidget {
                   Expanded(
                     child: Text(
                       description,
-                      style: ktsBodyRegular.copyWith(color: kcLightGrey),
-                      overflow: TextOverflow.fade,
+                      style: ktsBodyRegular.copyWith(
+                        color: kcLightGrey,
+                        fontSize: getResponsiveFontSize(
+                          context,
+                          fontSize: 9,
+                        ),
+                      ),
                     ),
                   ),
                 ],
