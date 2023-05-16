@@ -1018,10 +1018,10 @@ packages:
     dependency: "direct main"
     description:
       name: stacked
-      sha256: "60dd6175d8ee32b790283ac31d9efdd5b1074c3ae58125ae99f150a4fc386d65"
+      sha256: "1ba751ce480f25766cdc1e08fbb4b7960ac45e08bbede110a12d40c41b2c4eba"
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.5"
+    version: "3.2.6"
   stacked_firebase_auth:
     dependency: "direct main"
     description:

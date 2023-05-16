@@ -35,7 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   
-  stacked: ^3.2.5
+  stacked: ^3.2.6
   stacked_services: ^1.0.2
   stacked_firebase_auth: ^2.19.2
   google_fonts: ^4.0.3
