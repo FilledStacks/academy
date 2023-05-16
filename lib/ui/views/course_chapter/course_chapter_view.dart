@@ -25,7 +25,7 @@ class CourseChapterView extends StackedView<CourseChapterViewModel> {
   ) {
     return ScreenTypeLayout.builder(
       mobile: (_) => const CourseChapterViewMobile(),
-      desktop: (_) => const CourseChapterViewDesktop(),
+      desktop: (_) => CourseChapterViewDesktop(chapterId: chapterId),
     );
   }
 

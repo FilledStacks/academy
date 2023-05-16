@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class CourseDetailsViewModel extends FutureViewModel<Course?> {
+class CourseDetailsViewModel extends BaseViewModel {
   final log = getLogger('CourseDetailsViewModel');
   final _analyticsService = locator<AnalyticsService>();
   final _courseService = locator<CourseService>();
@@ -25,7 +25,6 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
 
   bool get busyFetchingCourese => fetchedCourse == null;
 
-  @override
   Future<Course?> futureToRun() async {
     fetchedCourse = await _courseService.getCourseForId(courseId);
     if (fetchedCourse == null) {
@@ -50,18 +49,7 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
   }
 
   List<dynamic> get sidebarItems {
-    if (isBusy) {
-      return [];
-    }
-
-    final tempItems = <dynamic>[];
-
-    for (var module in data!.modules) {
-      tempItems.add(module);
-      tempItems.addAll(module.chapters);
-    }
-
-    return tempItems;
+    return [];
   }
 
   Future<void> showChapter(Chapter chapter) async {

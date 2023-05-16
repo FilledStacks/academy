@@ -8,14 +8,11 @@ class CourseChapterViewMobile extends ViewModelWidget<CourseChapterViewModel> {
 
   @override
   Widget build(BuildContext context, CourseChapterViewModel viewModel) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Text(
-          'Hello, MOBILE UI!',
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w900,
-          ),
+          'Hello, ${viewModel.chapterId}! - ${viewModel.chapter?.description ?? ''}',
+          style: const TextStyle(fontSize: 35, fontWeight: FontWeight.w900),
         ),
       ),
     );

@@ -23,7 +23,7 @@ class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
   ) {
     return ScreenTypeLayout.builder(
       mobile: (_) => const CourseDetailsViewMobile(),
-      desktop: (_) => const CourseDetailsViewDesktop(),
+      desktop: (_) => CourseDetailsViewDesktop(courseId: courseId),
     );
   }
 
