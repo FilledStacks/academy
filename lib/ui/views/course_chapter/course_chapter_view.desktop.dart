@@ -23,6 +23,7 @@ class CourseChapterViewDesktop extends ViewModelWidget<CourseChapterViewModel> {
 
   @override
   Widget build(BuildContext context, CourseChapterViewModel viewModel) {
+    viewModel.log.w('DESKTOP BUILD hashCode:$hashCode');
     final courseId =
         context.router.parent()?.current.pathParams.optString('courseId');
 

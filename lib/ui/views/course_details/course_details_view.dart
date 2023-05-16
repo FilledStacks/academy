@@ -21,6 +21,10 @@ class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
     CourseDetailsViewModel viewModel,
     Widget? child,
   ) {
+    viewModel.log.w('VIEW hashCode:$hashCode courseId:$courseId');
+    viewModel.log.wtf(
+      'VIEWMODEL hashCode:${viewModel.hashCode} courseId:${viewModel.courseId}',
+    );
     return ScreenTypeLayout.builder(
       mobile: (_) => const CourseDetailsViewMobile(),
       desktop: (_) => CourseDetailsViewDesktop(courseId: courseId),
@@ -35,15 +39,28 @@ class CourseDetailsView extends StackedView<CourseDetailsViewModel> {
 
   @override
   void onViewModelReady(CourseDetailsViewModel viewModel) {
+    viewModel.log.wtf('courseId:${viewModel.courseId}');
     SchedulerBinding.instance.addPostFrameCallback((_) {
       viewModel.enterFullscreen();
     });
+    super.onViewModelReady(viewModel);
   }
 
   @override
   void onDispose(CourseDetailsViewModel viewModel) {
+    viewModel.log.wtf('courseId:${viewModel.courseId}');
     SchedulerBinding.instance.addPostFrameCallback((_) {
       viewModel.exitFullscreen();
     });
+    super.onDispose(viewModel);
   }
+
+  // @override
+  // bool get fireOnViewModelReadyOnce => false;
+
+  // @override
+  // bool get disposeViewModel => true;
+
+  // @override
+  // bool get initialiseSpecialViewModelsOnce => false;
 }

@@ -24,6 +24,7 @@ class CourseDetailsViewDesktop extends ViewModelWidget<CourseDetailsViewModel> {
 
   @override
   Widget build(BuildContext context, CourseDetailsViewModel viewModel) {
+    viewModel.log.w('DESKTOP BUILD hashCode:$hashCode');
     return Scaffold(
       backgroundColor: kcBackgroundColor,
       body: Padding(

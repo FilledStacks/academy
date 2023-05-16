@@ -99,7 +99,13 @@ class _CourseChapterListItem extends ViewModelWidget<CourseDetailsViewModel> {
   @override
   Widget build(BuildContext context, CourseDetailsViewModel viewModel) {
     return GestureDetector(
-      onTap: () => viewModel.showChapter(chapter),
+      // onTap: () => viewModel.showChapter(chapter),
+      onTap: () {
+        context.router.push(CourseChapterViewRoute(
+          chapterId: chapter.id,
+          chapter: chapter,
+        ));
+      },
       child: Row(
         children: [
           Container(

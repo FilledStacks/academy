@@ -13,7 +13,8 @@ class CourseChapterView extends StackedView<CourseChapterViewModel> {
   final Chapter? chapter;
   const CourseChapterView({
     super.key,
-    @PathParam('chapterId') required this.chapterId,
+    @pathParam required this.chapterId,
+    // @PathParam('chapterId') required this.chapterId,
     this.chapter,
   });
 
@@ -23,6 +24,12 @@ class CourseChapterView extends StackedView<CourseChapterViewModel> {
     CourseChapterViewModel viewModel,
     Widget? child,
   ) {
+    viewModel.log.w(
+      'VIEW hashCode:$hashCode, chapterId:$chapterId, chapter:$chapter',
+    );
+    viewModel.log.wtf(
+      'VIEWMODEL hashCode:${viewModel.hashCode}, chapterId:${viewModel.chapterId}, chapter:${viewModel.chapter}',
+    );
     return ScreenTypeLayout.builder(
       mobile: (_) => const CourseChapterViewMobile(),
       desktop: (_) => CourseChapterViewDesktop(chapterId: chapterId),
@@ -34,4 +41,25 @@ class CourseChapterView extends StackedView<CourseChapterViewModel> {
     BuildContext context,
   ) =>
       CourseChapterViewModel(chapterId: chapterId, chapter: chapter);
+
+  @override
+  void onViewModelReady(CourseChapterViewModel viewModel) {
+    viewModel.log.wtf('chapterId:${viewModel.chapterId}');
+    super.onViewModelReady(viewModel);
+  }
+
+  @override
+  void onDispose(CourseChapterViewModel viewModel) {
+    viewModel.log.wtf('chapterId:${viewModel.chapterId}');
+    super.onDispose(viewModel);
+  }
+
+  // @override
+  // bool get fireOnViewModelReadyOnce => false;
+
+  // @override
+  // bool get disposeViewModel => true;
+
+  // @override
+  // bool get initialiseSpecialViewModelsOnce => false;
 }
