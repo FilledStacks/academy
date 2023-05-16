@@ -20,10 +20,9 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
     return Scaffold(
       backgroundColor: kcBackgroundColor,
       body: Row(
-        mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(
-            width: kdDesktopMaxContentWidth * 0.6,
+            width: kdDesktopMaxContentWidth * 0.5,
             child: ListView(
               children: [
                 verticalSpace(150),
@@ -58,7 +57,7 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
               ],
             ),
           ),
-          const HomeImage(),
+          const Expanded(child: HomeImage()),
         ],
       ),
     );
