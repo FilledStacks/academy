@@ -71,6 +71,12 @@ class CourseDetailsViewModel extends FutureViewModel<Course?> {
       courseTitle: fetchedCourse?.title,
     ));
 
+    _routerService.replaceWithCourseChapterView(
+      key: UniqueKey(),
+      chapterId: chapter.id,
+      chapter: chapter,
+    );
+
     rebuildUi();
   }
 

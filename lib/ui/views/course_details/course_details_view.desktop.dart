@@ -1,4 +1,3 @@
-import 'package:filledstacked_academy/app/app.router.dart';
 import 'package:filledstacked_academy/extensions/hover_extensions.dart';
 import 'package:filledstacked_academy/models/models.dart';
 import 'package:filledstacked_academy/ui/common/app_colors.dart';

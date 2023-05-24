@@ -60,6 +60,12 @@ class MyApp extends StatelessWidget {
               locator<AnalyticsService>().getAnalyticsObserver(),
             ],
           ),
+          routeInformationProvider: stackedRouter.routeInfoProvider(
+            neglectWhen: (location) {
+              RegExp route = RegExp(r'^/details/(.*)/(.*)$');
+              return route.hasMatch(location ?? '');
+            },
+          ),
           routeInformationParser: stackedRouter.defaultRouteParser(),
         )
             .animate()
